@@ -1,0 +1,36 @@
+Staré routování
+
+     /**
+     * @Route("/form-add/{id}", defaults={"id" = null}, name="homepage_form_add") 
+     * @param Request $request
+     * @param ManagerRegistry $doctrine
+     * @return Response
+     */
+         public function formAdd(string $id = null, Request $request, ManagerRegistry $doctrine): Response
+    {
+                  return $this->json([
+            'message' => 'Vítej v controlleru',
+            'path' => 'src/Controller/FormController.php',
+    }
+
+to stejné
+    |
+    |
+    V
+
+Modernější routování
+
+ #[Route('/forms', name:'forms')]
+    public function index(): Response           ---> localhost:83/forms --> odkazování na stranku s koncovkou "forms"
+    {
+           return $this->json([
+            'message' => 'Vítej v controlleru',
+            'path' => 'src/Controller/FormController.php',
+        ]);
+    }
+
+vypíše : {"message":"V\u00edtej v controlleru","path":"src\/Controller\/FormController.php"}
+
+                            !|    vše se řídí ze souboru web/config/routes/routes.yaml   |!
+
+___________________________________________________________________________________________________________________________________________
