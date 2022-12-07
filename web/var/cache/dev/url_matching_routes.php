@@ -15,6 +15,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/forms' => [[['_route' => 'forms', 'name' => null, '_controller' => 'App\\Controller\\FormController::index'], null, ['GET' => 0, 'HEAD' => 1], null, false, false, null]],
         '/' => [[['_route' => 'homepage_default', '_controller' => 'App\\Controller\\HomepageController::default'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

@@ -31,3 +31,7 @@ ea4e22,172.23.0.1,GET,http://localhost:83/forms/film,1670283175,,404
 5982c4,172.23.0.1,GET,http://localhost:83/forms,1670283196,,200
 e2dd83,172.23.0.1,GET,http://localhost:83/favicon.ico,1670283322,2b86c1,404
 2b86c1,172.23.0.1,GET,http://localhost:83/favicon.ico,1670283322,,404
+97efcf,172.23.0.1,GET,http://localhost:83/,1670432895,,200
+eea660,172.23.0.1,GET,http://localhost:83/favicon.ico,1670432897,1fc855,404
+1fc855,172.23.0.1,GET,http://localhost:83/favicon.ico,1670432897,,404
+c38822,172.23.0.1,GET,http://localhost:83/register,1670435920,,200
