@@ -69,6 +69,24 @@ class __TwigTemplate_873687dfeea4b2fc84f5684c1ed2defda80a019a2c082f9063ac209dad2
         <div class=\"col-lg-12\">
             uspesne lognuty
         </div>
+            <div class=\"bs-docs-section clearfix\">
+        
+        ";
+        // line 10
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "email", [], "any", false, false, false, 10), "html", null, true);
+        echo "
+
+        
+                <a href=\"/";
+        // line 13
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13)) ? ("logout") : ("login"));
+        echo "\">
+            ";
+        // line 14
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? ("Logout") : ("Login"));
+        echo "
+        </a>
+    </div>
     </div>
 ";
         
@@ -91,7 +109,7 @@ class __TwigTemplate_873687dfeea4b2fc84f5684c1ed2defda80a019a2c082f9063ac209dad2
 
     public function getDebugInfo()
     {
-        return array (  68 => 4,  58 => 3,  35 => 1,);
+        return array (  86 => 14,  82 => 13,  76 => 10,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -103,6 +121,15 @@ class __TwigTemplate_873687dfeea4b2fc84f5684c1ed2defda80a019a2c082f9063ac209dad2
         <div class=\"col-lg-12\">
             uspesne lognuty
         </div>
+            <div class=\"bs-docs-section clearfix\">
+        
+        {{ app.user.email }}
+
+        
+                <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
     </div>
 {% endblock %}", "Homepage/dd.html.twig", "/var/www/html/templates/Homepage/dd.html.twig");
     }

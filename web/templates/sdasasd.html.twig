@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>xdusek events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    </script>
+</head>
+<body>
+    <div class="bs-docs-section clearfix">
+        {% block body %}
+        {{ app.user.email }}
+
+        {% endblock %}
+                <a href="/{{ app.user ? 'logout' : 'login' }}">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+</body>
+</html>
