@@ -20,7 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomepageController extends BaseController
 {
 
-    /**
+
+        /**
      * @return Response
      * @Route("/", name="homepage_default")
      */
@@ -31,5 +32,16 @@ class HomepageController extends BaseController
         return $this->render("Homepage/default.html.twig");
     }
 
+    #[Route(path: 'homepage/dd', name: 'dd')]
+    public function dd(): Response
+    {
+        return $this->render("Homepage/dd.html.twig");
+    }
+
+    #[Route(path: 'security/logged', name: 'logged')]
+    public function logged(): Response
+    {
+        return $this->render("security/logged.html.twig");
+    }
 
 }

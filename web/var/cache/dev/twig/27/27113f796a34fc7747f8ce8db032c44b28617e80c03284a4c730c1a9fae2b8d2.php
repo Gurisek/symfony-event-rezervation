@@ -45,7 +45,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <html lang=\"cs\">
 <head>
     <meta charset=\"utf-8\">
-    <title>Symfony template</title>
+    <title>xdusek events</title>
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <script>
     </script>
@@ -55,8 +55,16 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
         ";
         // line 12
         $this->displayBlock('body', $context, $blocks);
-        // line 14
-        echo "    </div>
+        // line 16
+        echo "                <a href=\"/";
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16)) ? ("logout") : ("login"));
+        echo "\">
+            ";
+        // line 17
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("Logout") : ("Login"));
+        echo "
+        </a>
+    </div>
 </body>
 </html>
 ";
@@ -80,6 +88,10 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
         // line 13
         echo "        ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13), "email", [], "any", false, false, false, 13), "html", null, true);
+        echo "
+
+        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -93,9 +105,14 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  82 => 13,  72 => 12,  59 => 14,  57 => 12,  44 => 1,);
+        return array (  90 => 13,  80 => 12,  64 => 17,  59 => 16,  57 => 12,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -104,7 +121,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <html lang=\"cs\">
 <head>
     <meta charset=\"utf-8\">
-    <title>Symfony template</title>
+    <title>xdusek events</title>
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <script>
     </script>
@@ -112,7 +129,12 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <body>
     <div class=\"bs-docs-section clearfix\">
         {% block body %}
+        {{ app.user.email }}
+
         {% endblock %}
+                <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
     </div>
 </body>
 </html>

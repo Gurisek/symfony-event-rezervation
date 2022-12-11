@@ -34,3 +34,35 @@ vypíše : {"message":"V\u00edtej v controlleru","path":"src\/Controller\/FormCo
                             !|    vše se řídí ze souboru web/config/routes/routes.yaml   |!
 
 ___________________________________________________________________________________________________________________________________________
+
+
+11.12.
+- vraceni cesty po prihlaseni vytvorena funkce dd() v HomepageController.php
+- implementace v LoginFormAuthenticator.php na radku 54
+- priklad routovani v HomepageController.php
+
+- potreba dodelat stranku logged -> pokud uživatel ktery je prihlasen da /login vyhodi to chybu je potreba
+udelat presmerovani na security/logged.html.twig
+
+FormController.php
+<?php
+___________________________________________________________________________________________________________________________________________
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class FormController extends BaseController
+{
+
+    #[Route('/forms', name: 'forms', defaults: ['name' => null], methods: ['GET', 'HEAD'])]
+    public function index($name): Response
+    {
+        return $this->json([
+            'message' => $name,
+            'path' => 'src/Controller/FormController.php',
+        ]);
+    }
+
+}
+___________________________________________________________________________________________________________________________________________
