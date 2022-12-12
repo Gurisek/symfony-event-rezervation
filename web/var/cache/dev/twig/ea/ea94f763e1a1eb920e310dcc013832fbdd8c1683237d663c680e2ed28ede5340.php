@@ -72,6 +72,24 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
             Homepage default
         </div>
     </div>
+    <body>
+    <div class=\"bs-docs-section clearfix text-center-gray\">
+      ";
+        // line 11
+        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "email", [], "any", false, false, false, 11), "html", null, true))) : (print ("neprihlasen")));
+        echo "
+
+        <a href=\"/";
+        // line 13
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13)) ? ("logout") : ("login"));
+        echo "\">
+            ";
+        // line 14
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? ("Logout") : ("Login"));
+        echo "
+        </a>
+    </div>
+</body>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -81,7 +99,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 11
+    // line 20
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -99,7 +117,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 12
+    // line 21
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -129,7 +147,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  103 => 12,  85 => 11,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  121 => 21,  103 => 20,  88 => 14,  84 => 13,  79 => 11,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -142,6 +160,15 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
             Homepage default
         </div>
     </div>
+    <body>
+    <div class=\"bs-docs-section clearfix text-center-gray\">
+      {{app.user ? app.user.email : 'neprihlasen' }}
+
+        <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+</body>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

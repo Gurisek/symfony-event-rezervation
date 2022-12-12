@@ -73,7 +73,7 @@ class __TwigTemplate_873687dfeea4b2fc84f5684c1ed2defda80a019a2c082f9063ac209dad2
         
         ";
         // line 10
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "email", [], "any", false, false, false, 10), "html", null, true);
+        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "email", [], "any", false, false, false, 10), "html", null, true))) : (print ("neprihlasen")));
         echo "
 
         
@@ -123,7 +123,7 @@ class __TwigTemplate_873687dfeea4b2fc84f5684c1ed2defda80a019a2c082f9063ac209dad2
         </div>
             <div class=\"bs-docs-section clearfix\">
         
-        {{ app.user.email }}
+        {{ app.user ? app.user.email : 'neprihlasen' }}
 
         
                 <a href=\"/{{ app.user ? 'logout' : 'login' }}\">

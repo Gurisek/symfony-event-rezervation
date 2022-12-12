@@ -6,6 +6,15 @@
             Homepage default
         </div>
     </div>
+    <body>
+    <div class="bs-docs-section clearfix text-center-gray">
+      {{app.user ? app.user.email : 'neprihlasen' }}
+
+        <a href="/{{ app.user ? 'logout' : 'login' }}">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+</body>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

@@ -1,0 +1,25 @@
+{% block head %}
+
+<head>
+  <meta charset="utf-8">
+  <title>xdusek events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../layouts/spacelab/css/bootstrap.css">
+  <link rel="stylesheet" href="../layouts/spacelab/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../layouts/spacelab/css/prism-okaidia.css">
+  <link rel="stylesheet" href="../layouts/spacelab/css/custom.min.css">
+
+  <p class='text-gray-bg hover:bg-violet-600'>
+  Ahoj asjlfdnfksd
+   </p>
+    <div class="no-underline hover:underline bs-docs-section clearfix">
+      {{app.user ? app.user.email : 'neprihlasen' }}
+
+        <a href="/{{ app.user ? 'logout' : 'login' }}">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+ 
+</head>
+
+{% endblock %}
