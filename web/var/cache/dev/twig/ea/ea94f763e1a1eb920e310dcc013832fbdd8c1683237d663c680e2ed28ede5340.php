@@ -33,7 +33,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     protected function doGetParent(array $context)
     {
-        // line 1
+        // line 2
         return "base.html.twig";
     }
 
@@ -46,7 +46,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Homepage/default.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "Homepage/default.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "Homepage/default.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -56,7 +56,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 3
+    // line 4
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -66,12 +66,30 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 4
-        echo "    <div class=\"row\">
+        // line 5
+        echo "    <div class=\"logins\">
         <div class=\"col-lg-12\">
-            Homepage default
+            <h1>Homepage default</h1>
         </div>
     </div>
+    
+    <div class=\"logins\">
+      ";
+        // line 12
+        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "email", [], "any", false, false, false, 12), "html", null, true))) : (print ("neprihlasen")));
+        echo "
+
+        <a href=\"/";
+        // line 14
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? ("logout") : ("login"));
+        echo "\">
+            ";
+        // line 15
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15)) ? ("Logout") : ("Login"));
+        echo "
+        </a>
+    </div>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -81,7 +99,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 11
+    // line 21
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -99,7 +117,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 12
+    // line 22
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -129,19 +147,29 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  103 => 12,  85 => 11,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  121 => 22,  103 => 21,  88 => 15,  84 => 14,  79 => 12,  70 => 5,  60 => 4,  37 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base.html.twig' %}
+        return new Source("
+ {% extends \"base.html.twig\" %}
 
 {% block body %}
-    <div class=\"row\">
+    <div class=\"logins\">
         <div class=\"col-lg-12\">
-            Homepage default
+            <h1>Homepage default</h1>
         </div>
     </div>
+    
+    <div class=\"logins\">
+      {{app.user ? app.user.email : 'neprihlasen' }}
+
+        <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

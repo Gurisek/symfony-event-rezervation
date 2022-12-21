@@ -1,11 +1,21 @@
-{% extends 'base.html.twig' %}
+
+ {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="row">
+    <div class="logins">
         <div class="col-lg-12">
-            Homepage default
+            <h1>Homepage default</h1>
         </div>
     </div>
+    
+    <div class="logins">
+      {{app.user ? app.user.email : 'neprihlasen' }}
+
+        <a href="/{{ app.user ? 'logout' : 'login' }}">
+            {{ app.user ? 'Logout' : 'Login' }}
+        </a>
+    </div>
+
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}
