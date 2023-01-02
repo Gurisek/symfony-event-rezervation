@@ -653,3 +653,16 @@ c2ca3a,172.19.0.1,GET,http://localhost:83/,1670840173,,200
 5fa198,172.19.0.1,GET,http://localhost:83/,1670840345,,200
 53e5ce,172.19.0.1,GET,http://localhost:83/,1670840356,,200
 >>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
+459c78,172.23.0.1,GET,http://localhost:83/,1671757087,,200
+47d04d,172.23.0.1,GET,http://localhost:83/favicon.ico,1671757089,e12bf7,404
+e12bf7,172.23.0.1,GET,http://localhost:83/favicon.ico,1671757089,,404
+f0860d,172.23.0.1,GET,http://localhost:83/login,1671757143,,200
+bb5e1e,172.23.0.1,GET,http://localhost:83/register,1671757150,,200
+8fe9a2,172.23.0.1,GET,http://localhost:83/,1672695197,,200
+e27238,172.23.0.1,GET,http://localhost:83/favicon.ico,1672695199,120baa,404
+120baa,172.23.0.1,GET,http://localhost:83/favicon.ico,1672695199,,404
+5d5a03,172.23.0.1,GET,http://localhost:83/login,1672695213,,200
+7bcbe8,172.23.0.1,POST,http://localhost:83/login,1672695229,,302
+aff226,172.23.0.1,GET,http://localhost:83/homepage/dd,1672695229,,200
+b1f888,172.23.0.1,GET,http://localhost:83/logout,1672695238,,302
+36178b,172.23.0.1,GET,http://localhost:83/,1672695239,,200

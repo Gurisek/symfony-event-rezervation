@@ -72,45 +72,27 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
             <h1>Homepage default</h1>
         </div>
     </div>
-<<<<<<< HEAD
     
-    <div class=\"logins\">
-      ";
-        // line 12
-        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "email", [], "any", false, false, false, 12), "html", null, true))) : (print ("neprihlasen")));
-        echo "
+    
 
-        <a href=\"/";
-        // line 14
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? ("logout") : ("login"));
-        echo "\">
-            ";
-        // line 15
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15)) ? ("Logout") : ("Login"));
-        echo "
-        </a>
-    </div>
-
-=======
     <body>
     <div class=\"bs-docs-section clearfix text-center-gray\">
       ";
-        // line 11
-        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "email", [], "any", false, false, false, 11), "html", null, true))) : (print ("neprihlasen")));
+        // line 15
+        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15), "email", [], "any", false, false, false, 15), "html", null, true))) : (print ("neprihlasen")));
         echo "
 
         <a href=\"/";
-        // line 13
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13)) ? ("logout") : ("login"));
+        // line 17
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("logout") : ("login"));
         echo "\">
             ";
-        // line 14
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? ("Logout") : ("Login"));
+        // line 18
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "user", [], "any", false, false, false, 18)) ? ("Logout") : ("Login"));
         echo "
         </a>
     </div>
-</body>
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -120,11 +102,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-<<<<<<< HEAD
-    // line 21
-=======
-    // line 20
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
+    // line 24
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -142,11 +120,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-<<<<<<< HEAD
-    // line 22
-=======
-    // line 21
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
+    // line 25
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -176,11 +150,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-<<<<<<< HEAD
-        return array (  121 => 22,  103 => 21,  88 => 15,  84 => 14,  79 => 12,  70 => 5,  60 => 4,  37 => 2,);
-=======
-        return array (  121 => 21,  103 => 20,  88 => 14,  84 => 13,  79 => 11,  70 => 4,  60 => 3,  37 => 1,);
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
+        return array (  124 => 25,  106 => 24,  91 => 18,  87 => 17,  82 => 15,  70 => 5,  60 => 4,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -194,24 +164,18 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
             <h1>Homepage default</h1>
         </div>
     </div>
-<<<<<<< HEAD
     
-    <div class=\"logins\">
-=======
+    
+
     <body>
     <div class=\"bs-docs-section clearfix text-center-gray\">
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
       {{app.user ? app.user.email : 'neprihlasen' }}
 
         <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
             {{ app.user ? 'Logout' : 'Login' }}
         </a>
     </div>
-<<<<<<< HEAD
 
-=======
-</body>
->>>>>>> 2daac83e21559fec359be51cb4e83bd7c2cecbe5
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}
