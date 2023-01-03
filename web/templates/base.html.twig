@@ -2,23 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-    <title> {% block title %}xdusek events{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{ url("homepage_default") }}layouts/custom/css/base.css">
-
-{# <div class="no-underline hover:underline bs-docs-section clearfix">
-      {{app.user ? app.user.email : 'neprihlasen' }}
-
-        <a href="/{{ app.user ? 'logout' : 'login' }}">
-            {{ app.user ? 'Logout' : 'Login' }}
-        </a>
-    </div> #}
+  <meta charset="utf-8">
+  <title> {% block title %}xdusek events{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url("homepage_default") }}layouts/custom/css/base.css">
 </head>
+
 <body>
-    {% block body %}
-    
-    {% endblock %}
+  {% include 'header.html.twig' %}
+  {% block body %}{% endblock %}
 </body>
 
 {% block stylesheets %}{% endblock %}

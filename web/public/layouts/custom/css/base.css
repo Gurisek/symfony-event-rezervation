@@ -1,13 +1,17 @@
-@import url(https://fonts.googleapis.com/css?family=Bitter);
+@import url('https://fonts.googleapis.com/css?family=Bitter|Roboto|Open+Sans');
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 body {
-    font-family: "Bitter", sans-serif;
-    color: white;
-    margin: 0%;
-    padding: 0%;
-    background-image: url('../img/background.jpg');
-    background-size: auto;
-    background-repeat: no-repeat;
+  color: white;
+  margin: 0;
+  padding: 0;
+  background-image: url('../img/background.jpg');
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
 /* forms base css */
@@ -59,14 +63,14 @@ form {
   }
 
   /* log/reg banner v pozadi */
-  .banner {
-    width: 400px;
+.banner {
+    width: 450px;
     background-color: rgba(69, 69, 69, 0.7);
     color: #fff;
     text-align: center;
     padding: 50px;
     margin-left: 700px;
-    margin-top: 250px;
+    margin-top: 200px;
     border: 10px black;
   }
 
@@ -86,3 +90,104 @@ form {
     padding: 0;
     margin: 0;
   }
+ /* header/nav */
+ nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+ }
+
+.logo{
+  color: #04def2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 50px;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+.nav-links li{
+  list-style: none;
+}
+
+.nav-links a{
+  color: #04def2;
+  margin: 10px;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 24px;
+}
+/* Burger s linky */
+.burger{
+  display: none;
+  cursor: pointer;
+}
+
+.burger div{
+  width: 25px;
+  height: 3px;
+  background-color: #04def2;
+  margin: 5px;
+}
+
+@media screen and (max-width:1024px) {
+  .nav-links{
+    width: 60%;
+  }
+}
+@media screen and (max-width:768px) {
+  body{
+    overflow-x: hidden;
+  }
+  .nav-links{
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: #00000082;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+  .nav-links li{
+    opacity: 0;
+  }
+  .burger{
+    display: block;
+  }
+}
+
+.nav-active{
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.toggle .line1{
+  transform: rotate(-45deg) translate(-5px,6px);
+}
+
+.toggle .line2{
+  opacity: 0;
+}
+
+.toggle .line3{
+  transform: rotate(45deg) translate(-5px,-6px);
+}

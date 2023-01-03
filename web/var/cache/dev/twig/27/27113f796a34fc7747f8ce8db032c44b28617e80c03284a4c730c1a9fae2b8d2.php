@@ -48,33 +48,34 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=\"utf-8\">
-    <title> ";
+  <meta charset=\"utf-8\">
+  <title> ";
         // line 6
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-<link rel=\"stylesheet\" href=\"";
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+  <link rel=\"stylesheet\" href=\"";
         // line 8
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/css/base.css\">
+</head>
 
-";
-        // line 17
-        echo "</head>
 <body>
-    ";
-        // line 19
+  ";
+        // line 12
+        $this->loadTemplate("header.html.twig", "base.html.twig", 12)->display($context);
+        // line 13
+        echo "  ";
         $this->displayBlock('body', $context, $blocks);
-        // line 22
+        // line 14
         echo "</body>
 
 ";
-        // line 24
+        // line 16
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 25
+        // line 17
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 26
+        // line 18
         echo "</html>
 ";
         
@@ -104,7 +105,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 19
+    // line 13
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -114,9 +115,6 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 20
-        echo "    
-    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -125,7 +123,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 24
+    // line 16
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -143,7 +141,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 25
+    // line 17
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -173,7 +171,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     public function getDebugInfo()
     {
-        return array (  147 => 25,  129 => 24,  118 => 20,  108 => 19,  89 => 6,  78 => 26,  76 => 25,  74 => 24,  70 => 22,  68 => 19,  64 => 17,  59 => 8,  54 => 6,  47 => 1,);
+        return array (  145 => 17,  127 => 16,  109 => 13,  90 => 6,  79 => 18,  77 => 17,  75 => 16,  71 => 14,  68 => 13,  66 => 12,  59 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -182,23 +180,15 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=\"utf-8\">
-    <title> {% block title %}xdusek events{% endblock %}</title>
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-<link rel=\"stylesheet\" href=\"{{ url(\"homepage_default\") }}layouts/custom/css/base.css\">
-
-{# <div class=\"no-underline hover:underline bs-docs-section clearfix\">
-      {{app.user ? app.user.email : 'neprihlasen' }}
-
-        <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
-            {{ app.user ? 'Logout' : 'Login' }}
-        </a>
-    </div> #}
+  <meta charset=\"utf-8\">
+  <title> {% block title %}xdusek events{% endblock %}</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+  <link rel=\"stylesheet\" href=\"{{ url(\"homepage_default\") }}layouts/custom/css/base.css\">
 </head>
+
 <body>
-    {% block body %}
-    
-    {% endblock %}
+  {% include 'header.html.twig' %}
+  {% block body %}{% endblock %}
 </body>
 
 {% block stylesheets %}{% endblock %}

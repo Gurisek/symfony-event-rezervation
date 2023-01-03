@@ -56,7 +56,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 4
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -66,29 +66,26 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 5
+        // line 7
         echo "    <div class=\"logins\">
         <div class=\"col-lg-12\">
             <h1>Homepage default</h1>
         </div>
     </div>
-    
-    
 
-    <body>
     <div class=\"bs-docs-section clearfix text-center-gray\">
       ";
-        // line 15
-        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15), "email", [], "any", false, false, false, 15), "html", null, true))) : (print ("neprihlasen")));
+        // line 14
+        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "email", [], "any", false, false, false, 14), "html", null, true))) : (print ("neprihlasen")));
         echo "
 
         <a href=\"/";
-        // line 17
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("logout") : ("login"));
+        // line 16
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16)) ? ("logout") : ("login"));
         echo "\">
             ";
-        // line 18
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "user", [], "any", false, false, false, 18)) ? ("Logout") : ("Login"));
+        // line 17
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("Logout") : ("Login"));
         echo "
         </a>
     </div>
@@ -102,7 +99,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 24
+    // line 23
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -120,7 +117,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 25
+    // line 24
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -150,7 +147,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  124 => 25,  106 => 24,  91 => 18,  87 => 17,  82 => 15,  70 => 5,  60 => 4,  37 => 2,);
+        return array (  121 => 24,  103 => 23,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -158,16 +155,15 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         return new Source("
  {% extends \"base.html.twig\" %}
 
+
+
 {% block body %}
     <div class=\"logins\">
         <div class=\"col-lg-12\">
             <h1>Homepage default</h1>
         </div>
     </div>
-    
-    
 
-    <body>
     <div class=\"bs-docs-section clearfix text-center-gray\">
       {{app.user ? app.user.email : 'neprihlasen' }}
 
