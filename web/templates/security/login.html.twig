@@ -12,7 +12,7 @@
 
             {% if app.user %}
                 <div class="logged">
-                    <h1>You are logged in as {{ app.user.email }}
+                    <h1>Už jsi přihlášen/a jako {{ app.user.email }}
                      <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% else %}

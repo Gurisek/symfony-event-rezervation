@@ -20,7 +20,7 @@ form {
     width: 300px;
     margin: 0 auto;
     text-align: center;
-    text-shadow: 0.5px 0.5px 1px whitesmoke;
+    text-shadow: 0.5px 0.5px 1px #f3f3f3;
   }
   
   input[type="text"],
@@ -64,14 +64,11 @@ form {
 
   /* log/reg banner v pozadi */
 .banner {
-    width: 450px;
-    background-color: rgba(69, 69, 69, 0.7);
+    border-width: 450px;
     color: #fff;
     text-align: center;
     padding: 50px;
-    margin-left: 700px;
-    margin-top: 200px;
-    border: 10px black;
+    display: contents;
   }
 
   .banner h1 {

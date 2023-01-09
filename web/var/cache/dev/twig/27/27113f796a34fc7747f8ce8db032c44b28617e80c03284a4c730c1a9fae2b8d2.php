@@ -68,14 +68,17 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
         echo "  ";
         $this->displayBlock('body', $context, $blocks);
         // line 14
+        echo "  ";
+        $this->loadTemplate("footer.html.twig", "base.html.twig", 14)->display($context);
+        // line 15
         echo "</body>
 
 ";
-        // line 16
-        $this->displayBlock('stylesheets', $context, $blocks);
         // line 17
-        $this->displayBlock('javascripts', $context, $blocks);
+        $this->displayBlock('stylesheets', $context, $blocks);
         // line 18
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 19
         echo "</html>
 ";
         
@@ -123,7 +126,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 16
+    // line 17
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -141,7 +144,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 17
+    // line 18
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -171,7 +174,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     public function getDebugInfo()
     {
-        return array (  145 => 17,  127 => 16,  109 => 13,  90 => 6,  79 => 18,  77 => 17,  75 => 16,  71 => 14,  68 => 13,  66 => 12,  59 => 8,  54 => 6,  47 => 1,);
+        return array (  148 => 18,  130 => 17,  112 => 13,  93 => 6,  82 => 19,  80 => 18,  78 => 17,  74 => 15,  71 => 14,  68 => 13,  66 => 12,  59 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -189,6 +192,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 <body>
   {% include 'header.html.twig' %}
   {% block body %}{% endblock %}
+  {% include \"footer.html.twig\" %}
 </body>
 
 {% block stylesheets %}{% endblock %}

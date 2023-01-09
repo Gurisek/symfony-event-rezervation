@@ -88,7 +88,6 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
         // line 25
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/nav.js\"></script>
-
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -140,40 +139,6 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
     </div>
 </nav>
 <script src=\"{{ url(\"homepage_default\") }}layouts/custom/js/nav.js\"></script>
-
-{# <header>
-  <nav>
-    <div class=\"logo\">
-      <h4>xDusek</h4>
-    </div>
-    <div class=\"header-nav\">
-      <ul>
-        <li><a href=\"{{ path('homepage_default') }}\">Home</a></li>
-        <li><a href=\"#\">About</a></li>
-        <li><a href=\"#\">Contact</a></li>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-          <li><a href=\"{{ path('app_logout') }}\">Logout</a></li>
-        {% else %}
-          <li><a href=\"{{ path('app_login') }}\">Login</a></li>
-          <li><a href=\"{{ path('app_register') }}\">Register</a></li>
-        {% endif %}
-        <li>
-          <a href=\"#\">Menu</a>
-          <ul>
-            <li><a href=\"#\">Home</a></li>
-            <li><a href=\"#\">About</a></li>
-            <li><a href=\"#\">Contact</a></li>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-          <li><a href=\"{{ path('app_login') }}\">Login</a></li>
-        {% else %}
-          <li><a href=\"{{ path('app_logout') }}\">Logout</a></li>
-          <li><a href=\"{{ path('app_register') }}\">Register</a></li>
-        {% endif %}
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header> #}", "header.html.twig", "/var/www/html/templates/header.html.twig");
+", "header.html.twig", "/var/www/html/templates/header.html.twig");
     }
 }
