@@ -104,7 +104,7 @@ class __TwigTemplate_8d922d0d36525a28484145c31c8cfdd6a52c80773462355b52163aca1df
         if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13)) {
             // line 14
             echo "                <div class=\"logged\">
-                    <h1>You are logged in as ";
+                    <h1>Už jsi přihlášen/a jako ";
             // line 15
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "user", [], "any", false, false, false, 15), "email", [], "any", false, false, false, 15), "html", null, true);
             echo "
@@ -189,7 +189,7 @@ class __TwigTemplate_8d922d0d36525a28484145c31c8cfdd6a52c80773462355b52163aca1df
 
             {% if app.user %}
                 <div class=\"logged\">
-                    <h1>You are logged in as {{ app.user.email }}
+                    <h1>Už jsi přihlášen/a jako {{ app.user.email }}
                      <a href=\"{{ path('app_logout') }}\">Logout</a>
                 </div>
             {% else %}
