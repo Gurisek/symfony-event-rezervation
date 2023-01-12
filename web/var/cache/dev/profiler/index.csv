@@ -1012,3 +1012,5 @@ f8e1b6,172.23.0.1,GET,http://localhost:83/login,1673565726,,200
 777d91,172.23.0.1,GET,http://localhost:83/login,1673565918,,200
 5fcb3b,172.23.0.1,GET,http://localhost:83/login,1673565963,,200
 9db181,172.23.0.1,GET,http://localhost:83/login,1673566004,,200
+314127,172.23.0.1,GET,http://localhost:83/logout,1673566052,,302
+802a70,172.23.0.1,GET,http://localhost:83/,1673566052,,200
