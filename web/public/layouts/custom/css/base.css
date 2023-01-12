@@ -93,6 +93,16 @@ form {
     font-size: 18px;
     margin: 0;
   }
+  
+  .logged{
+    border-width: 350px;
+    display: contents;
+  }
+
+  .logged a{
+    color: #04def2;
+    text-decoration: none;
+  }
 
   .logged h1{
     font-size: 30px;

@@ -126,7 +126,7 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
         // line 19
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 19, $this->source); })()), "agreeTerms", [], "any", false, false, false, 19), 'row');
         echo "
-    <button type=\"submit\">Create account</button>
+    <button type=\"submit\">Registrovat</button>
 ";
         // line 21
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 21, $this->source); })()), 'form_end');
@@ -178,7 +178,7 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
     {{ form_row(registrationForm.telNumber) }}
     {{ form_row(registrationForm.social) }}
     {{ form_row(registrationForm.agreeTerms) }}
-    <button type=\"submit\">Create account</button>
+    <button type=\"submit\">Registrovat</button>
 {{ form_end(registrationForm) }}
   
 </div>

@@ -22,15 +22,21 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'E-mail*',
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'example@email.com'
+                ],
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'label' => 'Heslo',
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => 'Heslo*',
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'placeholder' => 'Heslo min. 6 znaků'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Prosím vložte heslo.',
@@ -43,15 +49,15 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('name', TextType::class, [
-                'label' => 'Jméno',
+                'label' => 'Jméno*',
                 'required' => true,
             ])
             ->add('secondName', TextType::class, [
-                'label' => 'Příjmení',
+                'label' => 'Příjmení*',
                 'required' => true,
             ])
             ->add('nickName', TextType::class, [
-                'label' => 'Nickname',
+                'label' => 'Nickname*',
                 'required' => true,
             ])
             ->add('telNumber', TextType::class, [
@@ -59,6 +65,7 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'pattern' => '\d*',
+                    'placeholder' => '111222333'
                 ],
                 'constraints' => [
                     new Length([
@@ -70,9 +77,13 @@ class RegistrationFormType extends AbstractType
             ->add('social', TextareaType::class, [
                 'label' => 'Socialní účty',
                 'required' => false,
+                'attr' => [
+                    'placeholder' => 'facebook.com/PetrJonas, intagram.com/PetrJonas, ..'
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => 'Souhlasím se zpracováním údajů*',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Musíte souhlasit s našimi podmínkami',
