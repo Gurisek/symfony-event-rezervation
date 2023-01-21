@@ -18,6 +18,8 @@ return [
     'homepage_default' => [[], ['_controller' => 'App\\Controller\\HomepageController::default'], [], [['text', '/']], [], [], []],
     'dd' => [[], ['_controller' => 'App\\Controller\\HomepageController::dd'], [], [['text', '/homepage/dd']], [], [], []],
     'logged' => [[], ['_controller' => 'App\\Controller\\HomepageController::logged'], [], [['text', '/security/logged']], [], [], []],
+    'admin' => [[], ['_controller' => 'App\\Controller\\HomepageController::admin'], [], [['text', '/event/admin']], [], [], []],
+    'user' => [[], ['_controller' => 'App\\Controller\\HomepageController::user'], [], [['text', '/event/user']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],

@@ -89,7 +89,16 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         echo "
         </a>
     </div>
-
+    <div class=\"dd\">
+    <a href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
+        echo "\">Admin</a>
+    <a href=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user");
+        echo "\">User</a>
+    </div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -99,7 +108,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 23
+    // line 26
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -117,7 +126,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 24
+    // line 27
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -147,7 +156,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  121 => 24,  103 => 23,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  130 => 27,  112 => 26,  99 => 22,  95 => 21,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -171,7 +180,10 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
             {{ app.user ? 'Logout' : 'Login' }}
         </a>
     </div>
-
+    <div class=\"dd\">
+    <a href=\"{{ path('admin') }}\">Admin</a>
+    <a href=\"{{ path('user') }}\">User</a>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

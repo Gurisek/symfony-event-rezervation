@@ -30,6 +30,8 @@ class HomepageController extends BaseController
 
         // preda data do sablony
         return $this->render("Homepage/default.html.twig");
+
+
     }
 
     #[Route(path: 'homepage/dd', name: 'dd')]
@@ -44,4 +46,15 @@ class HomepageController extends BaseController
         return $this->render("security/logged.html.twig");
     }
 
+    #[Route(path:'event/admin', name: 'admin')]
+    public function admin(): Response
+    {
+        return $this->render('event/admin.html.twig');
+    }
+
+    #[Route(path:'event/user', name: 'user')]
+    public function user(): Response
+    {
+        return $this->render('event/user.html.twig');
+    }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Tento e-mail je již použit, zkuste se přihlásit.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -21,9 +21,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
-
-    #[ORM\Column(type: 'json')]
-    private $roles = [];
 
     #[ORM\Column(type: 'string')]
     private $password;
@@ -46,9 +43,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $social;
 
+    #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'users')]
+    private $role;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->role = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -83,19 +84,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        $roles = [];
+        foreach ($this->role as $userRole) {
+            $roles[] = $userRole->getRoleName();
+        }
+        return $roles;
     }
+
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
-
+        if (!in_array('ROLE_USER', $roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+    
+        $this->role->clear();
+        foreach ($roles as $role) {
+            $newRole = new Role();
+            $newRole->setRoleName($role);
+            // $this->getDoctrine()->getManager()->persist($newRole);
+            $this->role->add($newRole);
+        }
+    
         return $this;
     }
+
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -202,6 +215,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->social = $social;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Role>
+     */
+    public function getRole(): Collection
+    {
+        return $this->role;
+    }
+
+    public function addRole(Role $role): self
+    {
+        if (!$this->role->contains($role)) {
+            $this->role[] = $role;
+            $role->addUser($this);
+        }
+    
+        return $this;
+    }
+
+    public function removeRole(Role $role): self
+    {
+    if ($this->role->contains($role)) {
+    $this->role->removeElement($role);
+    $role->removeUser($this);
+    }
         return $this;
     }
 }

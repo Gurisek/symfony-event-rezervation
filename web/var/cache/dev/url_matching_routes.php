@@ -16,6 +16,8 @@ return [
         '/' => [[['_route' => 'homepage_default', '_controller' => 'App\\Controller\\HomepageController::default'], null, null, null, false, false, null]],
         '/homepage/dd' => [[['_route' => 'dd', '_controller' => 'App\\Controller\\HomepageController::dd'], null, null, null, false, false, null]],
         '/security/logged' => [[['_route' => 'logged', '_controller' => 'App\\Controller\\HomepageController::logged'], null, null, null, false, false, null]],
+        '/event/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\HomepageController::admin'], null, null, null, false, false, null]],
+        '/event/user' => [[['_route' => 'user', '_controller' => 'App\\Controller\\HomepageController::user'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
