@@ -83,8 +83,4 @@ gitignore - /data/database/
 gitignore - /var/
 
 access token : 89vVjrPiRWuAR53K4QN7
-
-
-
-v user entite zjistit jestli tam mit roles nebo jenom role a co upravit
-jedno bude od vytvareni usera a role jsem vytvoril ja
+php bin/console doctrine:schema:update --force :update datbase po udelani zmen

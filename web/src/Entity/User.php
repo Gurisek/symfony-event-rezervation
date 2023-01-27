@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -45,6 +47,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'users')]
     private $role;
+
+    public $doctrine;
 
     public function __construct()
     {
@@ -91,23 +95,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $roles;
     }
 
+    public function setRoles(array $roles, EntityManagerInterface $entityManager): self
+{
+    if (!in_array('ROLE_USER', $roles)) {
+        $roles[] = 'ROLE_USER';
+    }
 
-    public function setRoles(array $roles): self
-    {
-        if (!in_array('ROLE_USER', $roles)) {
-            $roles[] = 'ROLE_USER';
-        }
-    
-        $this->role->clear();
-        foreach ($roles as $role) {
+    $this->role->clear();
+    foreach ($roles as $role) {
+        $newRole = $entityManager->getRepository(Role::class)->findOneBy(['role_name' => $role]);
+        if (!$newRole) {
             $newRole = new Role();
             $newRole->setRoleName($role);
-            // $this->getDoctrine()->getManager()->persist($newRole);
-            $this->role->add($newRole);
+            $entityManager->persist($newRole);
         }
-    
-        return $this;
+        $this->role->add($newRole);
     }
+
+    return $this;
+}
+
+//     public function setRoles(array $roles): self
+// {
+//     if (!in_array('ROLE_USER', $roles)) {
+//         $roles[] = 'ROLE_USER';
+//     }
+
+//     $this->role->clear();
+//     foreach ($roles as $role) {
+//         $newRole = $this->doctrine->getRepository(Role::class)->find($role);
+//         if (!$newRole) {
+//             throw new \Exception("Role not found");
+//         }
+//         $this->role->add($newRole);
+//     }
+
+//     return $this;
+// }
+
+    // public function setRoles(array $roles): self
+    // {
+    //     if (!in_array('ROLE_USER', $roles)) {
+    //         $roles[] = 'ROLE_USER';
+    //     }
+    
+    //     $this->role->clear();
+    //     foreach ($roles as $role) {
+    //         $newRole = new Role();
+    //         $newRole->setRoleName($role);
+    //         // $this->getDoctrine()->getManager()->persist($newRole);
+    //         $this->role->add($newRole);
+    //     }
+    
+    //     return $this;
+    // }
 
 
     /**
@@ -132,30 +173,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    /**
-     * @return Collection<int, Event>
-     */
-    public function getEvents(): Collection
-    {
-        return $this->events;
-    }
-
-    public function addEvent(Event $event): self
-    {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Event $event): self
-    {
-        $this->events->removeElement($event);
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -217,6 +234,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    // Přidělování eventů
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        $this->events->removeElement($event);
+
+        return $this;
+    }
+
+    // Přidělování rolí
 
     /**
      * @return Collection<int, Role>

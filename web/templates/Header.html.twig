@@ -6,14 +6,14 @@
         <h4>Logo</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="{{ path('homepage_default') }}">Home</a></li>
+        <li><a href="{{ path('homepage_default') }}">Domů</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">About</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-          <li><a href="{{ path('app_logout') }}">Logout</a></li>
+          <li><a href="{{ path('app_logout') }}">Odhlásit</a></li>
         {% else %}
-          <li><a href="{{ path('app_login') }}">Login</a></li>
-          <li><a href="{{ path('app_register') }}">Register</a></li>
+          <li><a href="{{ path('app_login') }}">Přihlásit</a></li>
+          <li><a href="{{ path('app_register') }}">Registrovat</a></li>
         {% endif %}
     </ul>
     <div class="burger">

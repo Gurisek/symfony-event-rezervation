@@ -111,7 +111,7 @@ class __TwigTemplate_ce1ffefdadf912e2b97d278082f57003fed5416f52127ade0762374f7ae
                      <a href=\"";
             // line 16
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            echo "\">Logout</a>
+            echo "\">Odhlásit se</a>
                 </div>
             ";
         } else {
@@ -190,7 +190,7 @@ class __TwigTemplate_ce1ffefdadf912e2b97d278082f57003fed5416f52127ade0762374f7ae
             {% if app.user %}
                 <div class=\"logged\">
                     <h1>Už jsi přihlášen/a jako {{ app.user.email }}
-                     <a href=\"{{ path('app_logout') }}\">Logout</a>
+                     <a href=\"{{ path('app_logout') }}\">Odhlásit se</a>
                 </div>
             {% else %}
                  

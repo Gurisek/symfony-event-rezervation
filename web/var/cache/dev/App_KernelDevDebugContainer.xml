@@ -76,6 +76,7 @@
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
     <parameter key="mailtofrom">romik.dusek@seznam.cz</parameter>
     <parameter key="mailto">romik.dusek@seznam.cz</parameter>
+    <parameter key="locale">cs</parameter>
     <parameter key="lang" type="collection">
       <parameter>cs</parameter>
       <parameter>de</parameter>

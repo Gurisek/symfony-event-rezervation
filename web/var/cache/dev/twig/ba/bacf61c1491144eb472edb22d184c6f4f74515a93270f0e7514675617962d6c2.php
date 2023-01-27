@@ -54,7 +54,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
         <li><a href=\"";
         // line 9
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
-        echo "\">Home</a></li>
+        echo "\">Domů</a></li>
         <li><a href=\"#\">Contact</a></li>
         <li><a href=\"#\">About</a></li>
         ";
@@ -63,17 +63,17 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
             // line 13
             echo "          <li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            echo "\">Logout</a></li>
+            echo "\">Odhlásit</a></li>
         ";
         } else {
             // line 15
             echo "          <li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-            echo "\">Login</a></li>
+            echo "\">Přihlásit</a></li>
           <li><a href=\"";
             // line 16
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-            echo "\">Register</a></li>
+            echo "\">Registrovat</a></li>
         ";
         }
         // line 18
@@ -122,14 +122,14 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
         <h4>Logo</h4>
     </div>
     <ul class=\"nav-links\">
-        <li><a href=\"{{ path('homepage_default') }}\">Home</a></li>
+        <li><a href=\"{{ path('homepage_default') }}\">Domů</a></li>
         <li><a href=\"#\">Contact</a></li>
         <li><a href=\"#\">About</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-          <li><a href=\"{{ path('app_logout') }}\">Logout</a></li>
+          <li><a href=\"{{ path('app_logout') }}\">Odhlásit</a></li>
         {% else %}
-          <li><a href=\"{{ path('app_login') }}\">Login</a></li>
-          <li><a href=\"{{ path('app_register') }}\">Register</a></li>
+          <li><a href=\"{{ path('app_login') }}\">Přihlásit</a></li>
+          <li><a href=\"{{ path('app_register') }}\">Registrovat</a></li>
         {% endif %}
     </ul>
     <div class=\"burger\">

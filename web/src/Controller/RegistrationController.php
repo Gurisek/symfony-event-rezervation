@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\User;
+use App\Entity\Role;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use App\Form\RegistrationFormType;
+use App\Repository\RoleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,11 +33,20 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            
+            // Získání ID role "user" (ID = 1)
+            $roleRepository = $entityManager->getRepository(Role::class);
+            $role = $roleRepository->find(1);
 
+            // Přiřazení role uživateli
+            $user->addRole($role);
+
+            // Uložení změn do databáze
             $entityManager->persist($user);
-            // $user->setRoles(['ROLE_USER']);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+
+
 
             return $this->redirectToRoute('homepage_default');
         }

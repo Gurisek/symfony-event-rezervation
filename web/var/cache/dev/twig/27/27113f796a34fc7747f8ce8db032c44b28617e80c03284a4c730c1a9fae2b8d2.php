@@ -58,27 +58,31 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
         // line 8
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/css/base.css\">
+  <link rel=\"stylesheet\" href=\"";
+        // line 9
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
+        echo "layouts/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css\">
 </head>
 
 <body>
   ";
-        // line 12
-        $this->loadTemplate("header.html.twig", "base.html.twig", 12)->display($context);
         // line 13
-        echo "  ";
-        $this->displayBlock('body', $context, $blocks);
+        $this->loadTemplate("header.html.twig", "base.html.twig", 13)->display($context);
         // line 14
         echo "  ";
-        $this->loadTemplate("footer.html.twig", "base.html.twig", 14)->display($context);
+        $this->displayBlock('body', $context, $blocks);
         // line 15
+        echo "  ";
+        $this->loadTemplate("footer.html.twig", "base.html.twig", 15)->display($context);
+        // line 16
         echo "</body>
 
 ";
-        // line 17
-        $this->displayBlock('stylesheets', $context, $blocks);
         // line 18
-        $this->displayBlock('javascripts', $context, $blocks);
+        $this->displayBlock('stylesheets', $context, $blocks);
         // line 19
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 20
         echo "</html>
 ";
         
@@ -108,7 +112,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 13
+    // line 14
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -126,7 +130,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 17
+    // line 18
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -144,7 +148,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     }
 
-    // line 18
+    // line 19
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -174,7 +178,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
 
     public function getDebugInfo()
     {
-        return array (  148 => 18,  130 => 17,  112 => 13,  93 => 6,  82 => 19,  80 => 18,  78 => 17,  74 => 15,  71 => 14,  68 => 13,  66 => 12,  59 => 8,  54 => 6,  47 => 1,);
+        return array (  152 => 19,  134 => 18,  116 => 14,  97 => 6,  86 => 20,  84 => 19,  82 => 18,  78 => 16,  75 => 15,  72 => 14,  70 => 13,  63 => 9,  59 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -187,6 +191,7 @@ class __TwigTemplate_60d60682181caaec1fff0d92644487e7f3738db0127ff1d988389d19b80
   <title> {% block title %}xdusek events{% endblock %}</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
   <link rel=\"stylesheet\" href=\"{{ url(\"homepage_default\") }}layouts/custom/css/base.css\">
+  <link rel=\"stylesheet\" href=\"{{ url(\"homepage_default\") }}layouts/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css\">
 </head>
 
 <body>
