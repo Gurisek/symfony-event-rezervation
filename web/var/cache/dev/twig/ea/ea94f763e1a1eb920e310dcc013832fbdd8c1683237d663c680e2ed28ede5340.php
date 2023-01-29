@@ -67,38 +67,39 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "    <div class=\"logins\">
-        <div class=\"col-lg-12\">
-            <h1>Homepage default</h1>
-        </div>
-    </div>
+        echo "<div class=\"logins\">
+\t<div class=\"col-lg-12\">
+\t\t<h1>Homepage default</h1>
+\t</div>
+</div>
 
-    <div class=\"bs-docs-section clearfix text-center-gray\">
-      ";
+<div class=\"\">
+\t";
         // line 14
         ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "email", [], "any", false, false, false, 14), "html", null, true))) : (print ("neprihlasen")));
         echo "
 
-        <a href=\"/";
+\t<a href=\"/";
         // line 16
         echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16)) ? ("logout") : ("login"));
         echo "\">
-            ";
+\t\t";
         // line 17
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("Logout") : ("Login"));
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("Odhlásit se") : ("Přihlásit se"));
         echo "
-        </a>
-    </div>
-    <div class=\"dd\">
-    <a href=\"";
+\t</a>
+</div>
+<div class=\"dd\">
+\t<a href=\"";
         // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
         echo "\">Admin</a>
-    <a href=\"";
+\t<a href=\"";
         // line 22
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user");
         echo "\">User</a>
-    </div>
+</div>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -108,7 +109,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 26
+    // line 27
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -126,7 +127,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 27
+    // line 28
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -156,7 +157,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  130 => 27,  112 => 26,  99 => 22,  95 => 21,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  131 => 28,  113 => 27,  99 => 22,  95 => 21,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -167,23 +168,24 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
 
 {% block body %}
-    <div class=\"logins\">
-        <div class=\"col-lg-12\">
-            <h1>Homepage default</h1>
-        </div>
-    </div>
+<div class=\"logins\">
+\t<div class=\"col-lg-12\">
+\t\t<h1>Homepage default</h1>
+\t</div>
+</div>
 
-    <div class=\"bs-docs-section clearfix text-center-gray\">
-      {{app.user ? app.user.email : 'neprihlasen' }}
+<div class=\"\">
+\t{{app.user ? app.user.email : 'neprihlasen' }}
 
-        <a href=\"/{{ app.user ? 'logout' : 'login' }}\">
-            {{ app.user ? 'Logout' : 'Login' }}
-        </a>
-    </div>
-    <div class=\"dd\">
-    <a href=\"{{ path('admin') }}\">Admin</a>
-    <a href=\"{{ path('user') }}\">User</a>
-    </div>
+\t<a href=\"/{{ app.user ? 'logout' : 'login' }}\">
+\t\t{{ app.user ? 'Odhlásit se' : 'Přihlásit se' }}
+\t</a>
+</div>
+<div class=\"dd\">
+\t<a href=\"{{ path('admin') }}\">Admin</a>
+\t<a href=\"{{ path('user') }}\">User</a>
+</div>
+
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

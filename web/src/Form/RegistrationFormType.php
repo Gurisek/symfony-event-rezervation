@@ -36,15 +36,16 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'placeholder' => 'Heslo min. 6 znaků'
+                    
                 ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Prosím vložte heslo.',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min'        => 6,
                         'minMessage' => 'Vaše heslo by mělo mít alespoň {{ limit }} charakterů.',
-                        'max' => 4096,
+                        'max'        => 4096,
                     ]),
                 ],
             ])

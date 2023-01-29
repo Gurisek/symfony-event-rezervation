@@ -4,23 +4,24 @@
 
 
 {% block body %}
-    <div class="logins">
-        <div class="col-lg-12">
-            <h1>Homepage default</h1>
-        </div>
-    </div>
+<div class="logins">
+	<div class="col-lg-12">
+		<h1>Homepage default</h1>
+	</div>
+</div>
 
-    <div class="bs-docs-section clearfix text-center-gray">
-      {{app.user ? app.user.email : 'neprihlasen' }}
+<div class="">
+	{{app.user ? app.user.email : 'neprihlasen' }}
 
-        <a href="/{{ app.user ? 'logout' : 'login' }}">
-            {{ app.user ? 'Logout' : 'Login' }}
-        </a>
-    </div>
-    <div class="dd">
-    <a href="{{ path('admin') }}">Admin</a>
-    <a href="{{ path('user') }}">User</a>
-    </div>
+	<a href="/{{ app.user ? 'logout' : 'login' }}">
+		{{ app.user ? 'Odhlásit se' : 'Přihlásit se' }}
+	</a>
+</div>
+<div class="dd">
+	<a href="{{ path('admin') }}">Admin</a>
+	<a href="{{ path('user') }}">User</a>
+</div>
+
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}
