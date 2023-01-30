@@ -5,10 +5,14 @@
 {% block body %}
 <div class="banner">
   
-        <form method="post">
     <h1>Registrace</h1>
 
+
 {{ form_start(registrationForm) }}
+
+{{ form_errors(registrationForm.plainPassword)}}
+
+
     {{ form_row(registrationForm.nickName) }}
     {{ form_row(registrationForm.email) }}
     {{ form_row(registrationForm.plainPassword) }}
@@ -17,6 +21,7 @@
     {{ form_row(registrationForm.telNumber) }}
     {{ form_row(registrationForm.social) }}
     {{ form_row(registrationForm.agreeTerms) }}
+
     <button type="submit">Registrovat</button>
 {{ form_end(registrationForm) }}
   
