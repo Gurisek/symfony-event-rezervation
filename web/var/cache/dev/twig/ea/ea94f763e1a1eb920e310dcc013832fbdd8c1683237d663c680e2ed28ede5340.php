@@ -67,28 +67,12 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "<div class=\"logins\">
+        echo "<div class=\"center\">
 \t<div class=\"col-lg-12\">
-\t\t<h1>Homepage default</h1>
+\t\t<h1>Jsme rádi že tě tu máme!</h1>
 \t</div>
 </div>
 
-<div class=\"\">
-\t";
-        // line 14
-        ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "email", [], "any", false, false, false, 14), "html", null, true))) : (print ("neprihlasen")));
-        echo "
-
-\t<a href=\"/";
-        // line 16
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16)) ? ("logout") : ("login"));
-        echo "\">
-\t\t";
-        // line 17
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17)) ? ("Odhlásit se") : ("Přihlásit se"));
-        echo "
-\t</a>
-</div>
 
 ";
         
@@ -99,7 +83,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 23
+    // line 16
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -117,7 +101,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 24
+    // line 17
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -147,7 +131,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  121 => 24,  103 => 23,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  105 => 17,  87 => 16,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -158,19 +142,12 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
 
 {% block body %}
-<div class=\"logins\">
+<div class=\"center\">
 \t<div class=\"col-lg-12\">
-\t\t<h1>Homepage default</h1>
+\t\t<h1>Jsme rádi že tě tu máme!</h1>
 \t</div>
 </div>
 
-<div class=\"\">
-\t{{app.user ? app.user.email : 'neprihlasen' }}
-
-\t<a href=\"/{{ app.user ? 'logout' : 'login' }}\">
-\t\t{{ app.user ? 'Odhlásit se' : 'Přihlásit se' }}
-\t</a>
-</div>
 
 {% endblock %}
 

@@ -221,7 +221,7 @@ form {
 /* table */
 .content-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 10px 0;
   font-size: 0.9em;
   min-width: 400px;
   border-radius: 5px 5px 0 0;
@@ -229,8 +229,12 @@ form {
   color: black;
   border-radius: 5px 5px 0 0;
   box-shadow: 0 0 20px #fafafa4d;
+  align-items: center;
 }
-
+.tabulka{
+  display: flex;
+  justify-content: center;
+}
 .content-table tbody tr th {
   background-color: #009879;
   color: #ffffff;

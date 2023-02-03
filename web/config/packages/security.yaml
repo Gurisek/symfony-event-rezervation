@@ -25,7 +25,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: {{ path('homepage_default') }}
+                # target: homepage_default
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
@@ -40,7 +40,10 @@ security:
     access_control:
         # - { path: ^/security/login, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: '^/event/user', roles: ['ROLE_USER'] }
         - { path: '^/event', roles: ['ROLE_ADMIN'] }
+
+
 
 when@test:
     security:

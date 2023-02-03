@@ -6,6 +6,7 @@
 <div class="nadpis">
     <h1 class="center">Event</h1>
 </div>
+<div class="tabulka">
     <table class="content-table">
         <tbody>
             <tr>
@@ -22,7 +23,7 @@
             </tr>
             <tr>
                 <th>Datum</th>
-                <td class="active-row">{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
+                <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Popisek</th>
@@ -30,7 +31,7 @@
             </tr>
         </tbody>
     </table>
-
+</div>
     <a href="{{ path('app_event_index') }}">Zpět na přehled</a>
 
     <a href="{{ path('app_event_edit', {'id': event.id}) }}">Upravit</a>

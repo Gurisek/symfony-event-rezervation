@@ -1,24 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<div class="container">
-        <form method="post" class="form" id="login">
 
 
-            {% if app.user %}
-                <div class="logged">
-                    <h1>Už jsi přihlášen/a jako {{ app.user.email }}
-                     <a href="{{ path('app_logout') }}">Odhlásit se</a>
-                </div>
-            {% else %}
-                 
-
-            <h1 class="form__title">Přihlášení</h1>
-            <div class="form__message form__message--error">
-              Špatné přihlašovací jméno, nebo heslo.
-            </div>
-            <div class="form__input-group">
-              <input type="text" placeholder="E-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form__input" autocomplete="email" required autofocus>
-              <div class="form__input-error-message">error message</div>
-            </div>
+            <form method="post" accept-charset="UTF-8">
+              {{ app.user.email }}
+              <input type="hidden" name="action" value="users/save-user">
+              {{ redirectInput("users/"~currentUser.username) }}
+              <input type="hidden" name="userId" value="{{ currentUser.id }}">
+            
+              <label for="location">Location</label>
+              <input type="text" id="location" name="fields[location]" value="{{ currentUser.location }}">
+            
+              <label for="bio">Bio</label>
+              <textarea id="bio" name="fields[bio]">{{ currentUser.bio }}</textarea>
+            
+              <input type="submit" value="Save Profile">
+            </form>
 {% endblock %}

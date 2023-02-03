@@ -15,26 +15,64 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Event;
+use App\Form\EventType;
+use App\Repository\EventRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class HomepageController extends BaseController
 {
 
+    // homepage podle toho jestli prihlasen ano/ne a show po prihlaseni
 
-        /**
-     * @return Response
-     * @Route("/", name="homepage_default")
-     */
-    public function default(): Response
+    #[Route('/', name: 'homepage_default', methods: ['GET'])]
+    public function default(EventRepository $eventRepository): Response
     {
+        $user = $this->getUser();
 
-        // preda data do sablony
-        return $this->render("Homepage/default.html.twig");
-
-
+        if ($user === null) {
+            return $this->render("Homepage/default.html.twig");
+        } elseif ($this->isGranted("ROLE_USER")) {
+            return $this->render("event/user/user_index.html.twig", [
+                'events' => $eventRepository->findAll(),
+            ]);
+        }
     }
 
-    #[Route(path: 'homepage/dd', name: 'dd')]
+    // show pro prihlasene
+
+    #[Route('event/user/{id}', name: 'user_event_show', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function userShowEvent(Event $event): Response
+    {
+        return $this->render('event/user/user_show.html.twig', [
+            'event' => $event,
+        ]);
+    }
+
+    // index a show bez prihlaseni
+
+    #[Route('/index', name: 'no_user_index', methods: ['GET'])]
+    public function noUserindex(EventRepository $eventRepository): Response
+    {
+        return $this->render('Homepage/index_event.html.twig', [
+            'events' => $eventRepository->findAll(),
+        ]);
+    }
+
+    #[Route('show/{id}', name: 'no_user_show', methods: ['GET'])]
+    public function noUserShowEvent(Event $event): Response
+    {
+        return $this->render('Homepage/show_event.html.twig', [
+            'event' => $event,
+        ]);
+    }
+
+    // ostatní
+
+    #[Route(path: '/dd', name: 'dd')]
     public function dd(): Response
     {
         return $this->render("Homepage/dd.html.twig");

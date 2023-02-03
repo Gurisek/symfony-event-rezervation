@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+<div class="nadpis">
+    <h1 class="center">Event</h1>
+</div>
+<div class="tabulka">
+    <table class="content-table">
+        <tbody>
+            <tr>
+                <th>Název</th>
+                <td>{{ event.name }}</td>
+            </tr>
+            <tr>
+                <th>Místo</th>
+                <td class="active-row">{{ event.place }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td class="active-row">{{ event.date ? event.date|date('d.m. Y '): '' }}</td>
+            </tr>
+            <tr>
+                <th>Popisek</th>
+                <td>{{ event.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('no_user_index') }}">Zpět na přehled</a>
+{% endblock %}

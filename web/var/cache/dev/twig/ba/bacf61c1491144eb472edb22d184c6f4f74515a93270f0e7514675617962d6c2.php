@@ -55,7 +55,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 \t\t\t<a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
-        echo "\">Domů</a>
+        echo "\">Domu</a>
 \t\t</li>
 \t\t<li>
 \t\t\t<a href=\"#\">Contact</a>
@@ -153,7 +153,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 \t</div>
 \t<ul class=\"nav-links\">
 \t\t<li>
-\t\t\t<a href=\"{{ path('homepage_default') }}\">Domů</a>
+\t\t\t<a href=\"{{ path('homepage_default') }}\">Domu</a>
 \t\t</li>
 \t\t<li>
 \t\t\t<a href=\"#\">Contact</a>

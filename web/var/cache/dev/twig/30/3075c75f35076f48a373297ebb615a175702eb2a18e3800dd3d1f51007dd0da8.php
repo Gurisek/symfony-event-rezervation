@@ -87,7 +87,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         // line 6
         echo "
     <h1 class=\"center\">Přehled eventů</h1>
-
+   <div class=\"tabulka\"> 
     <table class=\"content-table\">
         <thead>
             <tr>
@@ -122,7 +122,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
             echo "</td>
                 <td>";
             // line 26
-            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26), "Y-m-d H:i:s"), "html", null, true))) : (print ("")));
+            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26), "H:i d.m. Y"), "html", null, true))) : (print ("")));
             echo "</td>
                 <td>";
             // line 27
@@ -155,7 +155,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         // line 38
         echo "        </tbody>
     </table>
-
+</div>
     <a href=\"";
         // line 41
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_new");
@@ -194,7 +194,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 {% block body %}
 
     <h1 class=\"center\">Přehled eventů</h1>
-
+   <div class=\"tabulka\"> 
     <table class=\"content-table\">
         <thead>
             <tr>
@@ -212,7 +212,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
                 <td>{{ event.id }}</td>
                 <td>{{ event.name }}</td>
                 <td>{{ event.place }}</td>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>
                     <a href=\"{{ path('app_event_show', {'id': event.id}) }}\">ukázat</a>
@@ -226,7 +226,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         {% endfor %}
         </tbody>
     </table>
-
+</div>
     <a href=\"{{ path('app_event_new') }}\">Vytvořit nový</a>
     
 {% endblock %}

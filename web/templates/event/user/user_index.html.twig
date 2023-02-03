@@ -1,0 +1,40 @@
+ {% extends "base.html.twig" %}
+
+{% block title %}Přehled{% endblock %}
+
+{% block body %}
+    <h1 class="center">Vítej {{ app.user.nickName }}</h1>
+   <div class="tabulka"> 
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Místo</th>
+                <th>Datum</th>
+                <th>Popisek</th>
+                <th>Možnosti</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td class="active-row">{{ event.name }}</td>
+                <td>{{ event.place }}</td>
+                <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
+                <td>{{ event.description }}</td>
+                <td>
+                    <a href="{{ path('user_event_show', {'id': event.id}) }}">ukázat</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Není nic vytvořeno</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+{% block javascripts %}{% endblock %}
