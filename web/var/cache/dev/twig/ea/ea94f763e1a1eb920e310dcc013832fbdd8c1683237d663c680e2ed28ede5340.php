@@ -89,16 +89,6 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
         echo "
 \t</a>
 </div>
-<div class=\"dd\">
-\t<a href=\"";
-        // line 21
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-        echo "\">Admin</a>
-\t<a href=\"";
-        // line 22
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user");
-        echo "\">User</a>
-</div>
 
 ";
         
@@ -109,7 +99,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 27
+    // line 23
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -127,7 +117,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 28
+    // line 24
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -157,7 +147,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  131 => 28,  113 => 27,  99 => 22,  95 => 21,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  121 => 24,  103 => 23,  88 => 17,  84 => 16,  79 => 14,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -180,10 +170,6 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 \t<a href=\"/{{ app.user ? 'logout' : 'login' }}\">
 \t\t{{ app.user ? 'Odhlásit se' : 'Přihlásit se' }}
 \t</a>
-</div>
-<div class=\"dd\">
-\t<a href=\"{{ path('admin') }}\">Admin</a>
-\t<a href=\"{{ path('user') }}\">User</a>
 </div>
 
 {% endblock %}

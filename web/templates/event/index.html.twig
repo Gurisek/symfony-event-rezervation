@@ -3,9 +3,10 @@
 {% block title %}Přehled{% endblock %}
 
 {% block body %}
-    <h1>Přehled eventů</h1>
 
-    <table class="table">
+    <h1 class="center">Přehled eventů</h1>
+
+    <table class="content-table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,4 +39,5 @@
     </table>
 
     <a href="{{ path('app_event_new') }}">Vytvořit nový</a>
+    
 {% endblock %}

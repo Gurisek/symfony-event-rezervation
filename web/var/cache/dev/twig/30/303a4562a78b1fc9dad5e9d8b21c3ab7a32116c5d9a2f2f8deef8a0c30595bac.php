@@ -85,15 +85,17 @@ class __TwigTemplate_a533b0767cd743d0fd8217e1e3a727e6099f259b8025cfa7293f3cf242b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Vytvořit nový Event</h1>
-
+        echo "<div class=\"nadpis\">
+    <h1 class=\"center\">Vytvořit nový Event</h1>
+</div>
+<div class=\"container\">
     ";
-        // line 8
+        // line 10
         echo twig_include($this->env, $context, "event/_form.html.twig");
         echo "
-
+</div>
     <a href=\"";
-        // line 10
+        // line 12
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
 ";
@@ -117,7 +119,7 @@ class __TwigTemplate_a533b0767cd743d0fd8217e1e3a727e6099f259b8025cfa7293f3cf242b
 
     public function getDebugInfo()
     {
-        return array (  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  99 => 12,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -127,10 +129,12 @@ class __TwigTemplate_a533b0767cd743d0fd8217e1e3a727e6099f259b8025cfa7293f3cf242b
 {% block title %}Nový Event{% endblock %}
 
 {% block body %}
-    <h1>Vytvořit nový Event</h1>
-
+<div class=\"nadpis\">
+    <h1 class=\"center\">Vytvořit nový Event</h1>
+</div>
+<div class=\"container\">
     {{ include('event/_form.html.twig') }}
-
+</div>
     <a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
 {% endblock %}
 ", "event/new.html.twig", "/var/www/html/templates/event/new.html.twig");

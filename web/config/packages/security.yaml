@@ -40,8 +40,7 @@ security:
     access_control:
         # - { path: ^/security/login, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: '^/event/admin', roles: ['ROLE_ADMIN'] }
-        - { path: '^/event/user', roles: ['ROLE_USER'] }
+        - { path: '^/event', roles: ['ROLE_ADMIN'] }
 
 when@test:
     security:

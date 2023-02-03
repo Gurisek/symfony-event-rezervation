@@ -95,7 +95,7 @@
     --bs-body-bg: #fff;
     --bs-body-bg-rgb: 255, 255, 255;
     --bs-link-color: #0d6efd;
-    --bs-link-color-rgb: 13, 110, 253;
+    --bs-link-color-rgb: #ffffff;
     --bs-link-decoration: underline;
     --bs-link-hover-color: #0a58ca;
     --bs-link-hover-color-rgb: 10, 88, 202;
@@ -224,6 +224,19 @@ h6 {
     font-weight: 500;
     line-height: 1.2;
     color: var(--bs-heading-color, inherit)
+}
+
+.nadpis h1{
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--bs-heading-color, inherit)
+}
+
+.center{
+    text-align: center;
+    padding: 2px;
 }
 
 .h1,
@@ -373,7 +386,7 @@ sup {
 
 a {
     color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-    text-decoration: underline
+    text-decoration: none
 }
 
 a:hover {
@@ -440,10 +453,11 @@ svg {
     vertical-align: middle
 }
 
-table {
+/* table {
     caption-side: bottom;
     border-collapse: collapse
-}
+    var(--bs-link-color)
+} */
 
 caption {
     padding-top: .5rem;
@@ -452,21 +466,9 @@ caption {
     text-align: left
 }
 
-th {
-    text-align: inherit;
-    text-align: -webkit-match-parent
-}
 
-tbody,
-td,
-tfoot,
-th,
-thead,
-tr {
-    border-color: inherit;
-    border-style: solid;
-    border-width: 0
-}
+ 
+
 
 label {
     display: inline-block
@@ -776,11 +778,14 @@ progress {
 .container-xxl {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
-    width: 100%;
+    width: 400px;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
     margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    box-shadow: 0 0 40px rgba(208, 208, 208, 0.3);
+    border-radius: 4px;
+    background: rgba(44, 121, 110, 0.792);
 }
 
 @media (min-width:576px) {
@@ -2212,7 +2217,7 @@ progress {
 }
 
 .table-primary {
-    --bs-table-color: #000;
+    --bs-table-color: rgb(255, 255, 255);
     --bs-table-bg: #cfe2ff;
     --bs-table-border-color: #bacbe6;
     --bs-table-striped-bg: #c5d7f2;
@@ -2221,6 +2226,9 @@ progress {
     --bs-table-active-color: #000;
     --bs-table-hover-bg: #bfd1ec;
     --bs-table-hover-color: #000;
+    width: 100%;
+    text-shadow: 0.5px 0.5px 1px #000000;
+    margin-bottom: 1rem;
     color: var(--bs-table-color);
     border-color: var(--bs-table-border-color)
 }
@@ -3265,7 +3273,9 @@ textarea.form-control.is-valid {
     width: 100%;
     margin-top: .25rem;
     font-size: .875em;
-    color: var(--bs-danger-text)
+    color: red;
+    text-shadow: 1px 1px 1.5px rgba(62, 62, 62, 0.7);
+    font-weight: bold;
 }
 
 .invalid-tooltip {
@@ -8934,15 +8944,15 @@ fieldset:disabled .btn {
 }
 
 .mb-3 {
-    margin-bottom: 1rem !important
+    margin-bottom: .8rem !important
 }
 
 .mb-4 {
-    margin-bottom: 1.5rem !important
+    margin-bottom: 1rem !important
 }
 
 .mb-5 {
-    margin-bottom: 3rem !important
+    margin-bottom: 2rem !important
 }
 
 .mb-auto {

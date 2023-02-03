@@ -85,9 +85,10 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Přehled eventů</h1>
+        echo "
+    <h1 class=\"center\">Přehled eventů</h1>
 
-    <table class=\"table\">
+    <table class=\"content-table\">
         <thead>
             <tr>
                 <th>Id</th>
@@ -100,41 +101,41 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         </thead>
         <tbody>
         ";
-        // line 20
+        // line 21
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 20, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 21, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-            // line 21
+            // line 22
             echo "            <tr>
                 <td>";
-            // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 22), "html", null, true);
-            echo "</td>
-                <td>";
             // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 23), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 23), "html", null, true);
             echo "</td>
                 <td>";
             // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "place", [], "any", false, false, false, 24), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 24), "html", null, true);
             echo "</td>
                 <td>";
             // line 25
-            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 25)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 25), "Y-m-d H:i:s"), "html", null, true))) : (print ("")));
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "place", [], "any", false, false, false, 25), "html", null, true);
             echo "</td>
                 <td>";
             // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 26), "html", null, true);
+            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 26), "Y-m-d H:i:s"), "html", null, true))) : (print ("")));
+            echo "</td>
+                <td>";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 27), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 28
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 29)]), "html", null, true);
             echo "\">ukázat</a>
                     <a href=\"";
-            // line 29
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+            // line 30
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 30)]), "html", null, true);
             echo "\">upravit</a>
                 </td>
             </tr>
@@ -142,7 +143,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 33
+            // line 34
             echo "            <tr>
                 <td colspan=\"6\">Není nic vytvořeno</td>
             </tr>
@@ -151,14 +152,15 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
+        // line 38
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 40
+        // line 41
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_new");
         echo "\">Vytvořit nový</a>
+    
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -180,7 +182,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 
     public function getDebugInfo()
     {
-        return array (  160 => 40,  155 => 37,  146 => 33,  137 => 29,  133 => 28,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  161 => 41,  156 => 38,  147 => 34,  138 => 30,  134 => 29,  129 => 27,  125 => 26,  121 => 25,  117 => 24,  113 => 23,  110 => 22,  105 => 21,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -190,9 +192,10 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 {% block title %}Přehled{% endblock %}
 
 {% block body %}
-    <h1>Přehled eventů</h1>
 
-    <table class=\"table\">
+    <h1 class=\"center\">Přehled eventů</h1>
+
+    <table class=\"content-table\">
         <thead>
             <tr>
                 <th>Id</th>
@@ -225,6 +228,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
     </table>
 
     <a href=\"{{ path('app_event_new') }}\">Vytvořit nový</a>
+    
 {% endblock %}
 ", "event/index.html.twig", "/var/www/html/templates/event/index.html.twig");
     }

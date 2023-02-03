@@ -40,21 +40,4 @@ class HomepageController extends BaseController
         return $this->render("Homepage/dd.html.twig");
     }
 
-    #[Route(path: 'security/logged', name: 'logged')]
-    public function logged(): Response
-    {
-        return $this->render("security/logged.html.twig");
-    }
-
-    #[Route(path:'event/admin', name: 'admin')]
-    public function admin(): Response
-    {
-        return $this->render('event/admin.html.twig');
-    }
-
-    #[Route(path:'event/user', name: 'user')]
-    public function user(): Response
-    {
-        return $this->render('event/user.html.twig');
-    }
 }

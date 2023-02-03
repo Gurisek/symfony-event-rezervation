@@ -3,9 +3,11 @@
 {% block title %}Nový Event{% endblock %}
 
 {% block body %}
-    <h1>Vytvořit nový Event</h1>
-
+<div class="nadpis">
+    <h1 class="center">Vytvořit nový Event</h1>
+</div>
+<div class="container">
     {{ include('event/_form.html.twig') }}
-
+</div>
     <a href="{{ path('app_event_index') }}">Zpět na přehled</a>
 {% endblock %}

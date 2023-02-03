@@ -3,11 +3,14 @@
 {% block title %}Upravit Event{% endblock %}
 
 {% block body %}
-    <h1>Upravit Event</h1>
-
-    {{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="nadpis">
+    <h1 class="center">Upravit Event</h1>
+</div>
+<div class="container">
+    {{ include('event/_form.html.twig', {'button_label': 'Nahrát změny'}) }}
 
     <a href="{{ path('app_event_index') }}">Zpět na přehled</a>
 
     {{ include('event/_delete_form.html.twig') }}
+</div>
 {% endblock %}

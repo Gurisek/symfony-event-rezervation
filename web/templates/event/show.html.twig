@@ -3,9 +3,10 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
-
-    <table class="table">
+<div class="nadpis">
+    <h1 class="center">Event</h1>
+</div>
+    <table class="content-table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -17,11 +18,11 @@
             </tr>
             <tr>
                 <th>Místo</th>
-                <td>{{ event.place }}</td>
+                <td class="active-row">{{ event.place }}</td>
             </tr>
             <tr>
                 <th>Datum</th>
-                <td>{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
+                <td class="active-row">{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Popisek</th>

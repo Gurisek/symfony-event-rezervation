@@ -2,24 +2,43 @@
 {% import 'Security/login.html.twig' as Security %}
 
 <nav>
-    <div class="logo">
-        <h4>Logo</h4>
-    </div>
-    <ul class="nav-links">
-        <li><a href="{{ path('homepage_default') }}">Domů</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-          <li><a href="{{ path('app_logout') }}">Odhlásit</a></li>
-        {% else %}
-          <li><a href="{{ path('app_login') }}">Přihlásit</a></li>
-          <li><a href="{{ path('app_register') }}">Registrovat</a></li>
-        {% endif %}
-    </ul>
-    <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
+	<div class="logo">
+		<h4>Logo</h4>
+	</div>
+	<ul class="nav-links">
+		<li>
+			<a href="{{ path('homepage_default') }}">Domů</a>
+		</li>
+		<li>
+			<a href="#">Contact</a>
+		</li>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li>
+				<a href="{{ path('app_event_index') }}">Eventy</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="#">About</a>
+			</li>
+		{% endif %}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<li>
+				<a href="{{ path('app_logout') }}">Odhlásit</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('app_login') }}">Přihlásit</a>
+			</li>
+			<li>
+				<a href="{{ path('app_register') }}">Registrovat</a>
+			</li>
+		{% endif %}
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
 </nav>
 <script src="{{ url("homepage_default") }}layouts/custom/js/nav.js"></script>
+

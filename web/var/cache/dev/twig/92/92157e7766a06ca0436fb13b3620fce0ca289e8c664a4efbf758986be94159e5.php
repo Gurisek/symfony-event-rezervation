@@ -85,7 +85,7 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"banner\">
+        echo "<div class=\"container\">
   
     <h1>Registrace</h1>
 
@@ -95,10 +95,7 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 11, $this->source); })()), 'form_start');
         echo "
 
-";
-        // line 13
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 13, $this->source); })()), "plainPassword", [], "any", false, false, false, 13), 'errors');
-        echo "
+
 
 
     ";
@@ -162,7 +159,7 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
 
     public function getDebugInfo()
     {
-        return array (  140 => 26,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  118 => 19,  114 => 18,  110 => 17,  106 => 16,  100 => 13,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  137 => 26,  131 => 23,  127 => 22,  123 => 21,  119 => 20,  115 => 19,  111 => 18,  107 => 17,  103 => 16,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -172,14 +169,14 @@ class __TwigTemplate_1f89baf879cfecf5b33c274e4ad74655c4652abde852eb1acccea830a48
 {% block title %}Registrace{% endblock %}
 
 {% block body %}
-<div class=\"banner\">
+<div class=\"container\">
   
     <h1>Registrace</h1>
 
 
 {{ form_start(registrationForm) }}
 
-{{ form_errors(registrationForm.plainPassword)}}
+
 
 
     {{ form_row(registrationForm.nickName) }}

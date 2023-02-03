@@ -85,60 +85,61 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Event</h1>
-
-    <table class=\"table\">
+        echo "<div class=\"nadpis\">
+    <h1 class=\"center\">Event</h1>
+</div>
+    <table class=\"content-table\">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>";
-        // line 12
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12), "html", null, true);
+        // line 13
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 13, $this->source); })()), "id", [], "any", false, false, false, 13), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Název</th>
                 <td>";
-        // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 16, $this->source); })()), "name", [], "any", false, false, false, 16), "html", null, true);
+        // line 17
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 17, $this->source); })()), "name", [], "any", false, false, false, 17), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Místo</th>
-                <td>";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 20, $this->source); })()), "place", [], "any", false, false, false, 20), "html", null, true);
+                <td class=\"active-row\">";
+        // line 21
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 21, $this->source); })()), "place", [], "any", false, false, false, 21), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Datum</th>
-                <td>";
-        // line 24
-        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 24, $this->source); })()), "date", [], "any", false, false, false, 24)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 24, $this->source); })()), "date", [], "any", false, false, false, 24), "R-m-d H:m:s"), "html", null, true))) : (print ("")));
+                <td class=\"active-row\">";
+        // line 25
+        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 25, $this->source); })()), "date", [], "any", false, false, false, 25)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 25, $this->source); })()), "date", [], "any", false, false, false, 25), "R-m-d H:m:s"), "html", null, true))) : (print ("")));
         echo "</td>
             </tr>
             <tr>
                 <th>Popisek</th>
                 <td>";
-        // line 28
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 28, $this->source); })()), "description", [], "any", false, false, false, 28), "html", null, true);
+        // line 29
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 29, $this->source); })()), "description", [], "any", false, false, false, 29), "html", null, true);
         echo "</td>
             </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 33
+        // line 34
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
 
     <a href=\"";
-        // line 35
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 36, $this->source); })()), "id", [], "any", false, false, false, 36)]), "html", null, true);
         echo "\">Upravit</a>
 
     ";
-        // line 37
+        // line 38
         echo twig_include($this->env, $context, "event/_delete_form.html.twig");
         echo "
 ";
@@ -162,7 +163,7 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
 
     public function getDebugInfo()
     {
-        return array (  142 => 37,  137 => 35,  132 => 33,  124 => 28,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  143 => 38,  138 => 36,  133 => 34,  125 => 29,  118 => 25,  111 => 21,  104 => 17,  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -172,9 +173,10 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
-
-    <table class=\"table\">
+<div class=\"nadpis\">
+    <h1 class=\"center\">Event</h1>
+</div>
+    <table class=\"content-table\">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -186,11 +188,11 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
             </tr>
             <tr>
                 <th>Místo</th>
-                <td>{{ event.place }}</td>
+                <td class=\"active-row\">{{ event.place }}</td>
             </tr>
             <tr>
                 <th>Datum</th>
-                <td>{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
+                <td class=\"active-row\">{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Popisek</th>

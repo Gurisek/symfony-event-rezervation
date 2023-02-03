@@ -47,7 +47,7 @@ class __TwigTemplate_a468fd9a2756f385e08f9baafc0a65a93a4d96276d060355027eb39b1da
         // line 2
         echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         echo "\">
-    <button class=\"btn\">Odstranit</button>
+    <button class=\"button\">Odstranit</button>
 </form>
 ";
         
@@ -77,7 +77,7 @@ class __TwigTemplate_a468fd9a2756f385e08f9baafc0a65a93a4d96276d060355027eb39b1da
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_event_delete', {'id': event.id}) }}\" onsubmit=\"return confirm('Jste si jistý?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ event.id) }}\">
-    <button class=\"btn\">Odstranit</button>
+    <button class=\"button\">Odstranit</button>
 </form>
 ", "event/_delete_form.html.twig", "/var/www/html/templates/event/_delete_form.html.twig");
     }

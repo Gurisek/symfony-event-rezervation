@@ -5351,16 +5351,9 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap">
       <call method="add">
-        <argument type="service" id=".security.request_matcher.njJ2qHm"/>
+        <argument type="service" id=".security.request_matcher.H.2QpVg"/>
         <argument type="collection">
           <argument>ROLE_ADMIN</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.R1uYVrJ"/>
-        <argument type="collection">
-          <argument>ROLE_USER</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -5828,11 +5821,8 @@
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id=".security.request_matcher.njJ2qHm" class="Symfony\Component\HttpFoundation\RequestMatcher">
-      <argument>^/event/admin</argument>
-    </service>
-    <service id=".security.request_matcher.R1uYVrJ" class="Symfony\Component\HttpFoundation\RequestMatcher">
-      <argument>^/event/user</argument>
+    <service id=".security.request_matcher.H.2QpVg" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/event</argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">
       <tag name="console.command"/>
