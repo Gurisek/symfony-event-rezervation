@@ -5,11 +5,10 @@
 {% block body %}
 
     <h1 class="center">Přehled eventů</h1>
-   <div class="tabulka"> 
+<div class="tabulka"> 
     <table class="content-table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Název</th>
                 <th>Místo</th>
                 <th>Datum</th>
@@ -20,7 +19,6 @@
         <tbody>
         {% for event in events %}
             <tr>
-                <td>{{ event.id }}</td>
                 <td>{{ event.name }}</td>
                 <td>{{ event.place }}</td>
                 <td>{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>

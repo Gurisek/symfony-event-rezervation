@@ -69,43 +69,47 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
             // line 17
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
             echo "\">Eventy</a>
+\t\t\t\t<a href=\"";
+            // line 18
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
+            echo "\">Uživatelé</a>
 \t\t\t</li>
 \t\t";
         } else {
-            // line 20
+            // line 21
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"#\">About</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 24
+        // line 25
         echo "\t\t";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 25
+            // line 26
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 26
+            // line 27
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Odhlásit</a>
 \t\t\t</li>
 \t\t";
         } else {
-            // line 29
+            // line 30
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 30
+            // line 31
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Přihlásit</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 33
+            // line 34
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Registrovat</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 36
+        // line 37
         echo "\t</ul>
 \t<div class=\"burger\">
 \t\t<div class=\"line1\"></div>
@@ -114,7 +118,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 \t</div>
 </nav>
 <script src=\"";
-        // line 43
+        // line 44
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/nav.js\"></script>
 
@@ -139,7 +143,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 
     public function getDebugInfo()
     {
-        return array (  118 => 43,  109 => 36,  103 => 33,  97 => 30,  94 => 29,  88 => 26,  85 => 25,  82 => 24,  76 => 20,  70 => 17,  67 => 16,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
+        return array (  122 => 44,  113 => 37,  107 => 34,  101 => 31,  98 => 30,  92 => 27,  89 => 26,  86 => 25,  80 => 21,  74 => 18,  70 => 17,  67 => 16,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -161,6 +165,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 \t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('app_event_index') }}\">Eventy</a>
+\t\t\t\t<a href=\"{{ path('app_user_index') }}\">Uživatelé</a>
 \t\t\t</li>
 \t\t{% else %}
 \t\t\t<li>

@@ -109,7 +109,7 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
                 <th>Datum</th>
                 <td class=\"active-row\">";
         // line 22
-        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 22, $this->source); })()), "date", [], "any", false, false, false, 22)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 22, $this->source); })()), "date", [], "any", false, false, false, 22), "R-m-d H:m:s"), "html", null, true))) : (print ("")));
+        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 22, $this->source); })()), "date", [], "any", false, false, false, 22)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 22, $this->source); })()), "date", [], "any", false, false, false, 22), "H:i d.m. Y"), "html", null, true))) : (print ("")));
         echo "</td>
             </tr>
             <tr>
@@ -177,7 +177,7 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
             </tr>
             <tr>
                 <th>Datum</th>
-                <td class=\"active-row\">{{ event.date ? event.date|date('R-m-d H:m:s') : '' }}</td>
+                <td class=\"active-row\">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Popisek</th>

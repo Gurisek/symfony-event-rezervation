@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+<div class="nadpis">
+    <h1 class="center">User index</h1>
+</div>
+
+<div class="tabulka">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>NickName</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>SecondName</th>
+                <th>TelNumber</th>
+                <th>Social</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.nickName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.secondName }}</td>
+                <td>{{ user.telNumber }}</td>
+                <td>{{ user.social }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Ukázat</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Upravit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Žádný uživatel nebyl nalezen</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <a href="{{ path('app_user_new') }}">Vytvořit nového uživatele</a>
+{% endblock %}

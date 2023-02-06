@@ -158,7 +158,7 @@ class __TwigTemplate_d0518593b09351303f5f5fd9393680851390e655372bb400c26f104031f
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na hlavní stránku</a>
     <div class=\"\">
-    <p>
+    <p1>
         Chtěl by ses zůčastnit nějaké z těchto akcí?
         <br>
         Jestli už máš učet stačí se 
@@ -172,7 +172,7 @@ class __TwigTemplate_d0518593b09351303f5f5fd9393680851390e655372bb400c26f104031f
         // line 56
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\">registruj!</a>
-    </p>
+    </p1>
     
     </div>
 ";
@@ -249,7 +249,7 @@ class __TwigTemplate_d0518593b09351303f5f5fd9393680851390e655372bb400c26f104031f
 
     <a href=\"{{ path('homepage_default') }}\">Zpět na hlavní stránku</a>
     <div class=\"\">
-    <p>
+    <p1>
         Chtěl by ses zůčastnit nějaké z těchto akcí?
         <br>
         Jestli už máš učet stačí se 
@@ -257,7 +257,7 @@ class __TwigTemplate_d0518593b09351303f5f5fd9393680851390e655372bb400c26f104031f
         <br> <br>
         Pokud ještě nemáš učet jednoduše se 
         <a href=\"{{ path('app_register') }}\">registruj!</a>
-    </p>
+    </p1>
     
     </div>
 {% endblock %}

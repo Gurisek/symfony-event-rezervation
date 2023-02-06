@@ -30,6 +30,9 @@ class Event
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'events')]
     private $users;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $puserNub;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -111,6 +114,18 @@ class Event
         if ($this->users->removeElement($user)) {
             $user->removeEvent($this);
         }
+
+        return $this;
+    }
+
+    public function getPuserNub(): ?int
+    {
+        return $this->puserNub;
+    }
+
+    public function setPuserNub(?int $puserNub): self
+    {
+        $this->puserNub = $puserNub;
 
         return $this;
     }
