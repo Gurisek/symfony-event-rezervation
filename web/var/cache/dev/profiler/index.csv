@@ -2327,3 +2327,5 @@ a901f2,172.18.0.1,GET,http://localhost:83/user/,1675725290,2918d9,403
 61b6d2,172.18.0.1,GET,http://localhost:83/event/,1675726849,,403
 97e54d,172.18.0.1,GET,http://localhost:83/event/,1675726859,7eab7d,403
 7eab7d,172.18.0.1,GET,http://localhost:83/event/,1675726859,,403
+25a69a,172.18.0.1,GET,http://localhost:83/logout,1675727546,,302
+9bc82f,172.18.0.1,GET,http://localhost:83/,1675727547,,200
