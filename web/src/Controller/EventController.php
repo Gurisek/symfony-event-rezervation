@@ -30,6 +30,12 @@ class EventController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $eventRepository->add($event);
+
+            $this->addFlash(
+                'new',
+                'Akce úspěšně založena!'
+            );
+
             return $this->redirectToRoute('app_event_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +75,11 @@ class EventController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
             $eventRepository->remove($event);
+
+            $this->addFlash(
+                'delete',
+                'Akce úspěšně odstraněna!'
+            );
         }
 
         return $this->redirectToRoute('app_event_index', [], Response::HTTP_SEE_OTHER);

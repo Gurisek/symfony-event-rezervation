@@ -11,27 +11,28 @@
     <table class="content-table">
         <thead>
             <tr>
-                <th>NickName</th>
+                <th>Přezdívka</th>
                 <th>Email</th>
-                <th>Name</th>
-                <th>SecondName</th>
-                <th>TelNumber</th>
-                <th>Social</th>
-                <th>actions</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Tel. číslo</th>
+                <th>Sociální sítě</th>
+                <th>Akce</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.nickName }}</td>
-                <td>{{ user.email }}</td>
+                <td class="active-row">{{ user.nickName }}</td>
+                <td class="active-row">{{ user.email }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.secondName }}</td>
-                <td>{{ user.telNumber }}</td>
+                <td class="active-row">{{ user.telNumber }}</td>
                 <td>{{ user.social }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Ukázat</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Upravit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Ukázat</a> |
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Upravit</a> |
+                    <a href="{{ path('app_user_delete', {'id': user.id}) }}">Odstranit</a>
                 </td>
             </tr>
         {% else %}

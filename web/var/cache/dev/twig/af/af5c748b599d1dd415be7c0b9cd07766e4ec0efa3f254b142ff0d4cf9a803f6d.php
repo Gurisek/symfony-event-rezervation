@@ -93,13 +93,13 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
     <table class=\"content-table\">
         <thead>
             <tr>
-                <th>NickName</th>
+                <th>Přezdívka</th>
                 <th>Email</th>
-                <th>Name</th>
-                <th>SecondName</th>
-                <th>TelNumber</th>
-                <th>Social</th>
-                <th>actions</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Tel. číslo</th>
+                <th>Sociální sítě</th>
+                <th>Akce</th>
             </tr>
         </thead>
         <tbody>
@@ -111,11 +111,11 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 25
             echo "            <tr>
-                <td>";
+                <td class=\"active-row\">";
             // line 26
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 26), "html", null, true);
             echo "</td>
-                <td>";
+                <td class=\"active-row\">";
             // line 27
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 27), "html", null, true);
             echo "</td>
@@ -127,7 +127,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
             // line 29
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 29), "html", null, true);
             echo "</td>
-                <td>";
+                <td class=\"active-row\">";
             // line 30
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 30), "html", null, true);
             echo "</td>
@@ -144,13 +144,17 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
             // line 34
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 34)]), "html", null, true);
             echo "\">Upravit</a>
+                    <a href=\"";
+            // line 35
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 35)]), "html", null, true);
+            echo "\">Odstranit</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 38
+            // line 39
             echo "            <tr>
                 <td colspan=\"9\">Žádný uživatel nebyl nalezen</td>
             </tr>
@@ -159,13 +163,13 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 42
+        // line 43
         echo "        </tbody>
     </table>
 </div>
 
     <a href=\"";
-        // line 46
+        // line 47
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
         echo "\">Vytvořit nového uživatele</a>
 ";
@@ -189,7 +193,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     public function getDebugInfo()
     {
-        return array (  169 => 46,  163 => 42,  154 => 38,  145 => 34,  141 => 33,  136 => 31,  132 => 30,  128 => 29,  124 => 28,  120 => 27,  116 => 26,  113 => 25,  108 => 24,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  173 => 47,  167 => 43,  158 => 39,  149 => 35,  145 => 34,  141 => 33,  136 => 31,  132 => 30,  128 => 29,  124 => 28,  120 => 27,  116 => 26,  113 => 25,  108 => 24,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -207,27 +211,28 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
     <table class=\"content-table\">
         <thead>
             <tr>
-                <th>NickName</th>
+                <th>Přezdívka</th>
                 <th>Email</th>
-                <th>Name</th>
-                <th>SecondName</th>
-                <th>TelNumber</th>
-                <th>Social</th>
-                <th>actions</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Tel. číslo</th>
+                <th>Sociální sítě</th>
+                <th>Akce</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.nickName }}</td>
-                <td>{{ user.email }}</td>
+                <td class=\"active-row\">{{ user.nickName }}</td>
+                <td class=\"active-row\">{{ user.email }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.secondName }}</td>
-                <td>{{ user.telNumber }}</td>
+                <td class=\"active-row\">{{ user.telNumber }}</td>
                 <td>{{ user.social }}</td>
                 <td>
                     <a href=\"{{ path('app_user_show', {'id': user.id}) }}\">Ukázat</a>
                     <a href=\"{{ path('app_user_edit', {'id': user.id}) }}\">Upravit</a>
+                    <a href=\"{{ path('app_user_delete', {'id': user.id}) }}\">Odstranit</a>
                 </td>
             </tr>
         {% else %}

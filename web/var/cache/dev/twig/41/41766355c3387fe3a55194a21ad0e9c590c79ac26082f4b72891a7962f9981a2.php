@@ -130,14 +130,15 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                     <a href=\"";
             // line 26
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 26)]), "html", null, true);
-            echo "\">ukázat</a>
+            echo "\">ukázat</a> |
+                    <a>Přihlásit účast</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 30
+            // line 31
             echo "            <tr>
                 <td colspan=\"6\">Není nic vytvořeno</td>
             </tr>
@@ -146,7 +147,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 35
         echo "        </tbody>
     </table>
 </div>
@@ -159,7 +160,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     }
 
-    // line 39
+    // line 40
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -177,7 +178,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     }
 
-    // line 40
+    // line 41
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -207,7 +208,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     public function getDebugInfo()
     {
-        return array (  181 => 40,  163 => 39,  150 => 34,  141 => 30,  132 => 26,  127 => 24,  123 => 23,  119 => 22,  115 => 21,  112 => 20,  107 => 19,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
+        return array (  182 => 41,  164 => 40,  151 => 35,  142 => 31,  132 => 26,  127 => 24,  123 => 23,  119 => 22,  115 => 21,  112 => 20,  107 => 19,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -237,7 +238,8 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                 <td class=\"active-row\">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>
-                    <a href=\"{{ path('user_event_show', {'id': event.id}) }}\">ukázat</a>
+                    <a href=\"{{ path('user_event_show', {'id': event.id}) }}\">ukázat</a> |
+                    <a>Přihlásit účast</a>
                 </td>
             </tr>
         {% else %}

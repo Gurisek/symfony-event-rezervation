@@ -23,7 +23,8 @@
                 <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>
-                    <a href="{{ path('user_event_show', {'id': event.id}) }}">ukázat</a>
+                    <a href="{{ path('user_event_show', {'id': event.id}) }}">ukázat</a> |
+                    <a>Přihlásit účast</a>
                 </td>
             </tr>
         {% else %}
