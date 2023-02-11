@@ -79,7 +79,14 @@ class HomepageController extends BaseController
         return $this->render("Homepage/dd.html.twig");
     }
 
-    // přihlášení pro event
+
+    /**
+     * @Route("/contacts", name="contact")
+     */
+    public function FunctionName(): Response
+    {
+        return $this->render('Homepage/contact.html.twig', []);
+    }
 
 
 }

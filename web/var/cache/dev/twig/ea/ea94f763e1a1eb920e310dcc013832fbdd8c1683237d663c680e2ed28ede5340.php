@@ -73,6 +73,29 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 \t</div>
 </div>
 
+<div class=\"p_home\">
+\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
+
+\t<p>
+\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
+\t\t<a href=\"";
+        // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_index");
+        echo "\">ZDE</a><br>
+\t\tPro registraci stačí kliknout
+\t\t<a href=\"";
+        // line 20
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\">ZDE</a><br>
+\t\tA pro přihlášení
+\t\t<a href=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\">ZDE</a>
+\t</p>
+</div>
+
+
 
 ";
         
@@ -83,7 +106,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 16
+    // line 30
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -101,7 +124,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     }
 
-    // line 17
+    // line 31
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -131,7 +154,7 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 
     public function getDebugInfo()
     {
-        return array (  105 => 17,  87 => 16,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  128 => 31,  110 => 30,  93 => 22,  88 => 20,  83 => 18,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -147,6 +170,20 @@ class __TwigTemplate_3759357ac7d349189b91fd846ba13473eb248936bb77512fabf49330c1c
 \t\t<h1>Jsme rádi že tě tu máme!</h1>
 \t</div>
 </div>
+
+<div class=\"p_home\">
+\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
+
+\t<p>
+\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
+\t\t<a href=\"{{path('no_user_index')}}\">ZDE</a><br>
+\t\tPro registraci stačí kliknout
+\t\t<a href=\"{{path('app_login')}}\">ZDE</a><br>
+\t\tA pro přihlášení
+\t\t<a href=\"{{path('app_login')}}\">ZDE</a>
+\t</p>
+</div>
+
 
 
 {% endblock %}

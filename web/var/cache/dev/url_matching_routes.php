@@ -18,6 +18,7 @@ return [
         '/' => [[['_route' => 'homepage_default', '_controller' => 'App\\Controller\\HomepageController::default'], null, ['GET' => 0], null, false, false, null]],
         '/index' => [[['_route' => 'no_user_index', '_controller' => 'App\\Controller\\HomepageController::noUserindex'], null, ['GET' => 0], null, false, false, null]],
         '/dd' => [[['_route' => 'dd', '_controller' => 'App\\Controller\\HomepageController::dd'], null, null, null, false, false, null]],
+        '/contacts' => [[['_route' => 'contact', '_controller' => 'App\\Controller\\HomepageController::FunctionName'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],

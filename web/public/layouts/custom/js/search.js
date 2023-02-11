@@ -14,19 +14,8 @@ function myFunction() {
                 flag = true;
                 break;
             } else {
-                tr[i].style.display = "none";
+                tr[i].style.display = "none"
             }
         }
-    }
-    var errorMessage = document.querySelector(".error-message");
-    if (!flag && !errorMessage) {
-        var div = document.createElement("div");
-        div.innerHTML = "Tento uživatel neexistuje..";
-        div.classList.add("error-message");
-        div.style.textAlign = "center";
-        div.style.marginTop = "20px";
-        table.parentNode.insertBefore(div, table.nextSibling);
-    } else if (flag && errorMessage) {
-        errorMessage.parentNode.removeChild(errorMessage);
     }
 }

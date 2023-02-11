@@ -28,7 +28,12 @@
         </tbody>
     </table>
 </div>
-    <a href="{{ path('homepage_default') }}">Zpět na přehled</a>
+<div class="_show">
+<div class="active">
+	<a href="{{ path('event_join', {'id': event.id}) }}">Připojit se k akci!</a>
+	</div>
     <br>
-    <a href="{{ path('event_join', {'id': event.id}) }}">Připojit se k akci!</a>
+	<a href="{{ path('homepage_default') }}">Zpět na přehled</a>
+</div>
+
 {% endblock %}

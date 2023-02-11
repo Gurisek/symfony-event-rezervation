@@ -122,10 +122,20 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
         </tbody>
     </table>
 </div>
-    <a href=\"";
-        // line 31
+<div class=\"_show\">
+<div class=\"active\">
+\t<a href=\"";
+        // line 33
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_join", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 33, $this->source); })()), "id", [], "any", false, false, false, 33)]), "html", null, true);
+        echo "\">Připojit se k akci!</a>
+\t</div>
+    <br>
+\t<a href=\"";
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na přehled</a>
+</div>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -147,7 +157,7 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
 
     public function getDebugInfo()
     {
-        return array (  127 => 31,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  135 => 36,  129 => 33,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -182,7 +192,14 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
         </tbody>
     </table>
 </div>
-    <a href=\"{{ path('homepage_default') }}\">Zpět na přehled</a>
+<div class=\"_show\">
+<div class=\"active\">
+\t<a href=\"{{ path('event_join', {'id': event.id}) }}\">Připojit se k akci!</a>
+\t</div>
+    <br>
+\t<a href=\"{{ path('homepage_default') }}\">Zpět na přehled</a>
+</div>
+
 {% endblock %}
 ", "event/user/user_show.html.twig", "/var/www/html/templates/event/user/user_show.html.twig");
     }

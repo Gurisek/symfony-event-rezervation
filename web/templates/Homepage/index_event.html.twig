@@ -3,60 +3,65 @@
 {% block title %}Přehled{% endblock %}
 
 {% block body %}
-    <h1 class="center">Zde najdeš nadcházející akce</h1>
-   <div class="tabulka"> 
-    <table class="content-table">
-        <thead>
-            <tr>
-                <th>Název</th>
-                <th>Místo</th>
-                <th>Datum</th>
-                <th>Popisek</th>
-                <th>Možnosti</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td class="active-row">
-                    {{ event.name }}
-                </td>
-                <td>
-                    -
-                </td>
-                <td>
-                    {{ event.date ? event.date|date('d.m. Y') : '' }}
-                </td>
-                <td>
-                    {{ event.description }}
-                </td>
-                <td>
-                    <a href="{{ path('no_user_show', {'id': event.id}) }}">ukaž</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Není nic vytvořeno</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<h1 class="center">Zde najdeš nadcházející akce</h1>
+<div class="tabulka">
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>Název</th>
+				<th>Místo</th>
+				<th>Datum</th>
+				<th>Popisek</th>
+				<th>Možnosti</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for event in events %}
+				<tr>
+					<td class="active-row">
+						{{ event.name }}
+					</td>
+					<td>
+						-
+					</td>
+					<td>
+						{{ event.date ? event.date|date('d.m. Y') : '' }}
+					</td>
+					<td>
+						{{ event.description }}
+					</td>
+					<td>
+						<a href="{{ path('no_user_show', {'id': event.id}) }}">ukaž</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">Není nic vytvořeno</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<div class="p_index">
+	<p>
+		Chtěl by ses zůčastnit nějaké z těchto akcí?
+		<br>
+		Jestli už máš učet stačí se
+		<a href="{{ path('app_login') }}">přihlásit!</a>
+		<br>
+		<br>
+		Pokud ještě nemáš učet jednoduše se
+		<a href="{{ path('app_register') }}">registruj!</a>
+	</p>
+
+</div>
+
+<div class="a_index">
+	<a href="{{ path('homepage_default') }}">Zpět na hlavní stránku</a>
 </div>
 
 
-    <a href="{{ path('homepage_default') }}">Zpět na hlavní stránku</a>
-    <div class="">
-    <p1>
-        Chtěl by ses zůčastnit nějaké z těchto akcí?
-        <br>
-        Jestli už máš učet stačí se 
-        <a href="{{ path('app_login') }}">přihlásit!</a>
-        <br> <br>
-        Pokud ještě nemáš učet jednoduše se 
-        <a href="{{ path('app_register') }}">registruj!</a>
-    </p1>
-    
-    </div>
 {% endblock %}
 
 

@@ -58,7 +58,10 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
         echo "\">Domu</a>
 \t\t</li>
 \t\t<li>
-\t\t\t<a href=\"#\">Contact</a>
+\t\t\t<a href=\"";
+        // line 13
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact");
+        echo "\">Contact</a>
 \t\t</li>
 \t\t";
         // line 15
@@ -143,7 +146,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 
     public function getDebugInfo()
     {
-        return array (  122 => 45,  113 => 38,  107 => 35,  101 => 32,  98 => 31,  92 => 28,  89 => 27,  87 => 26,  82 => 23,  76 => 20,  70 => 17,  67 => 16,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
+        return array (  125 => 45,  116 => 38,  110 => 35,  104 => 32,  101 => 31,  95 => 28,  92 => 27,  90 => 26,  85 => 23,  79 => 20,  73 => 17,  70 => 16,  68 => 15,  63 => 13,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -160,7 +163,7 @@ class __TwigTemplate_bf1788f77598c1968d897aa344ee465527202413a9d65992b459a7e8115
 \t\t\t<a href=\"{{ path('homepage_default') }}\">Domu</a>
 \t\t</li>
 \t\t<li>
-\t\t\t<a href=\"#\">Contact</a>
+\t\t\t<a href=\"{{ path('contact') }}\">Contact</a>
 \t\t</li>
 \t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t<li>

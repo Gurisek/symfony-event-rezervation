@@ -95,7 +95,7 @@ class __TwigTemplate_3074a289774d92e3428f881c7e7da57e84aeafc6433174c0d3a1d1c0606
         echo twig_include($this->env, $context, "user/_form.html.twig", ["button_label" => "Uložit změny"]);
         echo "
 
-    <a style=\"background-color: black;\" href=\"";
+    <a href=\"";
         // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
         echo "\">Zpět na přehled</a>
@@ -143,7 +143,7 @@ class __TwigTemplate_3074a289774d92e3428f881c7e7da57e84aeafc6433174c0d3a1d1c0606
 <div class=\"container\">
     {{ include('user/_form.html.twig', {'button_label': 'Uložit změny'}) }}
 
-    <a style=\"background-color: black;\" href=\"{{ path('app_user_index') }}\">Zpět na přehled</a>
+    <a href=\"{{ path('app_user_index') }}\">Zpět na přehled</a>
 
     {{ include('user/_delete_form.html.twig') }}
 </div>
