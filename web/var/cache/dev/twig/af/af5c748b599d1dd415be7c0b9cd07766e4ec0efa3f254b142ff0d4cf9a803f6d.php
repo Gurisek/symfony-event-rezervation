@@ -139,11 +139,11 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
                     <a href=\"";
             // line 33
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33)]), "html", null, true);
-            echo "\">Ukázat</a>
+            echo "\">Ukázat</a> |
                     <a href=\"";
             // line 34
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 34)]), "html", null, true);
-            echo "\">Upravit</a>
+            echo "\">Upravit</a> |
                     <a href=\"";
             // line 35
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 35)]), "html", null, true);
@@ -230,8 +230,8 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
                 <td class=\"active-row\">{{ user.telNumber }}</td>
                 <td>{{ user.social }}</td>
                 <td>
-                    <a href=\"{{ path('app_user_show', {'id': user.id}) }}\">Ukázat</a>
-                    <a href=\"{{ path('app_user_edit', {'id': user.id}) }}\">Upravit</a>
+                    <a href=\"{{ path('app_user_show', {'id': user.id}) }}\">Ukázat</a> |
+                    <a href=\"{{ path('app_user_edit', {'id': user.id}) }}\">Upravit</a> |
                     <a href=\"{{ path('app_user_delete', {'id': user.id}) }}\">Odstranit</a>
                 </td>
             </tr>

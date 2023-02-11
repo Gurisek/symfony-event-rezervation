@@ -126,10 +126,6 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
         // line 31
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na přehled</a>
-
-    ";
-        // line 34
-        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -151,7 +147,7 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
 
     public function getDebugInfo()
     {
-        return array (  132 => 34,  127 => 31,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  127 => 31,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -187,9 +183,6 @@ class __TwigTemplate_5299e0264bcfdc6204a594e7ee4069ba834efdc0230e843691019b91476
     </table>
 </div>
     <a href=\"{{ path('homepage_default') }}\">Zpět na přehled</a>
-
-    {# <a href=\"{{ path('app_event_login', {'id': event.id}) }}\">Jdu do toho!</a> #}
-
 {% endblock %}
 ", "event/user/user_show.html.twig", "/var/www/html/templates/event/user/user_show.html.twig");
     }

@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface as ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 #[Route('/event')]
 class EventController extends AbstractController
@@ -84,4 +87,24 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('app_event_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+  #[Route("/event/user/{id}/join", name: "event_join")]
+  #[IsGranted('ROLE_USER')]
+  public function join(Request $request, Event $event, ObjectManager $objectManager)
+  {
+      $user = $this->getUser();
+      $event->addUser($user);
+      $objectManager->persist($event);
+      $objectManager->flush();
+
+      $this->addFlash(
+        'join',
+        'Jste úspěšně přihlášen na akci!'
+    );
+
+      return $this->redirectToRoute('homepage_default');
+  }
+  
 }
+

@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Tento e-mail je již použit, zkuste se přihlásit.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -27,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'users')]
     private $events;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -114,42 +115,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     return $this;
 }
-
-//     public function setRoles(array $roles): self
-// {
-//     if (!in_array('ROLE_USER', $roles)) {
-//         $roles[] = 'ROLE_USER';
-//     }
-
-//     $this->role->clear();
-//     foreach ($roles as $role) {
-//         $newRole = $this->doctrine->getRepository(Role::class)->find($role);
-//         if (!$newRole) {
-//             throw new \Exception("Role not found");
-//         }
-//         $this->role->add($newRole);
-//     }
-
-//     return $this;
-// }
-
-    // public function setRoles(array $roles): self
-    // {
-    //     if (!in_array('ROLE_USER', $roles)) {
-    //         $roles[] = 'ROLE_USER';
-    //     }
-    
-    //     $this->role->clear();
-    //     foreach ($roles as $role) {
-    //         $newRole = new Role();
-    //         $newRole->setRoleName($role);
-    //         // $this->getDoctrine()->getManager()->persist($newRole);
-    //         $this->role->add($newRole);
-    //     }
-    
-    //     return $this;
-    // }
-
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -253,6 +218,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 
     public function removeEvent(Event $event): self
     {

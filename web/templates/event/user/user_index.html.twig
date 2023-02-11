@@ -3,7 +3,14 @@
 {% block title %}Přehled{% endblock %}
 
 {% block body %}
-    <h1 class="center">Vítej {{ app.user.nickName }}</h1>
+    <h1 class="center">Seznam dostupných akcí pro {{ app.user.nickName }}</h1>
+
+        {% for message in app.flashes('join') %}
+        <div class="center alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
    <div class="tabulka"> 
     <table class="content-table">
         <thead>
@@ -24,7 +31,7 @@
                 <td>{{ event.description }}</td>
                 <td>
                     <a href="{{ path('user_event_show', {'id': event.id}) }}">ukázat</a> |
-                    <a>Přihlásit účast</a>
+                    <a href="{{ path('event_join', {'id': event.id}) }}">Přijdu</a>
                 </td>
             </tr>
         {% else %}

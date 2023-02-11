@@ -27,7 +27,7 @@ class Event
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $description;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'events')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'events')]
     private $users;
 
     #[ORM\Column(type: 'integer', nullable: true)]

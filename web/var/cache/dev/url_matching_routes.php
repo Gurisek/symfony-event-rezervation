@@ -47,13 +47,14 @@ return [
                         .'|/edit(*:203)'
                         .'|(*:211)'
                     .')'
-                    .'|user/([^/]++)(*:233)'
+                    .'|event/user/([^/]++)/join(*:244)'
+                    .'|user/([^/]++)(*:265)'
                 .')'
-                .'|/show/([^/]++)(*:256)'
+                .'|/show/([^/]++)(*:288)'
                 .'|/user/([^/]++)(?'
-                    .'|(*:281)'
-                    .'|/edit(*:294)'
-                    .'|(*:302)'
+                    .'|(*:313)'
+                    .'|/edit(*:326)'
+                    .'|(*:334)'
                 .')'
             .')/?$}sDu',
     ],
@@ -68,11 +69,12 @@ return [
         190 => [[['_route' => 'app_event_show', '_controller' => 'App\\Controller\\EventController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         203 => [[['_route' => 'app_event_edit', '_controller' => 'App\\Controller\\EventController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         211 => [[['_route' => 'app_event_delete', '_controller' => 'App\\Controller\\EventController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        233 => [[['_route' => 'user_event_show', '_controller' => 'App\\Controller\\HomepageController::userShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
-        256 => [[['_route' => 'no_user_show', '_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
-        281 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        294 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        302 => [
+        244 => [[['_route' => 'event_join', '_controller' => 'App\\Controller\\EventController::join'], ['id'], null, null, false, false, null]],
+        265 => [[['_route' => 'user_event_show', '_controller' => 'App\\Controller\\HomepageController::userShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
+        288 => [[['_route' => 'no_user_show', '_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
+        313 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        326 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        334 => [
             [['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
