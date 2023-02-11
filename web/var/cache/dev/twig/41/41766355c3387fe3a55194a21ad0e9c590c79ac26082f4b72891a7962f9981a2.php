@@ -154,7 +154,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                     <a href=\"";
             // line 34
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_join", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 34)]), "html", null, true);
-            echo "\">Join</a>
+            echo "\">Přijdu</a>
                 </td>
             </tr>
         ";
@@ -269,7 +269,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                 <td>{{ event.description }}</td>
                 <td>
                     <a href=\"{{ path('user_event_show', {'id': event.id}) }}\">ukázat</a> |
-                    <a href=\"{{ path('event_join', {'id': event.id}) }}\">Join</a>
+                    <a href=\"{{ path('event_join', {'id': event.id}) }}\">Přijdu</a>
                 </td>
             </tr>
         {% else %}

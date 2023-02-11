@@ -89,6 +89,15 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
     <h1 class=\"center\">User index</h1>
 </div>
 
+<div class=\"search_center\">
+<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+</div>
+
+<script src=\"";
+        // line 14
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
+        echo "layouts/custom/js/search.js\"></script>
+
 <div class=\"tabulka\">
     <table class=\"content-table\">
         <thead>
@@ -104,49 +113,49 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         </thead>
         <tbody>
         ";
-        // line 24
+        // line 30
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 24, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 30, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 25
+            // line 31
             echo "            <tr>
                 <td class=\"active-row\">";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 26), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 32), "html", null, true);
             echo "</td>
                 <td class=\"active-row\">";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 27), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 33), "html", null, true);
             echo "</td>
                 <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 28), "html", null, true);
+            // line 34
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 34), "html", null, true);
             echo "</td>
                 <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 29), "html", null, true);
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 35), "html", null, true);
             echo "</td>
                 <td class=\"active-row\">";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 30), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 36), "html", null, true);
             echo "</td>
                 <td>";
-            // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 31), "html", null, true);
+            // line 37
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 37), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 33
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33)]), "html", null, true);
+            // line 39
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 39)]), "html", null, true);
             echo "\">Ukázat</a> |
                     <a href=\"";
-            // line 34
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 34)]), "html", null, true);
+            // line 40
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 40)]), "html", null, true);
             echo "\">Upravit</a> |
                     <a href=\"";
-            // line 35
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 35)]), "html", null, true);
+            // line 41
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 41)]), "html", null, true);
             echo "\">Odstranit</a>
                 </td>
             </tr>
@@ -154,7 +163,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 39
+            // line 45
             echo "            <tr>
                 <td colspan=\"9\">Žádný uživatel nebyl nalezen</td>
             </tr>
@@ -163,13 +172,13 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 49
         echo "        </tbody>
     </table>
 </div>
 
     <a href=\"";
-        // line 47
+        // line 53
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
         echo "\">Vytvořit nového uživatele</a>
 ";
@@ -193,7 +202,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     public function getDebugInfo()
     {
-        return array (  173 => 47,  167 => 43,  158 => 39,  149 => 35,  145 => 34,  141 => 33,  136 => 31,  132 => 30,  128 => 29,  124 => 28,  120 => 27,  116 => 26,  113 => 25,  108 => 24,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  182 => 53,  176 => 49,  167 => 45,  158 => 41,  154 => 40,  150 => 39,  145 => 37,  141 => 36,  137 => 35,  133 => 34,  129 => 33,  125 => 32,  122 => 31,  117 => 30,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -206,6 +215,12 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 <div class=\"nadpis\">
     <h1 class=\"center\">User index</h1>
 </div>
+
+<div class=\"search_center\">
+<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+</div>
+
+<script src=\"{{ url(\"homepage_default\") }}layouts/custom/js/search.js\"></script>
 
 <div class=\"tabulka\">
     <table class=\"content-table\">
