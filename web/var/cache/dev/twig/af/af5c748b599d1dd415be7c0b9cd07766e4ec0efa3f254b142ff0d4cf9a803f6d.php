@@ -65,7 +65,8 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "User index";
+        echo "User index
+";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -74,7 +75,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     }
 
-    // line 5
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,103 +85,129 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
-        echo "<div class=\"nadpis\">
-    <h1 class=\"center\">User index</h1>
-</div>
+        // line 7
+        echo "\t<div class=\"nadpis\">
+\t\t<h1 class=\"center\">User index</h1>
+\t</div>
 
-<div class=\"search_center\">
-<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
-</div>
+\t";
+        // line 11
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", [0 => "admin"], "method", false, false, false, 11));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 12
+            echo "\t\t<div class=\"center alert alert-success\">
+\t\t\t";
+            // line 13
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+\t\t</div>
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 16
+        echo "
+\t<div class=\"search_center\">
+\t\t<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+\t</div>
 
-<script src=\"";
-        // line 14
+
+\t<script src=\"";
+        // line 22
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/search.js\"></script>
 
-<div class=\"tabulka\">
-    <table class=\"content-table\">
-        <thead>
-            <tr>
-                <th>Přezdívka</th>
-                <th>Email</th>
-                <th>Jméno</th>
-                <th>Příjmení</th>
-                <th>Tel. číslo</th>
-                <th>Sociální sítě</th>
-                <th>Akce</th>
-            </tr>
-        </thead>
-        <tbody>
-        ";
-        // line 30
+\t<div class=\"tabulka\">
+\t\t<table class=\"content-table\">
+\t\t\t<thead>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Přezdívka</th>
+\t\t\t\t\t<th>Email</th>
+\t\t\t\t\t<th>Jméno</th>
+\t\t\t\t\t<th>Příjmení</th>
+\t\t\t\t\t<th>Tel. číslo</th>
+\t\t\t\t\t<th>Sociální sítě</th>
+\t\t\t\t\t<th>Akce</th>
+\t\t\t\t</tr>
+\t\t\t</thead>
+\t\t\t<tbody>
+\t\t\t\t";
+        // line 38
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 30, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 38, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 31
-            echo "            <tr>
-                <td class=\"active-row\">";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 32), "html", null, true);
-            echo "</td>
-                <td class=\"active-row\">";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 33), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 34
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 34), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 35
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 35), "html", null, true);
-            echo "</td>
-                <td class=\"active-row\">";
-            // line 36
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 36), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 37), "html", null, true);
-            echo "</td>
-                <td>
-                    <a href=\"";
             // line 39
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 39)]), "html", null, true);
-            echo "\">Ukázat</a> |
-                    <a href=\"";
+            echo "\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td class=\"active-row\">";
             // line 40
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 40)]), "html", null, true);
-            echo "\">Upravit</a> |
-                    <a href=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 40), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td class=\"active-row\">";
             // line 41
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 41), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 42
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 42), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 43), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td class=\"active-row\">";
+            // line 44
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 44), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 45), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>
+\t\t\t\t\t\t\t<a href=\"";
+            // line 47
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+            echo "\">Ukázat</a>
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t<a href=\"";
+            // line 49
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 49)]), "html", null, true);
+            echo "\">Upravit</a>
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t<a href=\"";
+            // line 51
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 51)]), "html", null, true);
             echo "\">Odstranit</a>
-                </td>
-            </tr>
-        ";
+\t\t\t\t\t\t</td>
+\t\t\t\t\t</tr>
+\t\t\t\t";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 45
-            echo "            <tr>
-                <td colspan=\"9\">Žádný uživatel nebyl nalezen</td>
-            </tr>
-        ";
+            // line 55
+            echo "\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td colspan=\"9\">Žádný uživatel nebyl nalezen..</td>
+\t\t\t\t\t</tr>
+\t\t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
-        echo "        </tbody>
-    </table>
-</div>
+        // line 59
+        echo "\t\t\t</tbody>
+\t\t</table>
+\t</div>
 
-    <a href=\"";
-        // line 53
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+\t\t<a href=\"";
+        // line 65
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
         echo "\">Vytvořit nového uživatele</a>
+\t</div>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -202,65 +229,80 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     public function getDebugInfo()
     {
-        return array (  182 => 53,  176 => 49,  167 => 45,  158 => 41,  154 => 40,  150 => 39,  145 => 37,  141 => 36,  137 => 35,  133 => 34,  129 => 33,  125 => 32,  122 => 31,  117 => 30,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  207 => 65,  199 => 59,  190 => 55,  181 => 51,  176 => 49,  171 => 47,  166 => 45,  162 => 44,  158 => 43,  154 => 42,  150 => 41,  146 => 40,  143 => 39,  138 => 38,  119 => 22,  111 => 16,  102 => 13,  99 => 12,  95 => 11,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}User index
+{% endblock %}
 
 {% block body %}
-<div class=\"nadpis\">
-    <h1 class=\"center\">User index</h1>
+\t<div class=\"nadpis\">
+\t\t<h1 class=\"center\">User index</h1>
+\t</div>
+
+\t{% for message in app.flashes('admin') %}
+\t\t<div class=\"center alert alert-success\">
+\t\t\t{{ message }}
+\t\t</div>
+\t{% endfor %}
+
+\t<div class=\"search_center\">
+\t\t<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+\t</div>
+
+
+\t<script src=\"{{ url(\"homepage_default\") }}layouts/custom/js/search.js\"></script>
+
+\t<div class=\"tabulka\">
+\t\t<table class=\"content-table\">
+\t\t\t<thead>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Přezdívka</th>
+\t\t\t\t\t<th>Email</th>
+\t\t\t\t\t<th>Jméno</th>
+\t\t\t\t\t<th>Příjmení</th>
+\t\t\t\t\t<th>Tel. číslo</th>
+\t\t\t\t\t<th>Sociální sítě</th>
+\t\t\t\t\t<th>Akce</th>
+\t\t\t\t</tr>
+\t\t\t</thead>
+\t\t\t<tbody>
+\t\t\t\t{% for user in users %}
+\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td class=\"active-row\">{{ user.nickName }}</td>
+\t\t\t\t\t\t<td class=\"active-row\">{{ user.email }}</td>
+\t\t\t\t\t\t<td>{{ user.name }}</td>
+\t\t\t\t\t\t<td>{{ user.secondName }}</td>
+\t\t\t\t\t\t<td class=\"active-row\">{{ user.telNumber }}</td>
+\t\t\t\t\t\t<td>{{ user.social }}</td>
+\t\t\t\t\t\t<td>
+\t\t\t\t\t\t\t<a href=\"{{ path('app_user_show', {'id': user.id}) }}\">Ukázat</a>
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t<a href=\"{{ path('app_user_edit', {'id': user.id}) }}\">Upravit</a>
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t<a href=\"{{ path('app_user_delete', {'id': user.id}) }}\">Odstranit</a>
+\t\t\t\t\t\t</td>
+\t\t\t\t\t</tr>
+\t\t\t\t{% else %}
+\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td colspan=\"9\">Žádný uživatel nebyl nalezen..</td>
+\t\t\t\t\t</tr>
+\t\t\t\t{% endfor %}
+\t\t\t</tbody>
+\t\t</table>
+\t</div>
+
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+\t\t<a href=\"{{ path('app_user_new') }}\">Vytvořit nového uživatele</a>
+\t</div>
 </div>
-
-<div class=\"search_center\">
-<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
-</div>
-
-<script src=\"{{ url(\"homepage_default\") }}layouts/custom/js/search.js\"></script>
-
-<div class=\"tabulka\">
-    <table class=\"content-table\">
-        <thead>
-            <tr>
-                <th>Přezdívka</th>
-                <th>Email</th>
-                <th>Jméno</th>
-                <th>Příjmení</th>
-                <th>Tel. číslo</th>
-                <th>Sociální sítě</th>
-                <th>Akce</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td class=\"active-row\">{{ user.nickName }}</td>
-                <td class=\"active-row\">{{ user.email }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.secondName }}</td>
-                <td class=\"active-row\">{{ user.telNumber }}</td>
-                <td>{{ user.social }}</td>
-                <td>
-                    <a href=\"{{ path('app_user_show', {'id': user.id}) }}\">Ukázat</a> |
-                    <a href=\"{{ path('app_user_edit', {'id': user.id}) }}\">Upravit</a> |
-                    <a href=\"{{ path('app_user_delete', {'id': user.id}) }}\">Odstranit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan=\"9\">Žádný uživatel nebyl nalezen</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-    <a href=\"{{ path('app_user_new') }}\">Vytvořit nového uživatele</a>
 {% endblock %}
+
 ", "user/index.html.twig", "/var/www/html/templates/user/index.html.twig");
     }
 }

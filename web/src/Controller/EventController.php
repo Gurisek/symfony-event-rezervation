@@ -25,6 +25,7 @@ class EventController extends AbstractController
     }
 
     #[Route('/new', name: 'app_event_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, EventRepository $eventRepository): Response
     {
         $event = new Event();
@@ -57,6 +58,7 @@ class EventController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_event_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Event $event, EventRepository $eventRepository): Response
     {
         $form = $this->createForm(EventType::class, $event);
@@ -74,6 +76,7 @@ class EventController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_event_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Event $event, EventRepository $eventRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
@@ -100,7 +103,7 @@ class EventController extends AbstractController
 
       $this->addFlash(
         'join',
-        'Jste úspěšně přihlášen na akci!'
+        'Jste úspěšně přihlášen na akci! Počítáme s vaší účastí.'
     );
 
       return $this->redirectToRoute('homepage_default');

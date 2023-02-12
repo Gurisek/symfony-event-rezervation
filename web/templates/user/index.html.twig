@@ -1,54 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Seznam uživatelů{% endblock %}
 
 {% block body %}
-<div class="nadpis">
-    <h1 class="center">User index</h1>
+	<div class="nadpis">
+		<h1 class="center">User index</h1>
+	</div>
+
+	{% for message in app.flashes('admin') %}
+		<div class="center alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	<div class="search_center">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Vyhledat uživatele..">
+	</div>
+
+
+	<script src="{{ url("homepage_default") }}layouts/custom/js/search.js"></script>
+
+	<div class="tabulka">
+		<table class="content-table">
+			<thead>
+				<tr>
+					<th>Přezdívka</th>
+					<th>Email</th>
+					<th>Jméno</th>
+					<th>Příjmení</th>
+					<th>Tel. číslo</th>
+					<th>Sociální sítě</th>
+					<th>Akce</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td class="active-row">{{ user.nickName }}</td>
+						<td class="active-row">{{ user.email }}</td>
+						<td>{{ user.name }}</td>
+						<td>{{ user.secondName }}</td>
+						<td class="active-row">{{ user.telNumber }}</td>
+						<td>{{ user.social }}</td>
+						<td>
+							<a href="{{ path('app_user_show', {'id': user.id}) }}">Ukázat</a>
+							|
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}">Upravit</a>
+							|
+							<a href="{{ path('app_user_delete', {'id': user.id}) }}">Odstranit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Žádný uživatel nebyl nalezen..</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+<div class="a_index_admin_position">
+	<div class="a_index_admin">
+		<a href="{{ path('app_user_new') }}">Vytvořit nového uživatele</a>
+	</div>
 </div>
-
-<div class="search_center">
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Vyhledat uživatele..">
-</div>
-
-<script src="{{ url("homepage_default") }}layouts/custom/js/search.js"></script>
-
-<div class="tabulka">
-    <table class="content-table">
-        <thead>
-            <tr>
-                <th>Přezdívka</th>
-                <th>Email</th>
-                <th>Jméno</th>
-                <th>Příjmení</th>
-                <th>Tel. číslo</th>
-                <th>Sociální sítě</th>
-                <th>Akce</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td class="active-row">{{ user.nickName }}</td>
-                <td class="active-row">{{ user.email }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.secondName }}</td>
-                <td class="active-row">{{ user.telNumber }}</td>
-                <td>{{ user.social }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Ukázat</a> |
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Upravit</a> |
-                    <a href="{{ path('app_user_delete', {'id': user.id}) }}">Odstranit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">Žádný uživatel nebyl nalezen</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-    <a href="{{ path('app_user_new') }}">Vytvořit nového uživatele</a>
 {% endblock %}
+

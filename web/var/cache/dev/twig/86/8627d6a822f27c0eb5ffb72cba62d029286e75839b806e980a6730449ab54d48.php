@@ -94,13 +94,15 @@ class __TwigTemplate_a09076e91719ad81593d24e78cbcc7f70dd6848ecba409144180ac119c7
         echo twig_include($this->env, $context, "event/_form.html.twig", ["button_label" => "Nahrát změny"]);
         echo "
 
-    <a href=\"";
-        // line 12
+<div class=\"a_edit_admin\">
+\t<a href=\"";
+        // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
+</div>
 
     ";
-        // line 14
+        // line 16
         echo twig_include($this->env, $context, "event/_delete_form.html.twig");
         echo "
 </div>
@@ -125,7 +127,7 @@ class __TwigTemplate_a09076e91719ad81593d24e78cbcc7f70dd6848ecba409144180ac119c7
 
     public function getDebugInfo()
     {
-        return array (  104 => 14,  99 => 12,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  106 => 16,  100 => 13,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -141,7 +143,9 @@ class __TwigTemplate_a09076e91719ad81593d24e78cbcc7f70dd6848ecba409144180ac119c7
 <div class=\"container\">
     {{ include('event/_form.html.twig', {'button_label': 'Nahrát změny'}) }}
 
-    <a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
+<div class=\"a_edit_admin\">
+\t<a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
+</div>
 
     {{ include('event/_delete_form.html.twig') }}
 </div>

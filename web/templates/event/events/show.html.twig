@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1 class="center">Uživatelé přihlášeni k účasti na
+		{{ event.name }}</h1>
+
+	<div class="search_center">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Vyhledat konkrétního uživatele..">
+	</div>
+
+	<script src="{{ url("homepage_default") }}layouts/custom/js/search.js"></script>
+
+	<div class="tabulka">
+		<table class="content-table">
+			<thead>
+				<tr>
+					<th>Přezdívka</th>
+					<th>Email</th>
+					<th>Jméno</th>
+
+					<th>Tel. číslo</th>
+					<th>Sociální sítě</th>
+					<th>Akce</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.nickName }}</td>
+						<td class="active-row">{{ user.email }}</td>
+						<td>{{ user.name }}
+							{{ user.secondName }}</td>
+
+						<td>{{ user.telNumber }}</td>
+						<td>{{ user.social }}</td>
+						<td>
+							<a href="{{ path('app_user_show', {'id': user.id}) }}">Podrobnosti</a>
+						</td>
+					</tr>
+				        {% else %}
+            <tr>
+                <td colspan="9">Žádný uživatel není přihlášen na akci s názvem {{ event.name }}.</td>
+            </tr>
+        {% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

@@ -30,13 +30,18 @@
                 <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>
-                    <a href="{{ path('user_event_show', {'id': event.id}) }}">ukázat</a> |
-                    <a href="{{ path('event_join', {'id': event.id}) }}">Přijdu</a>
+                    <a href="{{ path('user_event_show', {'id': event.id}) }}">Podrobnosti</a> |
+                    <a href="{{ path('event_join', {'id': event.id}) }}">Potvrdit účast</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                     |
+                     <a href="{{ path('joined_show', {'id': event.id}) }}">Ukaž přihlášené</a>
+                    {% endif %}
+                    
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Není nic vytvořeno</td>
+                <td colspan="6">Momentálně není žádná událost dostupná.</td>
             </tr>
         {% endfor %}
         </tbody>

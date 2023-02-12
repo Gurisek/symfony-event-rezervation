@@ -126,23 +126,38 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 30, $this->source); })()), "description", [], "any", false, false, false, 30), "html", null, true);
         echo "</td>
             </tr>
+            <tr>
+                <th>Možnosti</th>
+                <td>
+                    <form action=\"";
+        // line 35
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
+        echo "\">
+    <input type=\"hidden\" name=\"_method\" value=\"EDIT\">
+    <button type=\"submit\">Upravit</button>
+</form>
+                    <form action=\"";
+        // line 39
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 39, $this->source); })()), "id", [], "any", false, false, false, 39)]), "html", null, true);
+        echo "\" method=\"post\">
+    <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+    ";
+        // line 41
+        echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 41, $this->source); })()), "id", [], "any", false, false, false, 41))), "html", null, true);
+        echo "
+    <button type=\"submit\">Odstranit</button>
+</form>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
     <a href=\"";
-        // line 35
+        // line 49
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
 
-    <a href=\"";
-        // line 37
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 37, $this->source); })()), "id", [], "any", false, false, false, 37)]), "html", null, true);
-        echo "\">Upravit</a>
 
-    ";
-        // line 39
-        echo twig_include($this->env, $context, "event/_delete_form.html.twig");
-        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -164,7 +179,7 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
 
     public function getDebugInfo()
     {
-        return array (  144 => 39,  139 => 37,  134 => 35,  126 => 30,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  157 => 49,  146 => 41,  141 => 39,  134 => 35,  126 => 30,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -200,14 +215,26 @@ class __TwigTemplate_0e37276e5447c2d1ac04efb9683ab228124fc8706b6847c15ea53a8891a
                 <th>Popisek</th>
                 <td>{{ event.description }}</td>
             </tr>
+            <tr>
+                <th>Možnosti</th>
+                <td>
+                    <form action=\"{{ path('app_event_edit', {'id': event.id}) }}\">
+    <input type=\"hidden\" name=\"_method\" value=\"EDIT\">
+    <button type=\"submit\">Upravit</button>
+</form>
+                    <form action=\"{{ path('app_event_delete', {'id': event.id}) }}\" method=\"post\">
+    <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+    {{ csrf_token('delete' ~ event.id) }}
+    <button type=\"submit\">Odstranit</button>
+</form>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
     <a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
 
-    <a href=\"{{ path('app_event_edit', {'id': event.id}) }}\">Upravit</a>
 
-    {{ include('event/_delete_form.html.twig') }}
 {% endblock %}
 ", "event/show.html.twig", "/var/www/html/templates/event/show.html.twig");
     }

@@ -1,41 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Přihlášení{% endblock %}
+{% block title %}Přihlášení
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
 
-            {% if app.user %}
-                <div class="logged">
-                    <h1>Už jsi přihlášen/a jako {{ app.user.email }}
-                     <a href="{{ path('app_logout') }}">Odhlásit se</a>
-                </div>
-            {% else %}
-                 
+	{% for message in app.flashes('registered') %}
+		<div class="center alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-            <h1>Přihlášení</h1>
-            <label for="inputEmail">E-mail</label>
-            <input type="text" placeholder="E-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-            <label for="inputPassword">Heslo</label>
-            <input type="password" placeholder="Heslo" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+	<div class="container">
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-            <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}">
+			{% if app.user %}
+				<div class="logged">
+					<h1>Už jsi přihlášen/a jako
+						{{ app.user.email }}
+						<a href="{{ path('app_logout') }}">Odhlásit se</a>
+					</div>
+				{% else %}
 
-            <div class="checkbox mb-3">
-                <label>
-                        <input type="checkbox" name="_remember_me"> Zapamatovat přihlášení
-                    </label>
-                </div>
 
-            <button class="btn btn-lg btn-primary" type="submit">
-               <strong> Přihlásit se </strong>
-            </button>
-        </form>
-    </div>
-                 {% endif %}   
-{% endblock %}
+					<h1>Přihlášení</h1>
+					<label for="inputEmail">E-mail</label>
+					<input type="text" placeholder="E-mail" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+					<label for="inputPassword">Heslo</label>
+					<input type="password" placeholder="Heslo" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="checkbox mb-3">
+						<label>
+							<input type="checkbox" name="_remember_me">
+							Zapamatovat přihlášení
+						</label>
+					</div>
+
+					<button class="btn btn-lg btn-primary" type="submit">
+						<strong>
+							Přihlásit se
+						</strong>
+					</button>
+				</form>
+			</div>
+		{% endif %}
+	{% endblock %}
+

@@ -5,13 +5,16 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user')]
+#[IsGranted('ROLE_ADMIN')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
@@ -73,5 +76,32 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function addRoleToUser($id, EntityManagerInterface $entityManager)
+    {
+        $userRepository = $entityManager->getRepository(User::class);
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            throw new NotFoundHttpException('Uživatel nebyl nalezen');
+        }
+
+        $roleRepository = $entityManager->getRepository(Role::class);
+        $role = $roleRepository->find(2);
+
+        // Přiřazení role uživateli
+        $user->addRole($role);
+
+        // Uložení změn do databáze
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        $this->addFlash(
+            'admin',
+            'Uživatel byl úspěšně povýšen do A-teamu'
+        );
+
+        return $this->redirectToRoute('app_user_index');
     }
 }

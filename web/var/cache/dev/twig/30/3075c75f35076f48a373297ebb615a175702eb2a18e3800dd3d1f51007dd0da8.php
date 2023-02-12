@@ -192,11 +192,16 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         echo "        </tbody>
     </table>
 </div>
-    <a href=\"";
-        // line 52
+
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+\t\t<a href=\"";
+        // line 55
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_new");
         echo "\">Vytvořit nový</a>
-    
+\t</div>
+</div>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -218,7 +223,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 
     public function getDebugInfo()
     {
-        return array (  197 => 52,  192 => 49,  183 => 45,  174 => 41,  170 => 40,  166 => 39,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  141 => 32,  126 => 19,  117 => 16,  114 => 15,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  200 => 55,  192 => 49,  183 => 45,  174 => 41,  170 => 40,  166 => 39,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  141 => 32,  126 => 19,  117 => 16,  114 => 15,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -274,8 +279,13 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         </tbody>
     </table>
 </div>
-    <a href=\"{{ path('app_event_new') }}\">Vytvořit nový</a>
-    
+
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+\t\t<a href=\"{{ path('app_event_new') }}\">Vytvořit nový</a>
+\t</div>
+</div>
+
 {% endblock %}
 ", "event/index.html.twig", "/var/www/html/templates/event/index.html.twig");
     }

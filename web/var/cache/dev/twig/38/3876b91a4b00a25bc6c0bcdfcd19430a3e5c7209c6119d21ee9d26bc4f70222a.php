@@ -65,7 +65,7 @@ class __TwigTemplate_2d2a256a0db8f25d9b361a6e42ae6d386feca298cba2d140e49e60486df
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "New User";
+        echo "Nový Uživatel";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -85,17 +85,23 @@ class __TwigTemplate_2d2a256a0db8f25d9b361a6e42ae6d386feca298cba2d140e49e60486df
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Create new User</h1>
+        echo "<div class=\"nadpis\">
+    <h1 class=\"center\">Vytvořit nového uživatele</h1>
+</div>
 
+<div class=\"container\">
     ";
-        // line 8
+        // line 11
         echo twig_include($this->env, $context, "user/_form.html.twig");
         echo "
 
-    <a href=\"";
-        // line 10
+    <div class=\"a_edit_admin\">
+\t\t<a href=\"";
+        // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
-        echo "\">back to list</a>
+        echo "\">Zpět na přehled</a>
+\t</div>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -117,21 +123,27 @@ class __TwigTemplate_2d2a256a0db8f25d9b361a6e42ae6d386feca298cba2d140e49e60486df
 
     public function getDebugInfo()
     {
-        return array (  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  101 => 14,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}Nový Uživatel{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+<div class=\"nadpis\">
+    <h1 class=\"center\">Vytvořit nového uživatele</h1>
+</div>
 
+<div class=\"container\">
     {{ include('user/_form.html.twig') }}
 
-    <a href=\"{{ path('app_user_index') }}\">back to list</a>
+    <div class=\"a_edit_admin\">
+\t\t<a href=\"{{ path('app_user_index') }}\">Zpět na přehled</a>
+\t</div>
+</div>
 {% endblock %}
 ", "user/new.html.twig", "/var/www/html/templates/user/new.html.twig");
     }

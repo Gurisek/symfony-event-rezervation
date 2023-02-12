@@ -3,13 +3,16 @@
 {% block title %}Nový Uživatel{% endblock %}
 
 {% block body %}
-<div class="nadpis">
-    <h1 class="center">Vytvořit nového uživatele</h1>
-</div>
+	<div class="nadpis">
+		<h1 class="center">Vytvořit nového uživatele</h1>
+	</div>
 
-<div class="container">
-    {{ include('user/_form.html.twig') }}
-</div>
+	<div class="container">
+		{{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">Zpět na přehled</a>
+		<div class="a_edit_admin">
+			<a href="{{ path('app_user_index') }}">Zpět na přehled</a>
+		</div>
+	</div>
 {% endblock %}
+

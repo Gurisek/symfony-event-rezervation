@@ -150,27 +150,40 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                     <a href=\"";
             // line 33
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 33)]), "html", null, true);
-            echo "\">ukázat</a> |
+            echo "\">Podrobnosti</a> |
                     <a href=\"";
             // line 34
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_join", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 34)]), "html", null, true);
-            echo "\">Přijdu</a>
+            echo "\">Potvrdit účast</a>
+                    ";
+            // line 35
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 36
+                echo "                     |
+                     <a href=\"";
+                // line 37
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("joined_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+                echo "\">Ukaž přihlášené</a>
+                    ";
+            }
+            // line 39
+            echo "                    
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 38
+            // line 43
             echo "            <tr>
-                <td colspan=\"6\">Není nic vytvořeno</td>
+                <td colspan=\"6\">Momentálně není žádná událost dostupná.</td>
             </tr>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 42
+        // line 47
         echo "        </tbody>
     </table>
 </div>
@@ -183,7 +196,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     }
 
-    // line 47
+    // line 52
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -201,7 +214,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     }
 
-    // line 48
+    // line 53
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -231,7 +244,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
 
     public function getDebugInfo()
     {
-        return array (  205 => 48,  187 => 47,  174 => 42,  165 => 38,  156 => 34,  152 => 33,  147 => 31,  143 => 30,  139 => 29,  135 => 28,  132 => 27,  127 => 26,  112 => 13,  103 => 10,  100 => 9,  96 => 8,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
+        return array (  218 => 53,  200 => 52,  187 => 47,  178 => 43,  170 => 39,  165 => 37,  162 => 36,  160 => 35,  156 => 34,  152 => 33,  147 => 31,  143 => 30,  139 => 29,  135 => 28,  132 => 27,  127 => 26,  112 => 13,  103 => 10,  100 => 9,  96 => 8,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -268,13 +281,18 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                 <td class=\"active-row\">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>
-                    <a href=\"{{ path('user_event_show', {'id': event.id}) }}\">ukázat</a> |
-                    <a href=\"{{ path('event_join', {'id': event.id}) }}\">Přijdu</a>
+                    <a href=\"{{ path('user_event_show', {'id': event.id}) }}\">Podrobnosti</a> |
+                    <a href=\"{{ path('event_join', {'id': event.id}) }}\">Potvrdit účast</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                     |
+                     <a href=\"{{ path('joined_show', {'id': event.id}) }}\">Ukaž přihlášené</a>
+                    {% endif %}
+                    
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan=\"6\">Není nic vytvořeno</td>
+                <td colspan=\"6\">Momentálně není žádná událost dostupná.</td>
             </tr>
         {% endfor %}
         </tbody>

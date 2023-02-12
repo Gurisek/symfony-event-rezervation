@@ -366,6 +366,13 @@
         <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\BaseController"/>
       </call>
     </service>
+    <service id="App\Controller\EventUserController" class="App\Controller\EventUserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\EventUserController"/>
+      </call>
+    </service>
     <service id="App\Controller\HomepageController" class="App\Controller\HomepageController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6178,6 +6185,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomepageController" class="App\Controller\HomepageController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomepageController" class="App\Controller\HomepageController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomepageController" class="App\Controller\HomepageController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6575,7 +6585,13 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.u4UYkI5" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.l2QwsaZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.lTo3yDj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EventController::delete" type="service_closure" id=".service_locator.91kLpXo"/>
@@ -6584,12 +6600,15 @@
         <argument key="App\Controller\EventController::join" type="service_closure" id=".service_locator.BRcXwux"/>
         <argument key="App\Controller\EventController::new" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\EventController::show" type="service_closure" id=".service_locator.89sRwg8"/>
+        <argument key="App\Controller\EventUserController::index" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventUserController::show" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController::default" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController::noUserShowEvent" type="service_closure" id=".service_locator.89sRwg8"/>
         <argument key="App\Controller\HomepageController::noUserindex" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController::userShowEvent" type="service_closure" id=".service_locator.89sRwg8"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.4u5os03"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\UserController::addRoleToUser" type="service_closure" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\UserController::delete" type="service_closure" id=".service_locator.4MF6DUv"/>
         <argument key="App\Controller\UserController::edit" type="service_closure" id=".service_locator.4MF6DUv"/>
         <argument key="App\Controller\UserController::index" type="service_closure" id=".service_locator..Ae5NXw"/>
@@ -6607,12 +6626,15 @@
         <argument key="App\Controller\EventController:join" type="service_closure" id=".service_locator.BRcXwux"/>
         <argument key="App\Controller\EventController:new" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\EventController:show" type="service_closure" id=".service_locator.89sRwg8"/>
+        <argument key="App\Controller\EventUserController:index" type="service_closure" id=".service_locator.37hY7K."/>
+        <argument key="App\Controller\EventUserController:show" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController:default" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController:noUserShowEvent" type="service_closure" id=".service_locator.89sRwg8"/>
         <argument key="App\Controller\HomepageController:noUserindex" type="service_closure" id=".service_locator.37hY7K."/>
         <argument key="App\Controller\HomepageController:userShowEvent" type="service_closure" id=".service_locator.89sRwg8"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.4u5os03"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\UserController:addRoleToUser" type="service_closure" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\UserController:delete" type="service_closure" id=".service_locator.4MF6DUv"/>
         <argument key="App\Controller\UserController:edit" type="service_closure" id=".service_locator.4MF6DUv"/>
         <argument key="App\Controller\UserController:index" type="service_closure" id=".service_locator..Ae5NXw"/>
@@ -7047,6 +7069,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.l1ae.Qz" method="withContext"/>
     </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\EventUserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EventUserController"/>
+      <argument>App\Controller\EventUserController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
     <service id=".service_locator.l1ae.Qz.App\Controller\HomepageController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomepageController"/>
       <argument>App\Controller\HomepageController</argument>
@@ -7243,12 +7271,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.u4UYkI5"/>
+      <argument type="service" id=".service_locator.lTo3yDj"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.u4UYkI5"/>
+      <argument type="service" id=".service_locator.lTo3yDj"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8178,7 +8206,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.u4UYkI5"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.lTo3yDj"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8201,7 +8229,7 @@
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~vGDQfbm"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.Dby0_1s" alias=".service_locator.4u5os03"/>
-    <service id=".service_locator.34fcBGv" alias=".service_locator.u4UYkI5"/>
+    <service id=".service_locator.xpZMyKR" alias=".service_locator.lTo3yDj"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.u9sCicT" alias=".service_locator.GGogkMu"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
@@ -8239,6 +8267,7 @@
     <service id=".service_locator.8PQa8Mp" alias=".service_locator..Ae5NXw"/>
     <service id=".service_locator.NFoOWn0" alias=".service_locator.ch4Jgvl"/>
     <service id=".service_locator.IyTIsd6" alias=".service_locator.4MF6DUv"/>
+    <service id=".service_locator.Er0_7SX" alias=".service_locator.l2QwsaZ"/>
     <service id=".service_locator.moWzgtz" alias=".service_locator.l1ae.Qz"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.9YCWxeJ" alias=".service_locator.dw8O4oN"/>

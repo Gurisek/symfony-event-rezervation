@@ -1,40 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event{% endblock %}
+{% block title %}Event
+{% endblock %}
 
 {% block body %}
-<div class="nadpis">
-    <h1 class="center">Event</h1>
-</div>
-<div class="tabulka">
-    <table class="content-table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Název</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Místo</th>
-                <td class="active-row">{{ event.place }}</td>
-            </tr>
-            <tr>
-                <th>Datum</th>
-                <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Popisek</th>
-                <td>{{ event.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-    <a href="{{ path('app_event_index') }}">Zpět na přehled</a>
+	<div class="nadpis">
+		<h1 class="center">Event</h1>
+	</div>
+	<div class="tabulka">
+		<table class="content-table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ event.id }}</td>
+				</tr>
+				<tr>
+					<th>Název</th>
+					<td>{{ event.name }}</td>
+				</tr>
+				<tr>
+					<th>Místo</th>
+					<td class="active-row">{{ event.place }}</td>
+				</tr>
+				<tr>
+					<th>Datum</th>
+					<td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Popisek</th>
+					<td>{{ event.description }}</td>
+				</tr>
+				<tr>
+					<th>Možnosti</th>
+					<td>
+						<form action="{{ path('app_event_edit', {'id': event.id}) }}">
+							<input type="hidden" name="_method" value="EDIT">
+							<button type="submit">Upravit</button>
+						</form>
+						<form action="{{ path('app_event_delete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Jste si jistý s odstraněním této události?');">
+							<input type="hidden" name="_method" value="DELETE">
+							{{ csrf_token('delete' ~ event.id) }}
+							<button type="submit">Odstranit</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-    <a href="{{ path('app_event_edit', {'id': event.id}) }}">Upravit</a>
+	<div class="a_index">
+		<a href="{{ path('app_event_index') }}">Zpět na přehled</a>
+	</div>
 
-    {{ include('event/_delete_form.html.twig') }}
+
 {% endblock %}
+
