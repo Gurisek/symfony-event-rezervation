@@ -59,7 +59,7 @@
 						</form>
 					</div>
 					<div class="tlacitka">
-						<form method="post" action="{{ path('app_user_demote', {'id': user.id}) }}" onsubmit="return confirm('Určitě chcete uživateli odebrat funkci Admina?';)">
+						<form method="post" action="{{ path('app_user_demote', {'id': user.id}) }}" onsubmit="return confirm('Určitě chcete uživateli odebrat funkci Admina?');">
 							<button type="submit" class="btn btn-danger">Sesadit na uživatele</button>
 						</form>
 					</div>
