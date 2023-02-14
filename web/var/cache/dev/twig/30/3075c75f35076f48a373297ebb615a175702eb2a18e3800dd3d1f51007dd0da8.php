@@ -172,14 +172,18 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
                     <a href=\"";
             // line 41
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 41)]), "html", null, true);
-            echo "\">Odstranit</a>
+            echo "\">Odstranit</a> |
+                     <a href=\"";
+            // line 42
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("joined_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 42)]), "html", null, true);
+            echo "\">Účastníci</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 45
+            // line 46
             echo "            <tr>
                 <td colspan=\"6\">Není nic vytvořeno</td>
             </tr>
@@ -188,7 +192,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
+        // line 50
         echo "        </tbody>
     </table>
 </div>
@@ -196,7 +200,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
 \t\t<a href=\"";
-        // line 55
+        // line 56
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_new");
         echo "\">Vytvořit nový</a>
 \t</div>
@@ -223,7 +227,7 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
 
     public function getDebugInfo()
     {
-        return array (  200 => 55,  192 => 49,  183 => 45,  174 => 41,  170 => 40,  166 => 39,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  141 => 32,  126 => 19,  117 => 16,  114 => 15,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  204 => 56,  196 => 50,  187 => 46,  178 => 42,  174 => 41,  170 => 40,  166 => 39,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  141 => 32,  126 => 19,  117 => 16,  114 => 15,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -268,7 +272,8 @@ class __TwigTemplate_ac38ae11f9b7d69c1efb70107abf8e89d19aaab36d2fa40a61f88f7936e
                 <td>
                     <a href=\"{{ path('app_event_show', {'id': event.id}) }}\">Ukázat</a> |
                     <a href=\"{{ path('app_event_edit', {'id': event.id}) }}\">Upravit</a> |
-                    <a href=\"{{ path('app_event_delete', {'id': event.id}) }}\">Odstranit</a>
+                    <a href=\"{{ path('app_event_delete', {'id': event.id}) }}\">Odstranit</a> |
+                     <a href=\"{{ path('joined_show', {'id': event.id}) }}\">Účastníci</a>
                 </td>
             </tr>
         {% else %}

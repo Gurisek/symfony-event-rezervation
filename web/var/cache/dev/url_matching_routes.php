@@ -59,8 +59,14 @@ return [
                 .'|/show/([^/]++)(*:322)'
                 .'|/user/([^/]++)(?'
                     .'|(*:347)'
-                    .'|/edit(*:360)'
-                    .'|(*:368)'
+                    .'|/(?'
+                        .'|edit(*:363)'
+                        .'|user_(?'
+                            .'|promote(*:386)'
+                            .'|demote(*:400)'
+                        .')'
+                    .')'
+                    .'|(*:410)'
                 .')'
             .')/?$}sDu',
     ],
@@ -81,8 +87,10 @@ return [
         299 => [[['_route' => 'user_event_show', '_controller' => 'App\\Controller\\HomepageController::userShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
         322 => [[['_route' => 'no_user_show', '_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
         347 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        360 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        368 => [
+        363 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        386 => [[['_route' => 'app_user_promote', '_controller' => 'App\\Controller\\UserController::promoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        400 => [[['_route' => 'app_user_demote', '_controller' => 'App\\Controller\\UserController::demoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        410 => [
             [['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

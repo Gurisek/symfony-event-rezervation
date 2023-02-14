@@ -40,15 +40,30 @@
 				</tr>
 				<th>Možnosti</th>
 				<td>
-					<form action="{{ path('app_user_edit', {'id': user.id}) }}">
-						<input type="hidden" name="_method" value="EDIT">
-						<button type="submit">Upravit</button>
-					</form>
-					<form action="{{ path('app_user_delete', {'id': user.id}) }}" method="post" onsubmit="return confirm('Jste si jistý s odstraněním tohoto uživatele?');">
-						<input type="hidden" name="_method" value="DELETE">
-						{{ csrf_token('delete' ~ user.id) }}
-						<button type="submit">Odstranit</button>
-					</form>
+				<div class="paleta">
+					<div class="tlacitka">
+						<form action="{{ path('app_user_edit', {'id': user.id}) }}">
+							<input type="hidden" name="_method" value="EDIT">
+							<button type="submit">Upravit</button>
+						</form>
+					</div>
+					<div class="tlacitka">
+						<form action="{{ path('app_user_delete', {'id': user.id}) }}" method="post" onsubmit="return confirm('Jste si jistý s odstraněním tohoto uživatele?');">
+							<input type="hidden" name="_method" value="{{ csrf_token('delete' ~ user.id) }}">
+							<button type="submit">Odstranit</button>
+						</form>
+					</div>
+					<div class="tlacitka">
+						<form method="post" action="{{ path('app_user_promote', {'id': user.id}) }}" onsubmit="return confirm('Určitě chcete přidělit admin roli tomuto uživateli?');">
+							<button type="submit" class="btn btn-danger">Povýšit na admina</button>
+						</form>
+					</div>
+					<div class="tlacitka">
+						<form method="post" action="{{ path('app_user_demote', {'id': user.id}) }}" onsubmit="return confirm('Určitě chcete uživateli odebrat funkci Admina?';)">
+							<button type="submit" class="btn btn-danger">Sesadit na uživatele</button>
+						</form>
+					</div>
+				</div>
 				</td>
 			</tbody>
 		</table>

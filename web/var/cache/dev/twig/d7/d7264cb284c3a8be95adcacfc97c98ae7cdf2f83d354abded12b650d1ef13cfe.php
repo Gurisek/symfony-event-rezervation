@@ -65,7 +65,7 @@ class __TwigTemplate_3074a289774d92e3428f881c7e7da57e84aeafc6433174c0d3a1d1c0606
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Edit User";
+        echo "Úprava uživatele";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -135,7 +135,7 @@ class __TwigTemplate_3074a289774d92e3428f881c7e7da57e84aeafc6433174c0d3a1d1c0606
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Úprava uživatele{% endblock %}
 
 {% block body %}
 <div class=\"nadpis\">

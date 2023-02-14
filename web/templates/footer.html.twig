@@ -5,22 +5,22 @@
 				<h4>Web</h4>
 					<ul>
 						<li><a href="#">O nás</a></li>
-            <li><a href="#">Registrace</a></li>
-            <li><a href="#">Seznam akcí</a></li>
+            			<li><a href="{{ path('app_register') }}">Registrace</a></li>
+            			<li><a href="{{ path('no_user_index') }}">Seznam akcí</a></li>
 					</ul>
 			</div>
 			<div class="footer-col">
 				<h4>Podpora</h4>
 					<ul>
-						<li><a href="#">Kontaktuj nás</a></li>
+						<li><a href="{{ path('contact') }}">Kontaktuj nás</a></li>
             		</ul>
 			</div>
 			<div class="footer-col">
 				<h4>Rychlé odkazy</h4>
 					<ul>
-						<li><a href="#">Index</a></li>
-            			<li><a href="#">Registrace</a></li>
-            			<li><a href="#">Přihlášení</a></li>
+						<li><a href="{{ path('no_user_index') }}">Index</a></li>
+            			<li><a href="{{ path('app_register') }}">Registrace</a></li>
+            			<li><a href="{{ path('app_login') }}">Přihlášení</a></li>
 					</ul>
 			</div>
 			<div class="footer-col">

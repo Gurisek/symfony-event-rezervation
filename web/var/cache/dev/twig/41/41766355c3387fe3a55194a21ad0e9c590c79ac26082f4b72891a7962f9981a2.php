@@ -163,7 +163,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                      <a href=\"";
                 // line 37
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("joined_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 37)]), "html", null, true);
-                echo "\">Ukaž přihlášené</a>
+                echo "\">Účastníci</a>
                     ";
             }
             // line 39
@@ -285,7 +285,7 @@ class __TwigTemplate_76c347c235716f083da09a3725dbde5678357735ac47b83dc0b7efb5220
                     <a href=\"{{ path('event_join', {'id': event.id}) }}\">Potvrdit účast</a>
                     {% if is_granted('ROLE_ADMIN') %}
                      |
-                     <a href=\"{{ path('joined_show', {'id': event.id}) }}\">Ukaž přihlášené</a>
+                     <a href=\"{{ path('joined_show', {'id': event.id}) }}\">Účastníci</a>
                     {% endif %}
                     
                 </td>

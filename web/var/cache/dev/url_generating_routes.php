@@ -36,4 +36,6 @@ return [
     'app_user_show' => [['id'], ['_controller' => 'App\\Controller\\UserController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user']], [], [], []],
     'app_user_edit' => [['id'], ['_controller' => 'App\\Controller\\UserController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/user']], [], [], []],
     'app_user_delete' => [['id'], ['_controller' => 'App\\Controller\\UserController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user']], [], [], []],
+    'app_user_promote' => [['id'], ['_controller' => 'App\\Controller\\UserController::promoteUser'], [], [['text', '/user_promote'], ['variable', '/', '[^/]++', 'id', true], ['text', '/user']], [], [], []],
+    'app_user_demote' => [['id'], ['_controller' => 'App\\Controller\\UserController::demoteUser'], [], [['text', '/user_demote'], ['variable', '/', '[^/]++', 'id', true], ['text', '/user']], [], [], []],
 ];

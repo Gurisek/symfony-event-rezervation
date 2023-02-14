@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -78,30 +79,67 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    public function addRoleToUser($id, EntityManagerInterface $entityManager)
+    #[Route('/{id}/user_promote', name: 'app_user_promote', methods:['GET', 'POST'])]
+    public function promoteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-        $userRepository = $entityManager->getRepository(User::class);
-        $user = $userRepository->find($id);
-
+        $user = $entityManager->getRepository(User::class)->find($id);
+    
         if (!$user) {
-            throw new NotFoundHttpException('Uživatel nebyl nalezen');
+            $this->addFlash('error', 'Uživatel nebyl nalezen');
+            return $this->redirectToRoute('app_user_index');
         }
+    
+        $roleRepository = $entityManager->getRepository(Role::class);
+        $role = $roleRepository->find(1);
+
+        $user->removeRole($role);
 
         $roleRepository = $entityManager->getRepository(Role::class);
         $role = $roleRepository->find(2);
 
-        // Přiřazení role uživateli
         $user->addRole($role);
-
-        // Uložení změn do databáze
+    
         $entityManager->persist($user);
         $entityManager->flush();
+    
 
         $this->addFlash(
             'admin',
             'Uživatel byl úspěšně povýšen do A-teamu'
         );
+    
+        return $this->redirectToRoute('app_user_index');
+    }
 
+    #[Route('/{id}/user_demote', name: 'app_user_demote', methods:['GET', 'POST'])]
+    public function demoteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    {
+        $user = $entityManager->getRepository(User::class)->find($id);
+    
+        if (!$user) {
+            $this->addFlash('error', 'Uživatel nebyl nalezen');
+            return $this->redirectToRoute('app_user_index');
+        }
+    
+        $roleRepository = $entityManager->getRepository(Role::class);
+        $role = $roleRepository->find(2);
+
+        $user->removeRole($role);
+
+        $roleRepository = $entityManager->getRepository(Role::class);
+        $role = $roleRepository->find(1);
+
+        $user->addRole($role);
+    
+        $entityManager->persist($user);
+        $entityManager->flush();
+    
+
+        $this->addFlash(
+            'noadmin',
+            'Admin byl sesazen z funkce!'
+        );
+    
         return $this->redirectToRoute('app_user_index');
     }
 }

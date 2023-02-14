@@ -65,8 +65,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "User index
-";
+        echo "Seznam uživatelů";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -75,7 +74,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     }
 
-    // line 6
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -85,20 +84,20 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 6
         echo "\t<div class=\"nadpis\">
 \t\t<h1 class=\"center\">User index</h1>
 \t</div>
 
 \t";
-        // line 11
+        // line 10
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", [0 => "admin"], "method", false, false, false, 11));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "flashes", [0 => "admin"], "method", false, false, false, 10));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 12
+            // line 11
             echo "\t\t<div class=\"center alert alert-success\">
 \t\t\t";
-            // line 13
+            // line 12
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
 \t\t</div>
@@ -107,7 +106,26 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 15
+        echo "
+\t";
         // line 16
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "flashes", [0 => "noadmin"], "method", false, false, false, 16));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 17
+            echo "\t\t<div class=\"center alert alert-success\">
+\t\t\t";
+            // line 18
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+\t\t</div>
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 21
         echo "
 \t<div class=\"search_center\">
 \t\t<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
@@ -115,7 +133,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
 
 \t<script src=\"";
-        // line 22
+        // line 27
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/search.js\"></script>
 
@@ -129,56 +147,56 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 \t\t\t\t\t<th>Příjmení</th>
 \t\t\t\t\t<th>Tel. číslo</th>
 \t\t\t\t\t<th>Sociální sítě</th>
-\t\t\t\t\t<th>Akce</th>
+\t\t\t\t\t<th>Možnosti</th>
 \t\t\t\t</tr>
 \t\t\t</thead>
 \t\t\t<tbody>
 \t\t\t\t";
-        // line 38
+        // line 43
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 38, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 43, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 39
+            // line 44
             echo "\t\t\t\t\t<tr>
 \t\t\t\t\t\t<td class=\"active-row\">";
-            // line 40
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 40), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t<td class=\"active-row\">";
-            // line 41
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 41), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t<td>";
-            // line 42
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 42), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t<td>";
-            // line 43
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 43), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t<td class=\"active-row\">";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 44), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t<td>";
             // line 45
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 45), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "nickName", [], "any", false, false, false, 45), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td class=\"active-row\">";
+            // line 46
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 46), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 47
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 47), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 48
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "secondName", [], "any", false, false, false, 48), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td class=\"active-row\">";
+            // line 49
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "telNumber", [], "any", false, false, false, 49), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t<td>";
+            // line 50
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "social", [], "any", false, false, false, 50), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t<a href=\"";
-            // line 47
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+            // line 52
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 52)]), "html", null, true);
             echo "\">Ukázat</a>
 \t\t\t\t\t\t\t|
 \t\t\t\t\t\t\t<a href=\"";
-            // line 49
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 49)]), "html", null, true);
+            // line 54
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 54)]), "html", null, true);
             echo "\">Upravit</a>
 \t\t\t\t\t\t\t|
 \t\t\t\t\t\t\t<a href=\"";
-            // line 51
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 51)]), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 56)]), "html", null, true);
             echo "\">Odstranit</a>
 \t\t\t\t\t\t</td>
 \t\t\t\t\t</tr>
@@ -186,7 +204,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 55
+            // line 60
             echo "\t\t\t\t\t<tr>
 \t\t\t\t\t\t<td colspan=\"9\">Žádný uživatel nebyl nalezen..</td>
 \t\t\t\t\t</tr>
@@ -195,7 +213,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 59
+        // line 64
         echo "\t\t\t</tbody>
 \t\t</table>
 \t</div>
@@ -203,7 +221,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
 \t\t<a href=\"";
-        // line 65
+        // line 70
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
         echo "\">Vytvořit nového uživatele</a>
 \t</div>
@@ -229,15 +247,14 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 
     public function getDebugInfo()
     {
-        return array (  207 => 65,  199 => 59,  190 => 55,  181 => 51,  176 => 49,  171 => 47,  166 => 45,  162 => 44,  158 => 43,  154 => 42,  150 => 41,  146 => 40,  143 => 39,  138 => 38,  119 => 22,  111 => 16,  102 => 13,  99 => 12,  95 => 11,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  225 => 70,  217 => 64,  208 => 60,  199 => 56,  194 => 54,  189 => 52,  184 => 50,  180 => 49,  176 => 48,  172 => 47,  168 => 46,  164 => 45,  161 => 44,  156 => 43,  137 => 27,  129 => 21,  120 => 18,  117 => 17,  113 => 16,  110 => 15,  101 => 12,  98 => 11,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}User index
-{% endblock %}
+{% block title %}Seznam uživatelů{% endblock %}
 
 {% block body %}
 \t<div class=\"nadpis\">
@@ -245,6 +262,12 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 \t</div>
 
 \t{% for message in app.flashes('admin') %}
+\t\t<div class=\"center alert alert-success\">
+\t\t\t{{ message }}
+\t\t</div>
+\t{% endfor %}
+
+\t{% for message in app.flashes('noadmin') %}
 \t\t<div class=\"center alert alert-success\">
 \t\t\t{{ message }}
 \t\t</div>
@@ -267,7 +290,7 @@ class __TwigTemplate_85ec5ee89f79a9dbfc6ab5c687d5dd5480276fa41799e81c1dc2d25ca35
 \t\t\t\t\t<th>Příjmení</th>
 \t\t\t\t\t<th>Tel. číslo</th>
 \t\t\t\t\t<th>Sociální sítě</th>
-\t\t\t\t\t<th>Akce</th>
+\t\t\t\t\t<th>Možnosti</th>
 \t\t\t\t</tr>
 \t\t\t</thead>
 \t\t\t<tbody>

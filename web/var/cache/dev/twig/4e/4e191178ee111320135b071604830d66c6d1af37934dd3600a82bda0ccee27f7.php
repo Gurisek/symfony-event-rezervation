@@ -47,22 +47,40 @@ class __TwigTemplate_63d545de3cbc08c209c141c1f857aa0848c2ff56ce88ce71089d77527ee
 \t\t\t\t<h4>Web</h4>
 \t\t\t\t\t<ul>
 \t\t\t\t\t\t<li><a href=\"#\">O nás</a></li>
-            <li><a href=\"#\">Registrace</a></li>
-            <li><a href=\"#\">Seznam akcí</a></li>
+            \t\t\t<li><a href=\"";
+        // line 8
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        echo "\">Registrace</a></li>
+            \t\t\t<li><a href=\"";
+        // line 9
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_index");
+        echo "\">Seznam akcí</a></li>
 \t\t\t\t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">
 \t\t\t\t<h4>Podpora</h4>
 \t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Kontaktuj nás</a></li>
+\t\t\t\t\t\t<li><a href=\"";
+        // line 15
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact");
+        echo "\">Kontaktuj nás</a></li>
             \t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">
 \t\t\t\t<h4>Rychlé odkazy</h4>
 \t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Index</a></li>
-            \t\t\t<li><a href=\"#\">Registrace</a></li>
-            \t\t\t<li><a href=\"#\">Přihlášení</a></li>
+\t\t\t\t\t\t<li><a href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_index");
+        echo "\">Index</a></li>
+            \t\t\t<li><a href=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        echo "\">Registrace</a></li>
+            \t\t\t<li><a href=\"";
+        // line 23
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\">Přihlášení</a></li>
 \t\t\t\t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">
@@ -90,9 +108,14 @@ class __TwigTemplate_63d545de3cbc08c209c141c1f857aa0848c2ff56ce88ce71089d77527ee
         return "footer.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  82 => 23,  78 => 22,  74 => 21,  65 => 15,  56 => 9,  52 => 8,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -104,22 +127,22 @@ class __TwigTemplate_63d545de3cbc08c209c141c1f857aa0848c2ff56ce88ce71089d77527ee
 \t\t\t\t<h4>Web</h4>
 \t\t\t\t\t<ul>
 \t\t\t\t\t\t<li><a href=\"#\">O nás</a></li>
-            <li><a href=\"#\">Registrace</a></li>
-            <li><a href=\"#\">Seznam akcí</a></li>
+            \t\t\t<li><a href=\"{{ path('app_register') }}\">Registrace</a></li>
+            \t\t\t<li><a href=\"{{ path('no_user_index') }}\">Seznam akcí</a></li>
 \t\t\t\t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">
 \t\t\t\t<h4>Podpora</h4>
 \t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Kontaktuj nás</a></li>
+\t\t\t\t\t\t<li><a href=\"{{ path('contact') }}\">Kontaktuj nás</a></li>
             \t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">
 \t\t\t\t<h4>Rychlé odkazy</h4>
 \t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Index</a></li>
-            \t\t\t<li><a href=\"#\">Registrace</a></li>
-            \t\t\t<li><a href=\"#\">Přihlášení</a></li>
+\t\t\t\t\t\t<li><a href=\"{{ path('no_user_index') }}\">Index</a></li>
+            \t\t\t<li><a href=\"{{ path('app_register') }}\">Registrace</a></li>
+            \t\t\t<li><a href=\"{{ path('app_login') }}\">Přihlášení</a></li>
 \t\t\t\t\t</ul>
 \t\t\t</div>
 \t\t\t<div class=\"footer-col\">

@@ -25,7 +25,7 @@
                 <th>Místo</th>
                 <th>Datum</th>
                 <th>Popisek</th>
-                <th>Akce</th>
+                <th>Možnosti</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +38,8 @@
                 <td>
                     <a href="{{ path('app_event_show', {'id': event.id}) }}">Ukázat</a> |
                     <a href="{{ path('app_event_edit', {'id': event.id}) }}">Upravit</a> |
-                    <a href="{{ path('app_event_delete', {'id': event.id}) }}">Odstranit</a>
+                    <a href="{{ path('app_event_delete', {'id': event.id}) }}">Odstranit</a> |
+                     <a href="{{ path('joined_show', {'id': event.id}) }}">Účastníci</a>
                 </td>
             </tr>
         {% else %}
