@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Doctrine\ORM;
 
+use BadMethodCallException;
 use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\SimpleAnnotationReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\Cache as CacheDriver;
 use Doctrine\Common\Cache\Psr6\CacheAdapter;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
-use Doctrine\Common\Proxy\AbstractProxyFactory;
+use Doctrine\Common\Persistence\PersistentObject;
 use Doctrine\Deprecations\Deprecation;
 use Doctrine\ORM\Cache\CacheConfiguration;
 use Doctrine\ORM\Cache\Exception\CacheException;
@@ -23,6 +23,7 @@ use Doctrine\ORM\Cache\Exception\QueryCacheUsesNonPersistentCache;
 use Doctrine\ORM\Exception\InvalidEntityRepository;
 use Doctrine\ORM\Exception\NamedNativeQueryNotFound;
 use Doctrine\ORM\Exception\NamedQueryNotFound;
+use Doctrine\ORM\Exception\NotSupported;
 use Doctrine\ORM\Exception\ProxyClassesAlwaysRegenerating;
 use Doctrine\ORM\Exception\UnknownEntityNamespace;
 use Doctrine\ORM\Internal\Hydration\AbstractHydrator;
@@ -34,19 +35,26 @@ use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Mapping\EntityListenerResolver;
 use Doctrine\ORM\Mapping\NamingStrategy;
 use Doctrine\ORM\Mapping\QuoteStrategy;
+use Doctrine\ORM\Mapping\TypedFieldMapper;
+use Doctrine\ORM\Proxy\ProxyFactory;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Filter\SQLFilter;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\ORM\Repository\DefaultRepositoryFactory;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\Persistence\ObjectRepository;
+use Doctrine\Persistence\Reflection\RuntimeReflectionProperty;
 use LogicException;
 use Psr\Cache\CacheItemPoolInterface;
-use ReflectionClass;
+use Symfony\Component\VarExporter\LazyGhostTrait;
 
 use function class_exists;
+use function is_a;
 use function method_exists;
 use function sprintf;
 use function strtolower;
+use function trait_exists;
 use function trim;
 
 /**
@@ -54,6 +62,8 @@ use function trim;
  * It combines all configuration options from DBAL & ORM.
  *
  * Internal note: When adding a new configuration option just write a getter/setter pair.
+ *
+ * @psalm-import-type AutogenerateMode from ProxyFactory
  */
 class Configuration extends \Doctrine\DBAL\Configuration
 {
@@ -75,10 +85,6 @@ class Configuration extends \Doctrine\DBAL\Configuration
     /**
      * Gets the directory where Doctrine generates any necessary proxy class files.
      *
-     * @deprecated 2.7 We're switch to `ocramius/proxy-manager` and this method isn't applicable any longer
-     *
-     * @see https://github.com/Ocramius/ProxyManager
-     *
      * @return string|null
      */
     public function getProxyDir()
@@ -89,21 +95,19 @@ class Configuration extends \Doctrine\DBAL\Configuration
     /**
      * Gets the strategy for automatically generating proxy classes.
      *
-     * @deprecated 2.7 We're switch to `ocramius/proxy-manager` and this method isn't applicable any longer
-     *
-     * @see https://github.com/Ocramius/ProxyManager
-     *
-     * @return int Possible values are constants of Doctrine\Common\Proxy\AbstractProxyFactory.
+     * @return int Possible values are constants of Doctrine\ORM\Proxy\ProxyFactory.
+     * @psalm-return AutogenerateMode
      */
     public function getAutoGenerateProxyClasses()
     {
-        return $this->_attributes['autoGenerateProxyClasses'] ?? AbstractProxyFactory::AUTOGENERATE_ALWAYS;
+        return $this->_attributes['autoGenerateProxyClasses'] ?? ProxyFactory::AUTOGENERATE_ALWAYS;
     }
 
     /**
      * Sets the strategy for automatically generating proxy classes.
      *
-     * @param bool|int $autoGenerate Possible values are constants of Doctrine\Common\Proxy\AbstractProxyFactory.
+     * @param bool|int $autoGenerate Possible values are constants of Doctrine\ORM\Proxy\ProxyFactory.
+     * @psalm-param bool|AutogenerateMode $autoGenerate
      * True is converted to AUTOGENERATE_ALWAYS, false to AUTOGENERATE_NEVER.
      *
      * @return void
@@ -115,10 +119,6 @@ class Configuration extends \Doctrine\DBAL\Configuration
 
     /**
      * Gets the namespace where proxy classes reside.
-     *
-     * @deprecated 2.7 We're switch to `ocramius/proxy-manager` and this method isn't applicable any longer
-     *
-     * @see https://github.com/Ocramius/ProxyManager
      *
      * @return string|null
      */
@@ -156,6 +156,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * Adds a new default annotation driver with a correctly configured annotation reader. If $useSimpleAnnotationReader
      * is true, the notation `@Entity` will work, otherwise, the notation `@ORM\Entity` will be supported.
      *
+     * @deprecated Use {@see ORMSetup::createDefaultAnnotationDriver()} instead.
+     *
      * @param string|string[] $paths
      * @param bool            $useSimpleAnnotationReader
      * @psalm-param string|list<string> $paths
@@ -164,17 +166,30 @@ class Configuration extends \Doctrine\DBAL\Configuration
      */
     public function newDefaultAnnotationDriver($paths = [], $useSimpleAnnotationReader = true)
     {
+        Deprecation::trigger(
+            'doctrine/orm',
+            'https://github.com/doctrine/orm/pull/9443',
+            '%s is deprecated, call %s::createDefaultAnnotationDriver() instead.',
+            __METHOD__,
+            ORMSetup::class
+        );
+
         if (! class_exists(AnnotationReader::class)) {
-            throw new LogicException(sprintf(
+            throw new LogicException(
                 'The annotation metadata driver cannot be enabled because the "doctrine/annotations" library'
                 . ' is not installed. Please run "composer require doctrine/annotations" or choose a different'
                 . ' metadata driver.'
-            ));
+            );
         }
 
-        AnnotationRegistry::registerFile(__DIR__ . '/Mapping/Driver/DoctrineAnnotations.php');
-
         if ($useSimpleAnnotationReader) {
+            if (! class_exists(SimpleAnnotationReader::class)) {
+                throw new BadMethodCallException(
+                    'SimpleAnnotationReader has been removed in doctrine/annotations 2.'
+                    . ' Downgrade to version 1 or set $useSimpleAnnotationReader to false.'
+                );
+            }
+
             // Register the ORM Annotations in the AnnotationRegistry
             $reader = new SimpleAnnotationReader();
             $reader->addNamespace('Doctrine\ORM\Mapping');
@@ -182,7 +197,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
             $reader = new AnnotationReader();
         }
 
-        if (class_exists(ArrayCache::class)) {
+        if (class_exists(ArrayCache::class) && class_exists(CachedReader::class)) {
             $reader = new CachedReader($reader, new ArrayCache());
         }
 
@@ -193,6 +208,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
     }
 
     /**
+     * @deprecated No replacement planned.
+     *
      * Adds a namespace under a certain alias.
      *
      * @param string $alias
@@ -202,6 +219,21 @@ class Configuration extends \Doctrine\DBAL\Configuration
      */
     public function addEntityNamespace($alias, $namespace)
     {
+        if (class_exists(PersistentObject::class)) {
+            Deprecation::trigger(
+                'doctrine/orm',
+                'https://github.com/doctrine/orm/issues/8818',
+                'Short namespace aliases such as "%s" are deprecated and will be removed in Doctrine ORM 3.0.',
+                $alias
+            );
+        } else {
+            NotSupported::createForPersistence3(sprintf(
+                'Using short namespace alias "%s" by calling %s',
+                $alias,
+                __METHOD__
+            ));
+        }
+
         $this->_attributes['entityNamespaces'][$alias] = $namespace;
     }
 
@@ -548,7 +580,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
             throw QueryCacheUsesNonPersistentCache::fromDriver($queryCacheImpl);
         }
 
-        if ($this->getAutoGenerateProxyClasses()) {
+        if ($this->getAutoGenerateProxyClasses() !== ProxyFactory::AUTOGENERATE_NEVER) {
             throw ProxyClassesAlwaysRegenerating::create();
         }
 
@@ -570,8 +602,9 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * DQL function names are case-insensitive.
      *
-     * @param string          $name      Function name.
-     * @param string|callable $className Class name or a callable that returns the function.
+     * @param string                $name      Function name.
+     * @param class-string|callable $className Class name or a callable that returns the function.
+     * @psalm-param class-string<FunctionNode>|callable(string):FunctionNode $className
      *
      * @return void
      */
@@ -585,8 +618,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string $name
      *
-     * @return string|null
-     * @psalm-return ?class-string
+     * @return string|callable|null
+     * @psalm-return class-string<FunctionNode>|callable(string):FunctionNode|null
      */
     public function getCustomStringFunction($name)
     {
@@ -603,7 +636,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * Any previously added string functions are discarded.
      *
-     * @psalm-param array<string, class-string> $functions The map of custom
+     * @psalm-param array<string, class-string<FunctionNode>|callable(string):FunctionNode> $functions The map of custom
      *                                                     DQL string functions.
      *
      * @return void
@@ -622,8 +655,9 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * DQL function names are case-insensitive.
      *
-     * @param string          $name      Function name.
-     * @param string|callable $className Class name or a callable that returns the function.
+     * @param string                $name      Function name.
+     * @param class-string|callable $className Class name or a callable that returns the function.
+     * @psalm-param class-string<FunctionNode>|callable(string):FunctionNode $className
      *
      * @return void
      */
@@ -637,8 +671,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string $name
      *
-     * @return string|null
-     * @psalm-return ?class-string
+     * @return string|callable|null
+     * @psalm-return class-string|callable|null
      */
     public function getCustomNumericFunction($name)
     {
@@ -676,7 +710,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string          $name      Function name.
      * @param string|callable $className Class name or a callable that returns the function.
-     * @psalm-param class-string|callable $className
+     * @psalm-param class-string<FunctionNode>|callable(string):FunctionNode $className
      *
      * @return void
      */
@@ -690,8 +724,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string $name
      *
-     * @return string|null
-     * @psalm-return ?class-string $name
+     * @return string|callable|null
+     * @psalm-return class-string|callable|null
      */
     public function getCustomDatetimeFunction($name)
     {
@@ -709,7 +743,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * Any previously added date/time functions are discarded.
      *
      * @param array $functions The map of custom DQL date/time functions.
-     * @psalm-param array<string, string> $functions
+     * @psalm-param array<string, class-string<FunctionNode>|callable(string):FunctionNode> $functions
      *
      * @return void
      */
@@ -718,6 +752,22 @@ class Configuration extends \Doctrine\DBAL\Configuration
         foreach ($functions as $name => $className) {
             $this->addCustomDatetimeFunction($name, $className);
         }
+    }
+
+    /**
+     * Sets a TypedFieldMapper for php typed fields to DBAL types auto-completion.
+     */
+    public function setTypedFieldMapper(?TypedFieldMapper $typedFieldMapper): void
+    {
+        $this->_attributes['typedFieldMapper'] = $typedFieldMapper;
+    }
+
+    /**
+     * Gets a TypedFieldMapper for php typed fields to DBAL types auto-completion.
+     */
+    public function getTypedFieldMapper(): ?TypedFieldMapper
+    {
+        return $this->_attributes['typedFieldMapper'] ?? null;
     }
 
     /**
@@ -794,6 +844,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string $name      The name of the filter.
      * @param string $className The class name of the filter.
+     * @psalm-param class-string<SQLFilter> $className
      *
      * @return void
      */
@@ -809,7 +860,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @return string|null The class name of the filter, or null if it is not
      *  defined.
-     * @psalm-return ?class-string
+     * @psalm-return class-string<SQLFilter>|null
      */
     public function getFilterClassName($name)
     {
@@ -820,6 +871,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * Sets default repository class.
      *
      * @param string $className
+     * @psalm-param class-string<EntityRepository> $className
      *
      * @return void
      *
@@ -827,10 +879,18 @@ class Configuration extends \Doctrine\DBAL\Configuration
      */
     public function setDefaultRepositoryClassName($className)
     {
-        $reflectionClass = new ReflectionClass($className);
-
-        if (! $reflectionClass->implementsInterface(ObjectRepository::class)) {
+        if (! class_exists($className) || ! is_a($className, ObjectRepository::class, true)) {
             throw InvalidEntityRepository::fromClassName($className);
+        }
+
+        if (! is_a($className, EntityRepository::class, true)) {
+            Deprecation::trigger(
+                'doctrine/orm',
+                'https://github.com/doctrine/orm/pull/9533',
+                'Configuring %s as default repository class is deprecated because it does not extend %s.',
+                $className,
+                EntityRepository::class
+            );
         }
 
         $this->_attributes['defaultRepositoryClassName'] = $className;
@@ -840,7 +900,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * Get default repository class.
      *
      * @return string
-     * @psalm-return class-string
+     * @psalm-return class-string<EntityRepository>
      */
     public function getDefaultRepositoryClassName()
     {
@@ -939,9 +999,7 @@ class Configuration extends \Doctrine\DBAL\Configuration
         return $this->_attributes['repositoryFactory'] ?? new DefaultRepositoryFactory();
     }
 
-    /**
-     * @return bool
-     */
+    /** @return bool */
     public function isSecondLevelCacheEnabled()
     {
         return $this->_attributes['isSecondLevelCacheEnabled'] ?? false;
@@ -957,17 +1015,13 @@ class Configuration extends \Doctrine\DBAL\Configuration
         $this->_attributes['isSecondLevelCacheEnabled'] = (bool) $flag;
     }
 
-    /**
-     * @return void
-     */
+    /** @return void */
     public function setSecondLevelCacheConfiguration(CacheConfiguration $cacheConfig)
     {
         $this->_attributes['secondLevelCacheConfiguration'] = $cacheConfig;
     }
 
-    /**
-     * @return CacheConfiguration|null
-     */
+    /** @return CacheConfiguration|null */
     public function getSecondLevelCacheConfiguration()
     {
         if (! isset($this->_attributes['secondLevelCacheConfiguration']) && $this->isSecondLevelCacheEnabled()) {
@@ -1042,5 +1096,29 @@ class Configuration extends \Doctrine\DBAL\Configuration
     public function setSchemaIgnoreClasses(array $schemaIgnoreClasses): void
     {
         $this->_attributes['schemaIgnoreClasses'] = $schemaIgnoreClasses;
+    }
+
+    public function isLazyGhostObjectEnabled(): bool
+    {
+        return $this->_attributes['isLazyGhostObjectEnabled'] ?? false;
+    }
+
+    public function setLazyGhostObjectEnabled(bool $flag): void
+    {
+        if ($flag && ! trait_exists(LazyGhostTrait::class)) {
+            throw new LogicException(
+                'Lazy ghost objects cannot be enabled because the "symfony/var-exporter" library'
+                . ' version 6.2 or higher is not installed. Please run "composer require symfony/var-exporter:^6.2".'
+            );
+        }
+
+        if ($flag && ! class_exists(RuntimeReflectionProperty::class)) {
+            throw new LogicException(
+                'Lazy ghost objects cannot be enabled because the "doctrine/persistence" library'
+                . ' version 3.1 or higher is not installed. Please run "composer update doctrine/persistence".'
+            );
+        }
+
+        $this->_attributes['isLazyGhostObjectEnabled'] = $flag;
     }
 }

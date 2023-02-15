@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace Doctrine\ORM\Decorator;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ObjectManagerDecorator;
 
+use function func_get_arg;
+use function func_num_args;
 use function get_debug_type;
 use function method_exists;
 use function sprintf;
@@ -41,6 +44,28 @@ abstract class EntityManagerDecorator extends ObjectManagerDecorator implements 
     public function getExpressionBuilder()
     {
         return $this->wrapped->getExpressionBuilder();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @psalm-param class-string<T> $className
+     *
+     * @psalm-return EntityRepository<T>
+     *
+     * @template T of object
+     */
+    public function getRepository($className)
+    {
+        return $this->wrapped->getRepository($className);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getClassMetadata($className)
+    {
+        return $this->wrapped->getClassMetadata($className);
     }
 
     /**
@@ -186,6 +211,20 @@ abstract class EntityManagerDecorator extends ObjectManagerDecorator implements 
     public function flush($entity = null)
     {
         $this->wrapped->flush($entity);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function refresh($object)
+    {
+        $lockMode = null;
+
+        if (func_num_args() > 1) {
+            $lockMode = func_get_arg(1);
+        }
+
+        $this->wrapped->refresh($object, $lockMode);
     }
 
     /**

@@ -37,7 +37,7 @@ class ResizeFormListener implements EventSubscriberInterface
         $this->allowAdd = $allowAdd;
         $this->allowDelete = $allowDelete;
         $this->options = $options;
-        $this->deleteEmpty = $deleteEmpty instanceof \Closure || !\is_callable($deleteEmpty) ? $deleteEmpty : \Closure::fromCallable($deleteEmpty);
+        $this->deleteEmpty = \is_bool($deleteEmpty) ? $deleteEmpty : $deleteEmpty(...);
     }
 
     public static function getSubscribedEvents(): array
@@ -53,11 +53,7 @@ class ResizeFormListener implements EventSubscriberInterface
     public function preSetData(FormEvent $event)
     {
         $form = $event->getForm();
-        $data = $event->getData();
-
-        if (null === $data) {
-            $data = [];
-        }
+        $data = $event->getData() ?? [];
 
         if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             throw new UnexpectedTypeException($data, 'array or (\Traversable and \ArrayAccess)');
@@ -109,15 +105,11 @@ class ResizeFormListener implements EventSubscriberInterface
     public function onSubmit(FormEvent $event)
     {
         $form = $event->getForm();
-        $data = $event->getData();
+        $data = $event->getData() ?? [];
 
         // At this point, $data is an array or an array-like object that already contains the
         // new entries, which were added by the data mapper. The data mapper ignores existing
         // entries, so we need to manually unset removed entries in the collection.
-
-        if (null === $data) {
-            $data = [];
-        }
 
         if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             throw new UnexpectedTypeException($data, 'array or (\Traversable and \ArrayAccess)');

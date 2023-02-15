@@ -34,7 +34,7 @@ use Symfony\Component\Validator\Mapping\Factory\MetadataFactoryInterface;
 #[AsCommand(name: 'debug:validator', description: 'Display validation constraints for classes')]
 class DebugCommand extends Command
 {
-    private $validator;
+    private MetadataFactoryInterface $validator;
 
     public function __construct(MetadataFactoryInterface $validator)
     {
@@ -71,7 +71,7 @@ EOF
             foreach ($this->getResourcesByPath($class) as $class) {
                 $this->dumpValidatorsForClass($input, $output, $class);
             }
-        } catch (DirectoryNotFoundException $exception) {
+        } catch (DirectoryNotFoundException) {
             $io = new SymfonyStyle($input, $output);
             $io->error(sprintf('Neither class nor path were found with "%s" argument.', $input->getArgument('class')));
 
@@ -88,7 +88,19 @@ EOF
         $rows = [];
         $dump = new Dumper($output);
 
-        foreach ($this->getConstrainedPropertiesData($class) as $propertyName => $constraintsData) {
+        /** @var ClassMetadataInterface $classMetadata */
+        $classMetadata = $this->validator->getMetadataFor($class);
+
+        foreach ($this->getClassConstraintsData($classMetadata) as $data) {
+            $rows[] = [
+                '-',
+                $data['class'],
+                implode(', ', $data['groups']),
+                $dump($data['options']),
+            ];
+        }
+
+        foreach ($this->getConstrainedPropertiesData($classMetadata) as $propertyName => $constraintsData) {
             foreach ($constraintsData as $data) {
                 $rows[] = [
                     $propertyName,
@@ -119,12 +131,20 @@ EOF
         $table->render();
     }
 
-    private function getConstrainedPropertiesData(string $class): array
+    private function getClassConstraintsData(ClassMetadataInterface $classMetadata): iterable
+    {
+        foreach ($classMetadata->getConstraints() as $constraint) {
+            yield [
+                'class' => $constraint::class,
+                'groups' => $constraint->groups,
+                'options' => $this->getConstraintOptions($constraint),
+            ];
+        }
+    }
+
+    private function getConstrainedPropertiesData(ClassMetadataInterface $classMetadata): array
     {
         $data = [];
-
-        /** @var ClassMetadataInterface $classMetadata */
-        $classMetadata = $this->validator->getMetadataFor($class);
 
         foreach ($classMetadata->getConstrainedProperties() as $constrainedProperty) {
             $data[$constrainedProperty] = $this->getPropertyData($classMetadata, $constrainedProperty);
@@ -141,7 +161,7 @@ EOF
         foreach ($propertyMetadata as $metadata) {
             foreach ($metadata->getConstraints() as $constraint) {
                 $data[] = [
-                    'class' => \get_class($constraint),
+                    'class' => $constraint::class,
                     'groups' => $constraint->groups,
                     'options' => $this->getConstraintOptions($constraint),
                 ];

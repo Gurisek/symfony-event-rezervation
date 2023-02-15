@@ -15,6 +15,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\Event\WorkerRunningEvent;
 use Symfony\Component\Messenger\Event\WorkerStartedEvent;
+use Symfony\Component\Messenger\Exception\InvalidArgumentException;
 
 /**
  * @author Simon Delicata <simon.delicata@free.fr>
@@ -23,13 +24,17 @@ use Symfony\Component\Messenger\Event\WorkerStartedEvent;
 class StopWorkerOnTimeLimitListener implements EventSubscriberInterface
 {
     private int $timeLimitInSeconds;
-    private $logger;
+    private ?LoggerInterface $logger;
     private float $endTime = 0;
 
     public function __construct(int $timeLimitInSeconds, LoggerInterface $logger = null)
     {
         $this->timeLimitInSeconds = $timeLimitInSeconds;
         $this->logger = $logger;
+
+        if ($timeLimitInSeconds <= 0) {
+            throw new InvalidArgumentException('Time limit must be greater than zero.');
+        }
     }
 
     public function onWorkerStarted(): void
@@ -42,9 +47,7 @@ class StopWorkerOnTimeLimitListener implements EventSubscriberInterface
     {
         if ($this->endTime < microtime(true)) {
             $event->getWorker()->stop();
-            if (null !== $this->logger) {
-                $this->logger->info('Worker stopped due to time limit of {timeLimit}s exceeded', ['timeLimit' => $this->timeLimitInSeconds]);
-            }
+            $this->logger?->info('Worker stopped due to time limit of {timeLimit}s exceeded', ['timeLimit' => $this->timeLimitInSeconds]);
         }
     }
 

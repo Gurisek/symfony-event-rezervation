@@ -26,16 +26,13 @@ class ColorType extends AbstractType
      */
     private const HTML5_PATTERN = '/^#[0-9a-f]{6}$/i';
 
-    private $translator;
+    private ?TranslatorInterface $translator;
 
     public function __construct(TranslatorInterface $translator = null)
     {
         $this->translator = $translator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         if (!$options['html5']) {
@@ -54,7 +51,7 @@ class ColorType extends AbstractType
 
             $messageTemplate = 'This value is not a valid HTML5 color.';
             $messageParameters = [
-                '{{ value }}' => is_scalar($value) ? (string) $value : \gettype($value),
+                '{{ value }}' => \is_scalar($value) ? (string) $value : \gettype($value),
             ];
             $message = $this->translator ? $this->translator->trans($messageTemplate, $messageParameters, 'validators') : $messageTemplate;
 
@@ -62,9 +59,6 @@ class ColorType extends AbstractType
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -75,17 +69,11 @@ class ColorType extends AbstractType
         $resolver->setAllowedTypes('html5', 'bool');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getParent(): ?string
     {
         return TextType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'color';

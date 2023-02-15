@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints\Traverse;
 use Symfony\Component\Validator\Constraints\Valid;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 use Symfony\Component\Validator\Exception\GroupDefinitionException;
+use Symfony\Component\Validator\GroupSequenceProviderInterface;
 
 /**
  * Default implementation of {@link ClassMetadataInterface}.
@@ -119,9 +120,6 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __sleep(): array
     {
         $parentProperties = parent::__sleep();
@@ -140,9 +138,6 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getClassName(): string
     {
         return $this->name;
@@ -167,8 +162,6 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * If the constraint {@link Cascade} is added, the cascading strategy will be
      * changed to {@link CascadingStrategy::CASCADE}.
      *
@@ -201,7 +194,7 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
             $this->cascadingStrategy = CascadingStrategy::CASCADE;
 
             foreach ($this->getReflectionClass()->getProperties() as $property) {
-                if ($property->hasType() && (('array' === $type = $property->getType()->getName()) || class_exists(($type)))) {
+                if ($property->hasType() && (('array' === $type = $property->getType()->getName()) || class_exists($type))) {
                     $this->addPropertyConstraint($property->getName(), new Valid());
                 }
             }
@@ -362,25 +355,16 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasPropertyMetadata(string $property): bool
     {
         return \array_key_exists($property, $this->members);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPropertyMetadata(string $property): array
     {
         return $this->members[$property] ?? [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConstrainedProperties(): array
     {
         return array_keys($this->members);
@@ -418,17 +402,11 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasGroupSequence(): bool
     {
         return isset($this->groupSequence) && \count($this->groupSequence->groups) > 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getGroupSequence(): ?GroupSequence
     {
         return $this->groupSequence;
@@ -453,24 +431,18 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
             throw new GroupDefinitionException('Defining a group sequence provider is not allowed with a static group sequence.');
         }
 
-        if (!$this->getReflectionClass()->implementsInterface('Symfony\Component\Validator\GroupSequenceProviderInterface')) {
+        if (!$this->getReflectionClass()->implementsInterface(GroupSequenceProviderInterface::class)) {
             throw new GroupDefinitionException(sprintf('Class "%s" must implement GroupSequenceProviderInterface.', $this->name));
         }
 
         $this->groupSequenceProvider = $active;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isGroupSequenceProvider(): bool
     {
         return $this->groupSequenceProvider;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCascadingStrategy(): int
     {
         return $this->cascadingStrategy;

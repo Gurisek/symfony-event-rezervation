@@ -31,7 +31,7 @@ class NotCompromisedPasswordValidator extends ConstraintValidator
 {
     private const DEFAULT_API_ENDPOINT = 'https://api.pwnedpasswords.com/range/%s';
 
-    private $httpClient;
+    private HttpClientInterface $httpClient;
     private string $charset;
     private bool $enabled;
     private string $endpoint;
@@ -49,8 +49,6 @@ class NotCompromisedPasswordValidator extends ConstraintValidator
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws ExceptionInterface
      */
     public function validate(mixed $value, Constraint $constraint)
@@ -63,7 +61,7 @@ class NotCompromisedPasswordValidator extends ConstraintValidator
             return;
         }
 
-        if (null !== $value && !is_scalar($value) && !$value instanceof \Stringable) {
+        if (null !== $value && !\is_scalar($value) && !$value instanceof \Stringable) {
             throw new UnexpectedValueException($value, 'string');
         }
 
@@ -81,7 +79,7 @@ class NotCompromisedPasswordValidator extends ConstraintValidator
         $url = sprintf($this->endpoint, $hashPrefix);
 
         try {
-            $result = $this->httpClient->request('GET', $url)->getContent();
+            $result = $this->httpClient->request('GET', $url, ['headers' => ['Add-Padding' => 'true']])->getContent();
         } catch (ExceptionInterface $e) {
             if ($constraint->skipOnError) {
                 return;
@@ -91,6 +89,10 @@ class NotCompromisedPasswordValidator extends ConstraintValidator
         }
 
         foreach (explode("\r\n", $result) as $line) {
+            if (!str_contains($line, ':')) {
+                continue;
+            }
+
             [$hashSuffix, $count] = explode(':', $line);
 
             if ($hashPrefix.$hashSuffix === $hash && $constraint->threshold <= (int) $count) {

@@ -11,10 +11,12 @@
 
 namespace Symfony\Component\Messenger;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
 use Symfony\Component\Messenger\Event\WorkerMessageHandledEvent;
 use Symfony\Component\Messenger\Event\WorkerMessageReceivedEvent;
+use Symfony\Component\Messenger\Event\WorkerRateLimitedEvent;
 use Symfony\Component\Messenger\Event\WorkerRunningEvent;
 use Symfony\Component\Messenger\Event\WorkerStartedEvent;
 use Symfony\Component\Messenger\Event\WorkerStoppedEvent;
@@ -28,7 +30,7 @@ use Symfony\Component\Messenger\Stamp\NoAutoAckStamp;
 use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use Symfony\Component\Messenger\Transport\Receiver\QueueReceiverInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\RateLimiter\LimiterInterface;
 
 /**
  * @author Samuel Roze <samuel.roze@gmail.com>
@@ -39,18 +41,19 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 class Worker
 {
     private array $receivers;
-    private $bus;
-    private $eventDispatcher;
-    private $logger;
+    private MessageBusInterface $bus;
+    private ?EventDispatcherInterface $eventDispatcher;
+    private ?LoggerInterface $logger;
     private bool $shouldStop = false;
-    private $metadata;
+    private WorkerMetadata $metadata;
     private array $acks = [];
     private \SplObjectStorage $unacks;
+    private ?array $rateLimiters;
 
     /**
      * @param ReceiverInterface[] $receivers Where the key is the transport name
      */
-    public function __construct(array $receivers, MessageBusInterface $bus, EventDispatcherInterface $eventDispatcher = null, LoggerInterface $logger = null)
+    public function __construct(array $receivers, MessageBusInterface $bus, EventDispatcherInterface $eventDispatcher = null, LoggerInterface $logger = null, array $rateLimiters = null)
     {
         $this->receivers = $receivers;
         $this->bus = $bus;
@@ -60,6 +63,7 @@ class Worker
             'transportNames' => array_keys($receivers),
         ]);
         $this->unacks = new \SplObjectStorage();
+        $this->rateLimiters = $rateLimiters;
     }
 
     /**
@@ -78,7 +82,7 @@ class Worker
 
         $this->metadata->set(['queueNames' => $queueNames]);
 
-        $this->dispatchEvent(new WorkerStartedEvent($this));
+        $this->eventDispatcher?->dispatch(new WorkerStartedEvent($this));
 
         if ($queueNames) {
             // if queue names are specified, all receivers must implement the QueueReceiverInterface
@@ -102,8 +106,9 @@ class Worker
                 foreach ($envelopes as $envelope) {
                     $envelopeHandled = true;
 
+                    $this->rateLimit($transportName);
                     $this->handleMessage($envelope, $transportName);
-                    $this->dispatchEvent(new WorkerRunningEvent($this, false));
+                    $this->eventDispatcher?->dispatch(new WorkerRunningEvent($this, false));
 
                     if ($this->shouldStop) {
                         break 2;
@@ -123,7 +128,7 @@ class Worker
             }
 
             if (!$envelopeHandled) {
-                $this->dispatchEvent(new WorkerRunningEvent($this, true));
+                $this->eventDispatcher?->dispatch(new WorkerRunningEvent($this, true));
 
                 if (0 < $sleep = (int) ($options['sleep'] - 1e6 * (microtime(true) - $envelopeHandledStart))) {
                     usleep($sleep);
@@ -132,13 +137,13 @@ class Worker
         }
 
         $this->flush(true);
-        $this->dispatchEvent(new WorkerStoppedEvent($this));
+        $this->eventDispatcher?->dispatch(new WorkerStoppedEvent($this));
     }
 
     private function handleMessage(Envelope $envelope, string $transportName): void
     {
         $event = new WorkerMessageReceivedEvent($envelope, $transportName);
-        $this->dispatchEvent($event);
+        $this->eventDispatcher?->dispatch($event);
         $envelope = $event->getEnvelope();
 
         if (!$event->shouldHandle()) {
@@ -189,7 +194,7 @@ class Worker
 
                 $failedEvent = new WorkerMessageFailedEvent($envelope, $transportName, $e);
 
-                $this->dispatchEvent($failedEvent);
+                $this->eventDispatcher?->dispatch($failedEvent);
                 $envelope = $failedEvent->getEnvelope();
 
                 if (!$rejectFirst) {
@@ -200,14 +205,13 @@ class Worker
             }
 
             $handledEvent = new WorkerMessageHandledEvent($envelope, $transportName);
-            $this->dispatchEvent($handledEvent);
+            $this->eventDispatcher?->dispatch($handledEvent);
             $envelope = $handledEvent->getEnvelope();
 
             if (null !== $this->logger) {
                 $message = $envelope->getMessage();
                 $context = [
-                    'message' => $message,
-                    'class' => \get_class($message),
+                    'class' => $message::class,
                 ];
                 $this->logger->info('{class} was handled successfully (acknowledging to transport).', $context);
             }
@@ -216,6 +220,28 @@ class Worker
         }
 
         return (bool) $acks;
+    }
+
+    private function rateLimit(string $transportName): void
+    {
+        if (!$this->rateLimiters) {
+            return;
+        }
+
+        if (!\array_key_exists($transportName, $this->rateLimiters)) {
+            return;
+        }
+
+        /** @var LimiterInterface $rateLimiter */
+        $rateLimiter = $this->rateLimiters[$transportName]->create();
+        if ($rateLimiter->consume()->isAccepted()) {
+            return;
+        }
+
+        $this->logger?->info('Transport {transport} is being rate limited, waiting for token to become available...', ['transport' => $transportName]);
+
+        $this->eventDispatcher?->dispatch(new WorkerRateLimitedEvent($rateLimiter, $transportName));
+        $rateLimiter->reserve()->wait();
     }
 
     private function flush(bool $force): bool
@@ -244,9 +270,7 @@ class Worker
 
     public function stop(): void
     {
-        if (null !== $this->logger) {
-            $this->logger->info('Stopping worker.', ['transport_names' => $this->metadata->getTransportNames()]);
-        }
+        $this->logger?->info('Stopping worker.', ['transport_names' => $this->metadata->getTransportNames()]);
 
         $this->shouldStop = true;
     }
@@ -254,14 +278,5 @@ class Worker
     public function getMetadata(): WorkerMetadata
     {
         return $this->metadata;
-    }
-
-    private function dispatchEvent(object $event): void
-    {
-        if (null === $this->eventDispatcher) {
-            return;
-        }
-
-        $this->eventDispatcher->dispatch($event);
     }
 }

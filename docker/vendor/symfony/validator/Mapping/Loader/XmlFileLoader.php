@@ -30,9 +30,11 @@ class XmlFileLoader extends FileLoader
      */
     protected $classes;
 
-    /**
-     * {@inheritdoc}
-     */
+    public function __construct(string $file)
+    {
+        $this->file = $file;
+    }
+
     public function loadClassMetadata(ClassMetadata $metadata): bool
     {
         if (null === $this->classes) {
@@ -179,6 +181,8 @@ class XmlFileLoader extends FileLoader
 
     private function loadClassesFromXml()
     {
+        parent::__construct($this->file);
+
         // This method may throw an exception. Do not modify the class'
         // state before it completes
         $xml = $this->parseFile($this->file);

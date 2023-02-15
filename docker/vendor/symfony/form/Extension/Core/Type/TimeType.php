@@ -34,9 +34,6 @@ class TimeType extends AbstractType
         'choice' => ChoiceType::class,
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $parts = ['hour'];
@@ -74,8 +71,10 @@ class TimeType extends AbstractType
                 }
             });
 
+            $parseFormat = null;
+
             if (null !== $options['reference_date']) {
-                $format = 'Y-m-d '.$format;
+                $parseFormat = 'Y-m-d '.$format;
 
                 $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($options) {
                     $data = $event->getData();
@@ -86,7 +85,7 @@ class TimeType extends AbstractType
                 });
             }
 
-            $builder->addViewTransformer(new DateTimeToStringTransformer($options['model_timezone'], $options['view_timezone'], $format));
+            $builder->addViewTransformer(new DateTimeToStringTransformer($options['model_timezone'], $options['view_timezone'], $format, $parseFormat));
         } else {
             $hourOptions = $minuteOptions = $secondOptions = [
                 'error_bubbling' => true,
@@ -205,14 +204,11 @@ class TimeType extends AbstractType
             ));
         } elseif ('array' === $options['input']) {
             $builder->addModelTransformer(new ReversedTransformer(
-                new DateTimeToArrayTransformer($options['model_timezone'], $options['model_timezone'], $parts)
+                new DateTimeToArrayTransformer($options['model_timezone'], $options['model_timezone'], $parts, 'text' === $options['widget'], $options['reference_date'])
             ));
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars = array_replace($view->vars, [
@@ -237,9 +233,6 @@ class TimeType extends AbstractType
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $compound = function (Options $options) {
@@ -372,9 +365,6 @@ class TimeType extends AbstractType
         $resolver->setAllowedTypes('reference_date', ['null', \DateTimeInterface::class]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'time';

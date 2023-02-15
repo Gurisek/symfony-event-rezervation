@@ -22,10 +22,7 @@ use Symfony\Component\Serializer\Exception\NotNormalizableValueException;
  */
 final class BackedEnumNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize($object, $format = null, array $context = []): int|string
+    public function normalize(mixed $object, string $format = null, array $context = []): int|string
     {
         if (!$object instanceof \BackedEnum) {
             throw new InvalidArgumentException('The data must belong to a backed enumeration.');
@@ -34,20 +31,15 @@ final class BackedEnumNormalizer implements NormalizerInterface, DenormalizerInt
         return $object->value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof \BackedEnum;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws NotNormalizableValueException
      */
-    public function denormalize($data, $type, $format = null, array $context = []): mixed
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
     {
         if (!is_subclass_of($type, \BackedEnum::class)) {
             throw new InvalidArgumentException('The data must belong to a backed enumeration.');
@@ -60,21 +52,15 @@ final class BackedEnumNormalizer implements NormalizerInterface, DenormalizerInt
         try {
             return $type::from($data);
         } catch (\ValueError $e) {
-            throw NotNormalizableValueException::createForUnexpectedDataType($e->getMessage(), $data, [Type::BUILTIN_TYPE_INT, Type::BUILTIN_TYPE_STRING], $context['deserialization_path'] ?? null, true, $e->getCode(), $e);
+            throw new InvalidArgumentException('The data must belong to a backed enumeration of type '.$type);
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
         return is_subclass_of($type, \BackedEnum::class);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

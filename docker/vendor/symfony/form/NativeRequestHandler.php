@@ -21,7 +21,7 @@ use Symfony\Component\Form\Util\ServerParams;
  */
 class NativeRequestHandler implements RequestHandlerInterface
 {
-    private $serverParams;
+    private ServerParams $serverParams;
 
     /**
      * The allowed keys of the $_FILES array.
@@ -40,8 +40,6 @@ class NativeRequestHandler implements RequestHandlerInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws Exception\UnexpectedTypeException If the $request is not null
      */
     public function handleRequest(FormInterface $form, mixed $request = null)
@@ -124,9 +122,6 @@ class NativeRequestHandler implements RequestHandlerInterface
         $form->submit($data, 'PATCH' !== $method);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isFileUpload(mixed $data): bool
     {
         // POST data will always be strings or arrays of strings. Thus, we can be sure
@@ -190,6 +185,8 @@ class NativeRequestHandler implements RequestHandlerInterface
             return $data;
         }
 
+        // Remove extra key added by PHP 8.1.
+        unset($data['full_path']);
         $keys = array_keys($data);
         sort($keys);
 

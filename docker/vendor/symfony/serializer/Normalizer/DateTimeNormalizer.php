@@ -48,8 +48,6 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws InvalidArgumentException
      */
     public function normalize(mixed $object, string $format = null, array $context = []): string
@@ -70,16 +68,14 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $context
      */
-    public function supportsNormalization(mixed $data, string $format = null): bool
+    public function supportsNormalization(mixed $data, string $format = null /* , array $context = [] */): bool
     {
         return $data instanceof \DateTimeInterface;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws NotNormalizableValueException
      */
     public function denormalize(mixed $data, string $type, string $format = null, array $context = []): \DateTimeInterface
@@ -103,6 +99,16 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
             throw NotNormalizableValueException::createForUnexpectedDataType(sprintf('Parsing datetime string "%s" using format "%s" resulted in %d errors: ', $data, $dateTimeFormat, $dateTimeErrors['error_count'])."\n".implode("\n", $this->formatDateTimeErrors($dateTimeErrors['errors'])), $data, [Type::BUILTIN_TYPE_STRING], $context['deserialization_path'] ?? null, true);
         }
 
+        $defaultDateTimeFormat = $this->defaultContext[self::FORMAT_KEY] ?? null;
+
+        if (null !== $defaultDateTimeFormat) {
+            $object = \DateTime::class === $type ? \DateTime::createFromFormat($defaultDateTimeFormat, $data, $timezone) : \DateTimeImmutable::createFromFormat($defaultDateTimeFormat, $data, $timezone);
+
+            if (false !== $object) {
+                return $object;
+            }
+        }
+
         try {
             return \DateTime::class === $type ? new \DateTime($data, $timezone) : new \DateTimeImmutable($data, $timezone);
         } catch (\Exception $e) {
@@ -111,16 +117,13 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $context
      */
-    public function supportsDenormalization(mixed $data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null /* , array $context = [] */): bool
     {
         return isset(self::SUPPORTED_TYPES[$type]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return __CLASS__ === static::class;

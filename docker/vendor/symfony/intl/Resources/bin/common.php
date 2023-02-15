@@ -9,6 +9,10 @@
  * file that was distributed with this source code.
  */
 
+if ('cli' !== \PHP_SAPI) {
+    throw new Exception('This script must be run from the command line.');
+}
+
 define('LINE_WIDTH', 75);
 
 define('LINE', str_repeat('-', LINE_WIDTH)."\n");
@@ -85,7 +89,7 @@ set_exception_handler(function (Throwable $exception) {
             echo "Caused by\n";
         }
 
-        echo get_class($cause).': '.$cause->getMessage()."\n";
+        echo $cause::class.': '.$cause->getMessage()."\n";
         echo "\n";
         echo $cause->getFile().':'.$cause->getLine()."\n";
         echo $cause->getTraceAsString()."\n";

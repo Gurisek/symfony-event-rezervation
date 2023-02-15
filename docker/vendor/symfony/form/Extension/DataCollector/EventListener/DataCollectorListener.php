@@ -24,16 +24,13 @@ use Symfony\Component\Form\FormEvents;
  */
 class DataCollectorListener implements EventSubscriberInterface
 {
-    private $dataCollector;
+    private FormDataCollectorInterface $dataCollector;
 
     public function __construct(FormDataCollectorInterface $dataCollector)
     {
         $this->dataCollector = $dataCollector;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents(): array
     {
         return [

@@ -24,16 +24,13 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
  */
 class RangeValidator extends ConstraintValidator
 {
-    private $propertyAccessor;
+    private ?PropertyAccessorInterface $propertyAccessor;
 
     public function __construct(PropertyAccessorInterface $propertyAccessor = null)
     {
         $this->propertyAccessor = $propertyAccessor;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Range) {
@@ -75,7 +72,7 @@ class RangeValidator extends ConstraintValidator
 
                 try {
                     $min = new $dateTimeClass($min);
-                } catch (\Exception $e) {
+                } catch (\Exception) {
                     throw new ConstraintDefinitionException(sprintf('The min value "%s" could not be converted to a "%s" instance in the "%s" constraint.', $min, $dateTimeClass, get_debug_type($constraint)));
                 }
             }
@@ -85,7 +82,7 @@ class RangeValidator extends ConstraintValidator
 
                 try {
                     $max = new $dateTimeClass($max);
-                } catch (\Exception $e) {
+                } catch (\Exception) {
                     throw new ConstraintDefinitionException(sprintf('The max value "%s" could not be converted to a "%s" instance in the "%s" constraint.', $max, $dateTimeClass, get_debug_type($constraint)));
                 }
             }
@@ -173,11 +170,7 @@ class RangeValidator extends ConstraintValidator
 
     private function getPropertyAccessor(): PropertyAccessorInterface
     {
-        if (null === $this->propertyAccessor) {
-            $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
-        }
-
-        return $this->propertyAccessor;
+        return $this->propertyAccessor ??= PropertyAccess::createPropertyAccessor();
     }
 
     private function isParsableDatetimeString(mixed $boundary): bool
@@ -192,7 +185,7 @@ class RangeValidator extends ConstraintValidator
 
         try {
             new \DateTime($boundary);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Symfony package.
  *
@@ -23,7 +24,7 @@ use Symfony\Component\Notifier\Notifier;
  */
 class SendFailedMessageToNotifierListener implements EventSubscriberInterface
 {
-    private $notifier;
+    private Notifier $notifier;
 
     public function __construct(Notifier $notifier)
     {

@@ -32,6 +32,9 @@ class BinaryNode extends Node
         '..' => 'range',
         'in' => 'in_array',
         'not in' => '!in_array',
+        'contains' => 'str_contains',
+        'starts with' => 'str_starts_with',
+        'ends with' => 'str_ends_with',
     ];
 
     public function __construct(string $operator, Node $left, Node $right)
@@ -52,7 +55,7 @@ class BinaryNode extends Node
             }
 
             $compiler
-                ->raw('(static function ($regexp, $str) { set_error_handler(function ($t, $m) use ($regexp, $str) { throw new \Symfony\Component\ExpressionLanguage\SyntaxError(sprintf(\'Regexp "%s" passed to "matches" is not valid\', $regexp).substr($m, 12)); }); try { return preg_match($regexp, $str); } finally { restore_error_handler(); } })(')
+                ->raw('(static function ($regexp, $str) { set_error_handler(function ($t, $m) use ($regexp, $str) { throw new \Symfony\Component\ExpressionLanguage\SyntaxError(sprintf(\'Regexp "%s" passed to "matches" is not valid\', $regexp).substr($m, 12)); }); try { return preg_match($regexp, (string) $str); } finally { restore_error_handler(); } })(')
                 ->compile($this->nodes['right'])
                 ->raw(', ')
                 ->compile($this->nodes['left'])
@@ -173,13 +176,13 @@ class BinaryNode extends Node
         return ['(', $this->nodes['left'], ' '.$this->attributes['operator'].' ', $this->nodes['right'], ')'];
     }
 
-    private function evaluateMatches(string $regexp, string $str): int
+    private function evaluateMatches(string $regexp, ?string $str): int
     {
         set_error_handler(function ($t, $m) use ($regexp) {
             throw new SyntaxError(sprintf('Regexp "%s" passed to "matches" is not valid', $regexp).substr($m, 12));
         });
         try {
-            return preg_match($regexp, $str);
+            return preg_match($regexp, (string) $str);
         } finally {
             restore_error_handler();
         }

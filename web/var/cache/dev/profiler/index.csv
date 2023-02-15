@@ -3231,3 +3231,9 @@ f517b3,172.18.0.1,POST,http://localhost:83/login,1676418823,,302
 e0156a,172.18.0.1,GET,http://localhost:83/,1676418824,,200
 213353,172.18.0.1,GET,http://localhost:83/logout,1676418833,,302
 075bc4,172.18.0.1,GET,http://localhost:83/,1676418834,,200
+b2c08e,172.18.0.1,GET,http://localhost:83/,1676479303,,200
+447210,172.18.0.1,GET,http://localhost:83/favicon.ico,1676479309,a817d5,404
+a817d5,172.18.0.1,GET,http://localhost:83/favicon.ico,1676479310,,404
+bb7efc,172.18.0.1,GET,http://localhost:83/,1676479328,,200
+f23178,172.19.0.1,GET,http://localhost:83/,1676480663,,200
+94024e,172.20.0.1,GET,http://localhost:83/,1676480853,,200

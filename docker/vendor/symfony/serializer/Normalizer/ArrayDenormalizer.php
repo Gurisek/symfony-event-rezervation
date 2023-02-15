@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Serializer\Normalizer;
 
+use Symfony\Component\PropertyInfo\Type;
 use Symfony\Component\Serializer\Exception\BadMethodCallException;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Exception\NotNormalizableValueException;
@@ -27,8 +28,6 @@ class ArrayDenormalizer implements ContextAwareDenormalizerInterface, Denormaliz
     use DenormalizerAwareTrait;
 
     /**
-     * {@inheritdoc}
-     *
      * @throws NotNormalizableValueException
      */
     public function denormalize(mixed $data, string $type, string $format = null, array $context = []): array
@@ -37,7 +36,7 @@ class ArrayDenormalizer implements ContextAwareDenormalizerInterface, Denormaliz
             throw new BadMethodCallException('Please set a denormalizer before calling denormalize()!');
         }
         if (!\is_array($data)) {
-            throw new InvalidArgumentException('Data expected to be an array, '.get_debug_type($data).' given.');
+            throw NotNormalizableValueException::createForUnexpectedDataType(sprintf('Data expected to be "%s", "%s" given.', $type, get_debug_type($data)), $data, [Type::BUILTIN_TYPE_ARRAY], $context['deserialization_path'] ?? null);
         }
         if (!str_ends_with($type, '[]')) {
             throw new InvalidArgumentException('Unsupported class: '.$type);
@@ -60,9 +59,6 @@ class ArrayDenormalizer implements ContextAwareDenormalizerInterface, Denormaliz
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
         if (null === $this->denormalizer) {
@@ -73,9 +69,6 @@ class ArrayDenormalizer implements ContextAwareDenormalizerInterface, Denormaliz
             && $this->denormalizer->supportsDenormalization($data, substr($type, 0, -2), $format, $context);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return $this->denormalizer instanceof CacheableSupportsMethodInterface && $this->denormalizer->hasCacheableSupportsMethod();

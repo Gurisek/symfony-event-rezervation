@@ -22,7 +22,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class TransformationFailureListener implements EventSubscriberInterface
 {
-    private $translator;
+    private ?TranslatorInterface $translator;
 
     public function __construct(TranslatorInterface $translator = null)
     {
@@ -50,7 +50,7 @@ class TransformationFailureListener implements EventSubscriberInterface
             }
         }
 
-        $clientDataAsString = is_scalar($form->getViewData()) ? (string) $form->getViewData() : get_debug_type($form->getViewData());
+        $clientDataAsString = \is_scalar($form->getViewData()) ? (string) $form->getViewData() : get_debug_type($form->getViewData());
         $messageTemplate = $form->getConfig()->getOption('invalid_message', 'The value {{ value }} is not valid.');
         $messageParameters = array_replace(['{{ value }}' => $clientDataAsString], $form->getConfig()->getOption('invalid_message_parameters', []));
 

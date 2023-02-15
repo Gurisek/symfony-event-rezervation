@@ -45,5 +45,4 @@ class AccessDeniedException extends RuntimeException
     {
         $this->subject = $subject;
     }
-
 }

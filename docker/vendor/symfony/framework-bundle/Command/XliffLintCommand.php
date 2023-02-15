@@ -43,9 +43,6 @@ class XliffLintCommand extends BaseLintCommand
         parent::__construct(null, $directoryIteratorProvider, $isReadableProvider);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         parent::configure();
@@ -57,6 +54,6 @@ Or find all files in a bundle:
   <info>php %command.full_name% @AcmeDemoBundle</info>
 
 EOF
-            );
+        );
     }
 }

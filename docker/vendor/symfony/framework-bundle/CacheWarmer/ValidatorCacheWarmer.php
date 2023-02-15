@@ -28,7 +28,7 @@ use Symfony\Component\Validator\ValidatorBuilder;
  */
 class ValidatorCacheWarmer extends AbstractPhpFileCacheWarmer
 {
-    private $validatorBuilder;
+    private ValidatorBuilder $validatorBuilder;
 
     /**
      * @param string $phpArrayFile The PHP file where metadata are cached
@@ -39,9 +39,6 @@ class ValidatorCacheWarmer extends AbstractPhpFileCacheWarmer
         $this->validatorBuilder = $validatorBuilder;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function doWarmUp(string $cacheDir, ArrayAdapter $arrayAdapter): bool
     {
         if (!method_exists($this->validatorBuilder, 'getLoaders')) {
@@ -57,7 +54,7 @@ class ValidatorCacheWarmer extends AbstractPhpFileCacheWarmer
                     if ($metadataFactory->hasMetadataFor($mappedClass)) {
                         $metadataFactory->getMetadataFor($mappedClass);
                     }
-                } catch (AnnotationException $e) {
+                } catch (AnnotationException) {
                     // ignore failing annotations
                 } catch (\Exception $e) {
                     $this->ignoreAutoloadException($mappedClass, $e);

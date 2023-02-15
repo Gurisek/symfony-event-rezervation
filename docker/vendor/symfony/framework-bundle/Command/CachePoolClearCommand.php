@@ -31,7 +31,7 @@ use Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer;
 #[AsCommand(name: 'cache:pool:clear', description: 'Clear cache pools')]
 final class CachePoolClearCommand extends Command
 {
-    private $poolClearer;
+    private Psr6CacheClearer $poolClearer;
     private ?array $poolNames;
 
     /**
@@ -45,9 +45,6 @@ final class CachePoolClearCommand extends Command
         $this->poolNames = $poolNames;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -63,9 +60,6 @@ EOF
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);

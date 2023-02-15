@@ -50,9 +50,9 @@ class TranslationUpdateCommand extends Command
         'xlf20' => ['xlf', '2.0'],
     ];
 
-    private $writer;
-    private $reader;
-    private $extractor;
+    private TranslationWriterInterface $writer;
+    private TranslationReaderInterface $reader;
+    private ExtractorInterface $extractor;
     private string $defaultLocale;
     private ?string $defaultTransPath;
     private ?string $defaultViewsPath;
@@ -75,9 +75,6 @@ class TranslationUpdateCommand extends Command
         $this->enabledLocales = $enabledLocales;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -126,9 +123,6 @@ EOF
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -186,7 +180,7 @@ EOF
                     $codePaths[] = $this->defaultViewsPath;
                 }
                 $currentName = $foundBundle->getName();
-            } catch (\InvalidArgumentException $e) {
+            } catch (\InvalidArgumentException) {
                 // such a bundle does not exist, so treat the argument as path
                 $path = $input->getArgument('bundle');
 
@@ -395,6 +389,7 @@ EOF
     {
         $extractedCatalogue = new MessageCatalogue($locale);
         $this->extractor->setPrefix($prefix);
+        $transPaths = $this->filterDuplicateTransPaths($transPaths);
         foreach ($transPaths as $path) {
             if (is_dir($path) || is_file($path)) {
                 $this->extractor->extract($path, $extractedCatalogue);
@@ -402,6 +397,27 @@ EOF
         }
 
         return $extractedCatalogue;
+    }
+
+    private function filterDuplicateTransPaths(array $transPaths): array
+    {
+        $transPaths = array_filter(array_map('realpath', $transPaths));
+
+        sort($transPaths);
+
+        $filteredPaths = [];
+
+        foreach ($transPaths as $path) {
+            foreach ($filteredPaths as $filteredPath) {
+                if (str_starts_with($path, $filteredPath.\DIRECTORY_SEPARATOR)) {
+                    continue 2;
+                }
+            }
+
+            $filteredPaths[] = $path;
+        }
+
+        return $filteredPaths;
     }
 
     private function loadCurrentMessages(string $locale, array $transPaths): MessageCatalogue

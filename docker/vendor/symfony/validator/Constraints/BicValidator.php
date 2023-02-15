@@ -48,16 +48,13 @@ class BicValidator extends ConstraintValidator
         'VG' => 'GB', // British Virgin Islands
     ];
 
-    private $propertyAccessor;
+    private ?PropertyAccessor $propertyAccessor;
 
     public function __construct(PropertyAccessor $propertyAccessor = null)
     {
         $this->propertyAccessor = $propertyAccessor;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Bic) {
@@ -68,7 +65,7 @@ class BicValidator extends ConstraintValidator
             return;
         }
 
-        if (!is_scalar($value) && !$value instanceof \Stringable) {
+        if (!\is_scalar($value) && !$value instanceof \Stringable) {
             throw new UnexpectedValueException($value, 'string');
         }
 

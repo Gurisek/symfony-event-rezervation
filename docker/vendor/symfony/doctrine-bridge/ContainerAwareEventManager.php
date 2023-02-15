@@ -33,7 +33,7 @@ class ContainerAwareEventManager extends EventManager
     private array $initialized = [];
     private bool $initializedSubscribers = false;
     private array $methods = [];
-    private $container;
+    private ContainerInterface $container;
 
     /**
      * @param list<string|EventSubscriber|array{string[], string|object}> $subscriberIds List of subscribers, subscriber ids, or [events, listener] tuples
@@ -44,9 +44,6 @@ class ContainerAwareEventManager extends EventManager
         $this->subscribers = $subscriberIds;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function dispatchEvent($eventName, EventArgs $eventArgs = null): void
     {
         if (!$this->initializedSubscribers) {
@@ -56,7 +53,7 @@ class ContainerAwareEventManager extends EventManager
             return;
         }
 
-        $eventArgs = $eventArgs ?? EventArgs::getEmptyInstance();
+        $eventArgs ??= EventArgs::getEmptyInstance();
 
         if (!isset($this->initialized[$eventName])) {
             $this->initializeListeners($eventName);
@@ -68,21 +65,29 @@ class ContainerAwareEventManager extends EventManager
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return object[][]
      */
     public function getListeners($event = null): array
     {
+        if (null === $event) {
+            trigger_deprecation('symfony/doctrine-bridge', '6.2', 'Calling "%s()" without an event name is deprecated. Call "getAllListeners()" instead.', __METHOD__);
+
+            return $this->getAllListeners();
+        }
         if (!$this->initializedSubscribers) {
             $this->initializeSubscribers();
         }
-        if (null !== $event) {
-            if (!isset($this->initialized[$event])) {
-                $this->initializeListeners($event);
-            }
+        if (!isset($this->initialized[$event])) {
+            $this->initializeListeners($event);
+        }
 
-            return $this->listeners[$event];
+        return $this->listeners[$event];
+    }
+
+    public function getAllListeners(): array
+    {
+        if (!$this->initializedSubscribers) {
+            $this->initializeSubscribers();
         }
 
         foreach ($this->listeners as $event => $listeners) {
@@ -94,9 +99,6 @@ class ContainerAwareEventManager extends EventManager
         return $this->listeners;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasListeners($event): bool
     {
         if (!$this->initializedSubscribers) {
@@ -106,9 +108,6 @@ class ContainerAwareEventManager extends EventManager
         return isset($this->listeners[$event]) && $this->listeners[$event];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addEventListener($events, $listener): void
     {
         if (!$this->initializedSubscribers) {
@@ -130,9 +129,6 @@ class ContainerAwareEventManager extends EventManager
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeEventListener($events, $listener): void
     {
         if (!$this->initializedSubscribers) {

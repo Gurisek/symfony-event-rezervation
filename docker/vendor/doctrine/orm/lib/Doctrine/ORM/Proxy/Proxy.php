@@ -9,7 +9,7 @@ use Doctrine\Common\Proxy\Proxy as BaseProxy;
 /**
  * Interface for proxy classes.
  *
- * @deprecated 2.7 This interface is being removed from the ORM and won't have any replacement, proxies will no longer implement it.
+ * @deprecated 2.14. Use \Doctrine\Persistence\Proxy instead
  */
 interface Proxy extends BaseProxy
 {

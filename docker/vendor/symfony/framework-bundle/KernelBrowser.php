@@ -34,9 +34,6 @@ class KernelBrowser extends HttpKernelBrowser
     private bool $profiler = false;
     private bool $reboot = true;
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(KernelInterface $kernel, array $server = [], History $history = null, CookieJar $cookieJar = null)
     {
         parent::__construct($kernel, $server, $history, $cookieJar);
@@ -115,11 +112,11 @@ class KernelBrowser extends HttpKernelBrowser
         }
 
         if (!$user instanceof UserInterface) {
-            throw new \LogicException(sprintf('The first argument of "%s" must be instance of "%s", "%s" provided.', __METHOD__, UserInterface::class, \is_object($user) ? \get_class($user) : \gettype($user)));
+            throw new \LogicException(sprintf('The first argument of "%s" must be instance of "%s", "%s" provided.', __METHOD__, UserInterface::class, get_debug_type($user)));
         }
 
         $token = new TestBrowserToken($user->getRoles(), $user, $firewallContext);
-        // required for compatibilty with Symfony 5.4
+        // required for compatibility with Symfony 5.4
         if (method_exists($token, 'isAuthenticated')) {
             $token->setAuthenticated(true, false);
         }
@@ -147,8 +144,6 @@ class KernelBrowser extends HttpKernelBrowser
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Request $request
      */
     protected function doRequest(object $request): Response
@@ -173,8 +168,6 @@ class KernelBrowser extends HttpKernelBrowser
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Request $request
      */
     protected function doRequestInProcess(object $request): Response

@@ -15,6 +15,7 @@ use Symfony\Component\Form\DataAccessorInterface;
 use Symfony\Component\Form\Exception\AccessException;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\PropertyAccess\Exception\AccessException as PropertyAccessException;
+use Symfony\Component\PropertyAccess\Exception\NoSuchIndexException;
 use Symfony\Component\PropertyAccess\Exception\UninitializedPropertyException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -28,16 +29,13 @@ use Symfony\Component\PropertyAccess\PropertyPathInterface;
  */
 class PropertyPathAccessor implements DataAccessorInterface
 {
-    private $propertyAccessor;
+    private PropertyAccessorInterface $propertyAccessor;
 
     public function __construct(PropertyAccessorInterface $propertyAccessor = null)
     {
         $this->propertyAccessor = $propertyAccessor ?? PropertyAccess::createPropertyAccessor();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getValue(object|array $data, FormInterface $form): mixed
     {
         if (null === $propertyPath = $form->getPropertyPath()) {
@@ -47,9 +45,6 @@ class PropertyPathAccessor implements DataAccessorInterface
         return $this->getPropertyValue($data, $propertyPath);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setValue(object|array &$data, mixed $value, FormInterface $form): void
     {
         if (null === $propertyPath = $form->getPropertyPath()) {
@@ -69,17 +64,11 @@ class PropertyPathAccessor implements DataAccessorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isReadable(object|array $data, FormInterface $form): bool
     {
         return null !== $form->getPropertyPath();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isWritable(object|array $data, FormInterface $form): bool
     {
         return null !== $form->getPropertyPath();
@@ -90,9 +79,13 @@ class PropertyPathAccessor implements DataAccessorInterface
         try {
             return $this->propertyAccessor->getValue($data, $propertyPath);
         } catch (PropertyAccessException $e) {
+            if (\is_array($data) && $e instanceof NoSuchIndexException) {
+                return null;
+            }
+
             if (!$e instanceof UninitializedPropertyException
                 // For versions without UninitializedPropertyException check the exception message
-                && (class_exists(UninitializedPropertyException::class) || false === strpos($e->getMessage(), 'You should initialize it'))
+                && (class_exists(UninitializedPropertyException::class) || !str_contains($e->getMessage(), 'You should initialize it'))
             ) {
                 throw $e;
             }
