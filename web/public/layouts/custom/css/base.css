@@ -34,18 +34,6 @@ form {
     box-shadow:0 0 4px rgba(0,0,0,0.5);
     transition: .3s
   }
-
-  /* input[type="textarea"] {
-    width: 50px 20px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 2px;
-    background-color: #fafafa;
-    border:0;
-    box-shadow:0 0 4px rgba(0,0,0,0.5);
-    transition: .3s box-shadow;
-  } */
   
   button[type="submit"] {
     width: 100%;
@@ -393,7 +381,8 @@ form {
 .footer {
   background-color: #24262b;
   padding: 35px 0;
-  position: absolute;
+  padding-top: 20px;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;

@@ -129,4 +129,25 @@ class Event
 
         return $this;
     }
+
+    function count_logged_in_users($eventId, $entityManager) {
+    // Získání entity Event z databáze
+    $event = $entityManager->getRepository(Event::class)->find($eventId);
+
+    // Pokud nebyla nalezena žádná událost s daným ID, vrátit 0
+    if (!$event) {
+        return 0;
+    }
+
+    // Získání seznamu uživatelů, kteří jsou přihlášení k události
+    $logged_in_users = [];
+    foreach ($event->getUsers() as $user) {
+        if ($user->isLoggedIn()) {
+            $logged_in_users[] = $user;
+        }
+    }
+
+    // Vrácení počtu přihlášených uživatelů
+    return count($logged_in_users);
+}
 }

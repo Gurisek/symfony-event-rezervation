@@ -78,12 +78,14 @@ class __TwigTemplate_141f76152e244d508ab68bb244b927c3 extends Template
         // line 17
         echo "</body>
 
+
+
 ";
-        // line 19
-        $this->displayBlock('stylesheets', $context, $blocks);
-        // line 20
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 21
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 22
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 23
         echo "</html>
 ";
         
@@ -131,7 +133,7 @@ class __TwigTemplate_141f76152e244d508ab68bb244b927c3 extends Template
 
     }
 
-    // line 19
+    // line 21
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -149,7 +151,7 @@ class __TwigTemplate_141f76152e244d508ab68bb244b927c3 extends Template
 
     }
 
-    // line 20
+    // line 22
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -179,7 +181,7 @@ class __TwigTemplate_141f76152e244d508ab68bb244b927c3 extends Template
 
     public function getDebugInfo()
     {
-        return array (  153 => 20,  135 => 19,  117 => 15,  98 => 6,  87 => 21,  85 => 20,  83 => 19,  79 => 17,  76 => 16,  73 => 15,  71 => 14,  63 => 9,  59 => 8,  54 => 6,  47 => 1,);
+        return array (  155 => 22,  137 => 21,  119 => 15,  100 => 6,  89 => 23,  87 => 22,  85 => 21,  79 => 17,  76 => 16,  73 => 15,  71 => 14,  63 => 9,  59 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -201,6 +203,8 @@ class __TwigTemplate_141f76152e244d508ab68bb244b927c3 extends Template
   {% block body %}{% endblock %}
   {% include \"footer.html.twig\" %}
 </body>
+
+
 
 {% block stylesheets %}{% endblock %}
 {% block javascripts %}{% endblock %}
