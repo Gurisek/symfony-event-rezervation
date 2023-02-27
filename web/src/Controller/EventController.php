@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface as ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
@@ -19,10 +20,40 @@ class EventController extends AbstractController
     #[Route('/', name: 'app_event_index', methods: ['GET'])]
     public function index(EventRepository $eventRepository): Response
     {
+        // $row = $this->countJoined();
+
         return $this->render('event/index.html.twig', [
             'events' => $eventRepository->findAll(),
+            // 'row' => $row
         ]);
     }
+
+    // #[Route('/{id}', name: 'count_event', methods: ['GET'])]
+    // public function countJoined(EntityManagerInterface $entityManager): Response
+    // {
+    //     // SQL dotaz pro získání počtu přihlášených uživatelů
+    //     $query = '
+    //         SELECT eu.event_id, COUNT(eu.user_id) as count
+    //         FROM event_user eu
+    //         GROUP BY eu.event_id
+    //     ';
+    
+    //     // Vytvoření instance Query a spuštění dotazu
+    //     $statement = $entityManager->getConnection()->prepare($query);
+    //     $statement->execute();
+    
+    //     // Získání výsledku dotazu
+    //     $result = $statement->fetchAll();
+    
+    //     // Vytvoření asociativního pole s počtem přihlášených uživatelů pro každou událost
+    //     $counts = [];
+    //     foreach ($result as $row) {
+    //         $counts[$row['event_id']] = $row['count'];
+    //     }
+    
+    //     // Vrácení odpovědi s počtem přihlášených uživatelů
+    //     return $this->json($counts);
+    // }
 
     #[Route('/new', name: 'app_event_new', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
@@ -36,7 +67,7 @@ class EventController extends AbstractController
             $eventRepository->add($event);
 
             $this->addFlash(
-                'new',
+                'succes',
                 'Akce úspěšně založena!'
             );
 
@@ -83,7 +114,7 @@ class EventController extends AbstractController
             $eventRepository->remove($event);
 
             $this->addFlash(
-                'delete',
+                'succes',
                 'Akce úspěšně odstraněna!'
             );
         }
@@ -94,20 +125,51 @@ class EventController extends AbstractController
 
   #[Route("/event/user/{id}/join", name: "event_join")]
   #[IsGranted('ROLE_USER')]
-  public function join(Request $request, Event $event, ObjectManager $objectManager)
+  public function join(Event $event, ObjectManager $objectManager)
   {
       $user = $this->getUser();
-      $event->addUser($user);
-      $objectManager->persist($event);
-      $objectManager->flush();
-
-      $this->addFlash(
-        'join',
-        'Jste úspěšně přihlášen na akci! Počítáme s vaší účastí.'
-    );
-
+      if ($event->hasUser($user)) {
+          $this->addFlash(
+                'warning',
+                'Na tuto akci jste již přihlášen!'
+          );
+      } else {
+          $event->addUser($user);
+          $objectManager->persist($event);
+          $objectManager->flush();
+  
+          $this->addFlash(
+              'succes',
+              'Jste úspěšně přihlášen na akci! Počítáme s vaší účastí.'
+          );
+      }
+  
       return $this->redirectToRoute('homepage_default');
   }
+
+  #[Route("/event/user/{id}/leave", name: "event_leave")]
+  #[IsGranted('ROLE_USER')]
+  public function leave(Event $event, ObjectManager $objectManager)
+  {
+      $user = $this->getUser();
+      if (!$event->hasUser($user)) {
+          $this->addFlash(
+              'warning',
+              'V záznamu nemáme hlášenou vaši účast.'
+          );
+      } else {
+          $event->removeUser($user);
+          $objectManager->persist($event);
+          $objectManager->flush();
   
+          $this->addFlash(
+              'succes',
+              'Úspěšně jste se odhlásil z účasti na akci! Přejeme hezký den.'
+          );
+      }
+  
+      return $this->redirectToRoute('homepage_default');
+  }
+
 }
 

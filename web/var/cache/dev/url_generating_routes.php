@@ -22,6 +22,7 @@ return [
     'app_event_edit' => [['id'], ['_controller' => 'App\\Controller\\EventController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/event']], [], [], []],
     'app_event_delete' => [['id'], ['_controller' => 'App\\Controller\\EventController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/event']], [], [], []],
     'event_join' => [['id'], ['_controller' => 'App\\Controller\\EventController::join'], [], [['text', '/join'], ['variable', '/', '[^/]++', 'id', true], ['text', '/event/event/user']], [], [], []],
+    'event_leave' => [['id'], ['_controller' => 'App\\Controller\\EventController::leave'], [], [['text', '/leave'], ['variable', '/', '[^/]++', 'id', true], ['text', '/event/event/user']], [], [], []],
     'joined_index' => [[], ['_controller' => 'App\\Controller\\EventUserController::index'], [], [['text', '/event/events/']], [], [], []],
     'joined_show' => [['id'], ['_controller' => 'App\\Controller\\EventUserController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/event/events']], [], [], []],
     'homepage_default' => [[], ['_controller' => 'App\\Controller\\HomepageController::default'], [], [['text', '/']], [], [], []],

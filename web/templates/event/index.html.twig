@@ -6,12 +6,7 @@
 
     <h1 class="center">Přehled eventů</h1>
 
-    {% for message in app.flashes('new') %}
-        <div class="center alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-        {% for message in app.flashes('delete') %}
+    {% for message in app.flashes('succes') %}
         <div class="center alert alert-success">
             {{ message }}
         </div>

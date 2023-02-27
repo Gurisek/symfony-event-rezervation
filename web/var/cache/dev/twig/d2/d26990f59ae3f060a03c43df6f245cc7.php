@@ -129,9 +129,15 @@ class __TwigTemplate_c1741aacb4c06a11f0906747ff68a348 extends Template
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_join", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 33, $this->source); })()), "id", [], "any", false, false, false, 33)]), "html", null, true);
         echo "\">Připojit se k akci!</a>
 \t</div>
-    <br>
+    <div class=\"active\">
 \t<a href=\"";
         // line 36
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_leave", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 36, $this->source); })()), "id", [], "any", false, false, false, 36)]), "html", null, true);
+        echo "\">Zrušit účast!</a>
+\t</div>
+    <br>
+\t<a href=\"";
+        // line 39
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na přehled</a>
 </div>
@@ -157,7 +163,7 @@ class __TwigTemplate_c1741aacb4c06a11f0906747ff68a348 extends Template
 
     public function getDebugInfo()
     {
-        return array (  135 => 36,  129 => 33,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  141 => 39,  135 => 36,  129 => 33,  119 => 26,  112 => 22,  105 => 18,  98 => 14,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -195,6 +201,9 @@ class __TwigTemplate_c1741aacb4c06a11f0906747ff68a348 extends Template
 <div class=\"_show\">
 <div class=\"active\">
 \t<a href=\"{{ path('event_join', {'id': event.id}) }}\">Připojit se k akci!</a>
+\t</div>
+    <div class=\"active\">
+\t<a href=\"{{ path('event_leave', {'id': event.id}) }}\">Zrušit účast!</a>
 \t</div>
     <br>
 \t<a href=\"{{ path('homepage_default') }}\">Zpět na přehled</a>

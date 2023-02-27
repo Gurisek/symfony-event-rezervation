@@ -49,25 +49,28 @@ return [
                         .'|(*:211)'
                     .')'
                     .'|event(?'
-                        .'|/user/([^/]++)/join(*:247)'
+                        .'|/user/([^/]++)/(?'
+                            .'|join(*:250)'
+                            .'|leave(*:263)'
+                        .')'
                         .'|s(?'
-                            .'|(*:259)'
-                            .'|/([^/]++)(*:276)'
+                            .'|(*:276)'
+                            .'|/([^/]++)(*:293)'
                         .')'
                     .')'
-                    .'|user/([^/]++)(*:299)'
+                    .'|user/([^/]++)(*:316)'
                 .')'
-                .'|/show/([^/]++)(*:322)'
+                .'|/show/([^/]++)(*:339)'
                 .'|/user/([^/]++)(?'
-                    .'|(*:347)'
+                    .'|(*:364)'
                     .'|/(?'
-                        .'|edit(*:363)'
+                        .'|edit(*:380)'
                         .'|user_(?'
-                            .'|promote(*:386)'
-                            .'|demote(*:400)'
+                            .'|promote(*:403)'
+                            .'|demote(*:417)'
                         .')'
                     .')'
-                    .'|(*:410)'
+                    .'|(*:427)'
                 .')'
             .')/?$}sDu',
     ],
@@ -82,16 +85,17 @@ return [
         190 => [[['_route' => 'app_event_show', '_controller' => 'App\\Controller\\EventController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         203 => [[['_route' => 'app_event_edit', '_controller' => 'App\\Controller\\EventController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         211 => [[['_route' => 'app_event_delete', '_controller' => 'App\\Controller\\EventController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        247 => [[['_route' => 'event_join', '_controller' => 'App\\Controller\\EventController::join'], ['id'], null, null, false, false, null]],
-        259 => [[['_route' => 'joined_index', '_controller' => 'App\\Controller\\EventUserController::index'], [], ['GET' => 0], null, true, false, null]],
-        276 => [[['_route' => 'joined_show', '_controller' => 'App\\Controller\\EventUserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        299 => [[['_route' => 'user_event_show', '_controller' => 'App\\Controller\\HomepageController::userShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
-        322 => [[['_route' => 'no_user_show', '_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
-        347 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        363 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        386 => [[['_route' => 'app_user_promote', '_controller' => 'App\\Controller\\UserController::promoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        400 => [[['_route' => 'app_user_demote', '_controller' => 'App\\Controller\\UserController::demoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        410 => [
+        250 => [[['_route' => 'event_join', '_controller' => 'App\\Controller\\EventController::join'], ['id'], null, null, false, false, null]],
+        263 => [[['_route' => 'event_leave', '_controller' => 'App\\Controller\\EventController::leave'], ['id'], null, null, false, false, null]],
+        276 => [[['_route' => 'joined_index', '_controller' => 'App\\Controller\\EventUserController::index'], [], ['GET' => 0], null, true, false, null]],
+        293 => [[['_route' => 'joined_show', '_controller' => 'App\\Controller\\EventUserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        316 => [[['_route' => 'user_event_show', '_controller' => 'App\\Controller\\HomepageController::userShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
+        339 => [[['_route' => 'no_user_show', '_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], ['id'], ['GET' => 0], null, false, true, null]],
+        364 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        380 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        403 => [[['_route' => 'app_user_promote', '_controller' => 'App\\Controller\\UserController::promoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        417 => [[['_route' => 'app_user_demote', '_controller' => 'App\\Controller\\UserController::demoteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        427 => [
             [['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

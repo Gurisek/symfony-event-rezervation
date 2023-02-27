@@ -258,6 +258,12 @@ form {
 .content-table tbody tr td a{
   text-decoration: none;
   font-weight: bold;
+  color: #000000;
+}
+
+.content-table tbody tr td a:hover{
+  color: #028d71;
+  transition-duration: 0.75s;
 }
 
 /* search pole na seznamu uzivatelu */
@@ -336,6 +342,12 @@ form {
 ._show .active a {
   color: #02c9a1;
   font-weight: bold;
+}
+
+._show .active a:hover {
+  color: #e4e4e4;
+  font-weight: bold;
+  transition-duration: 0.5s;
 }
 
 .a_edit_admin {

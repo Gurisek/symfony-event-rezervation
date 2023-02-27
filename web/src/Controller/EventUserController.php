@@ -24,7 +24,6 @@ class EventUserController extends AbstractController
     #[Route('/',name:'joined_index', methods: ['GET'])]
     public function index(EventRepository $eventRepository): Response
     {
-
         return $this->render('event/events/index.html.twig', [
             'events' => $eventRepository->findAll()
         ]);
@@ -47,4 +46,6 @@ class EventUserController extends AbstractController
             'users' => $users,
         ]);
     }
+
+
 }

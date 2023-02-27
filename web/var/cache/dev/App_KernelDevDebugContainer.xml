@@ -6936,13 +6936,14 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.fqPY.CG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.WbAuk1f" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EventController::delete" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController::edit" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController::index" type="service_closure" id=".service_locator.qE8Flyf"/>
         <argument key="App\Controller\EventController::join" type="service_closure" id=".service_locator.uLE7dpZ"/>
+        <argument key="App\Controller\EventController::leave" type="service_closure" id=".service_locator.uLE7dpZ"/>
         <argument key="App\Controller\EventController::new" type="service_closure" id=".service_locator.qE8Flyf"/>
         <argument key="App\Controller\EventController::show" type="service_closure" id=".service_locator.Y2F5Zqo"/>
         <argument key="App\Controller\EventUserController::index" type="service_closure" id=".service_locator.qE8Flyf"/>
@@ -6968,6 +6969,7 @@
         <argument key="App\Controller\EventController:edit" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController:index" type="service_closure" id=".service_locator.qE8Flyf"/>
         <argument key="App\Controller\EventController:join" type="service_closure" id=".service_locator.uLE7dpZ"/>
+        <argument key="App\Controller\EventController:leave" type="service_closure" id=".service_locator.uLE7dpZ"/>
         <argument key="App\Controller\EventController:new" type="service_closure" id=".service_locator.qE8Flyf"/>
         <argument key="App\Controller\EventController:show" type="service_closure" id=".service_locator.Y2F5Zqo"/>
         <argument key="App\Controller\EventUserController:index" type="service_closure" id=".service_locator.qE8Flyf"/>
@@ -7681,12 +7683,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.fqPY.CG"/>
+      <argument type="service" id=".service_locator.WbAuk1f"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.fqPY.CG"/>
+      <argument type="service" id=".service_locator.WbAuk1f"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8668,7 +8670,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.fqPY.CG"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.WbAuk1f"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8691,7 +8693,7 @@
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~vGDQfbm"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.BvmCUqs" alias=".service_locator.fqPY.CG"/>
+    <service id=".service_locator.ZNongoc" alias=".service_locator.WbAuk1f"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.u9sCicT" alias=".service_locator.GGogkMu"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>

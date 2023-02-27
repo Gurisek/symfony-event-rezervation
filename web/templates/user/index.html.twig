@@ -7,14 +7,13 @@
 		<h1 class="center">User index</h1>
 	</div>
 
-	{% for message in app.flashes('admin') %}
+	{% for message in app.flashes('succes') %}
 		<div class="center alert alert-success">
 			{{ message }}
 		</div>
 	{% endfor %}
-
-	{% for message in app.flashes('noadmin') %}
-		<div class="center alert alert-success">
+		{% for message in app.flashes('error') %}
+		<div class="center alert alert-danger">
 			{{ message }}
 		</div>
 	{% endfor %}

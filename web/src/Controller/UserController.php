@@ -79,6 +79,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    // Promote uživatele na roli 'ADMIN'
     #[Route('/{id}/user_promote', name: 'app_user_promote', methods:['GET', 'POST'])]
     public function promoteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
@@ -104,13 +105,14 @@ class UserController extends AbstractController
     
 
         $this->addFlash(
-            'admin',
+            'succes',
             'Uživatel byl úspěšně povýšen do A-teamu'
         );
     
         return $this->redirectToRoute('app_user_index');
     }
 
+    // Demote uživatele na roli 'USER' 
     #[Route('/{id}/user_demote', name: 'app_user_demote', methods:['GET', 'POST'])]
     public function demoteUser(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
@@ -136,7 +138,7 @@ class UserController extends AbstractController
     
 
         $this->addFlash(
-            'noadmin',
+            'succes',
             'Admin byl sesazen z funkce!'
         );
     

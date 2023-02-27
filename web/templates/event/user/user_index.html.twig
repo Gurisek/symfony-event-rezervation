@@ -1,52 +1,63 @@
- {% extends "base.html.twig" %}
+{% extends "base.html.twig" %}
 
-{% block title %}Přehled{% endblock %}
+{% block title %}Přehled
+{% endblock %}
 
 {% block body %}
-    <h1 class="center">Seznam dostupných akcí pro {{ app.user.nickName }}</h1>
+	<h1 class="center">Seznam dostupných akcí pro
+		{{ app.user.nickName }}</h1>
 
-        {% for message in app.flashes('join') %}
-        <div class="center alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
+	{% for message in app.flashes('succes') %}
+		<div class="center alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-   <div class="tabulka"> 
-    <table class="content-table">
-        <thead>
-            <tr>
-                <th>Název</th>
-                <th>Místo</th>
-                <th>Datum</th>
-                <th>Popisek</th>
-                <th>Možnosti</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td class="active-row">{{ event.name }}</td>
-                <td>{{ event.place }}</td>
-                <td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
-                <td>{{ event.description }}</td>
-                <td>
-                    <a href="{{ path('user_event_show', {'id': event.id}) }}">Podrobnosti</a> |
-                    <a href="{{ path('event_join', {'id': event.id}) }}">Potvrdit účast</a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                     |
-                     <a href="{{ path('joined_show', {'id': event.id}) }}">Účastníci</a>
-                    {% endif %}
-                    
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Momentálně není žádná událost dostupná.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+	{% for message in app.flashes('warning') %}
+		<div class="center alert alert-warning">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	<div class="tabulka">
+		<table class="content-table">
+			<thead>
+				<tr>
+					<th>Název</th>
+					<th>Místo</th>
+					<th>Datum</th>
+					<th>Popisek</th>
+					<th>Možnosti</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for event in events %}
+					<tr>
+						<td class="active-row">{{ event.name }}</td>
+						<td>{{ event.place }}</td>
+						<td class="active-row">{{ event.date ? event.date|date('H:i d.m. Y') : '' }}</td>
+						<td>{{ event.description }}</td>
+						<td>
+							<a href="{{ path('user_event_show', {'id': event.id}) }}">Podrobnosti</a>
+							|
+							<a href="{{ path('event_join', {'id': event.id}) }}">Potvrdit účast</a>
+                            |
+                            <a href="{{ path('event_leave', {'id': event.id}) }}">Nechci se účastnit</a>
+							{% if is_granted('ROLE_ADMIN') %}
+								|
+								<a href="{{ path('joined_show', {'id': event.id}) }}">Účastníci</a>
+							{% endif %}
+
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">Momentálně není žádná událost dostupná.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

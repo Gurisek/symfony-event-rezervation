@@ -117,6 +117,17 @@ class Event
 
         return $this;
     }
+    
+    /**
+     * hasUser
+     *
+     * @param  mixed $user
+     * @return bool
+     */
+    public function hasUser(User $user): bool
+{
+    return $this->users->contains($user);
+}
 
     public function getPuserNub(): ?int
     {
@@ -129,7 +140,14 @@ class Event
 
         return $this;
     }
-
+    
+    /**
+     * count_logged_in_users
+     *
+     * @param  mixed $eventId
+     * @param  mixed $entityManager
+     * @return void
+     */
     function count_logged_in_users($eventId, $entityManager) {
     // Získání entity Event z databáze
     $event = $entityManager->getRepository(Event::class)->find($eventId);

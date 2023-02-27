@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash(
-                'registered',
+                'succes',
                 'Úspěšně jste se zaregistroval! Teď se níže přišlaste.'
             );
 

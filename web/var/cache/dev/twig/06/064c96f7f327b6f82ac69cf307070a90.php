@@ -90,7 +90,7 @@ class __TwigTemplate_5e5eeb4e77a8d83443927f1932c10afa extends Template
 \t";
         // line 8
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "flashes", [0 => "registered"], "method", false, false, false, 8));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "flashes", [0 => "succes"], "method", false, false, false, 8));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
             // line 9
             echo "\t\t<div class=\"center alert alert-success\">
@@ -203,7 +203,7 @@ class __TwigTemplate_5e5eeb4e77a8d83443927f1932c10afa extends Template
 
 {% block body %}
 
-\t{% for message in app.flashes('registered') %}
+\t{% for message in app.flashes('succes') %}
 \t\t<div class=\"center alert alert-success\">
 \t\t\t{{ message }}
 \t\t</div>

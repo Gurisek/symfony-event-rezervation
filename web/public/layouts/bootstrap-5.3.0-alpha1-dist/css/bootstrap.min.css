@@ -5536,7 +5536,8 @@ fieldset:disabled .btn {
     --bs-alert-color: var(--bs-warning-text);
     --bs-alert-bg: var(--bs-warning-bg-subtle);
     --bs-alert-border-color: var(--bs-warning-border-subtle);
-    --bs-alert-link-color: var(--bs-warning-text)
+    --bs-alert-link-color: var(--bs-warning-text);
+    font-size: 20px
 }
 
 .alert-danger {
