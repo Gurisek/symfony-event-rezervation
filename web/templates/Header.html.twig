@@ -7,7 +7,9 @@
 	</div>
 	<ul class="nav-links">
 		<li>
-			<a href="{{ path('homepage_default') }}">Domu</a>
+			<a href="{{ path('homepage_default') }}"><span class="material-symbols-outlined">
+home
+</span></a>
 		</li>
 		<li>
 			<a href="{{ path('contact') }}">Contact</a>
@@ -25,7 +27,9 @@
 			</li>
 		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<li>
-				<a href="{{ path('app_logout') }}">Odhlásit</a>
+				<a href="{{ path('app_logout') }}"><span class="material-symbols-outlined">
+logout
+</span></a>
 			</li>
 		{% else %}
 			<li>

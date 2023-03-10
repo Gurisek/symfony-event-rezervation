@@ -2,11 +2,37 @@
 
 {% block body %}
 <div class="center">
-    <h1>Kontaktní údaje</h1>
+    <h1>Vítám Vás na mých stránkách! </h1>
 </div>
 
-<div class="a_index">
-	<a href="{{ path('homepage_default') }}">Zpět na hlavní stránku</a>
-</div>
+<div class="onas">
+    <div class="kontakt-text">
+        <h5>Jmenuji se Rufir Naur a jsem jedním z organizátorů setkání členů furry komunity.</h5>
 
+        <p>
+         Furry komunita je skupinou lidí, kteří si vytvářejí své vlastní "zvířecí" alter ega, tzv. fursony. Někteří z nás je představují pomocí kreativních kostýmů,
+          tzv. fursuitů, které jsou často úžasně detailní a věrné našemu digitálnímu alter egu.
+        </p>
+
+        <p>
+            Můžete se s námi setkat na našich akcích a poznat tyto fascinující a neobvyklé postavy.
+        Ale naše činnost není pouze o této komunitě! V rámci svých aktivit se snažíme také podpořit charitativní projekty nebo pobavit veřejnost.
+         Naše setkání jsou příležitostí pro fanoušky furry kultury,
+         aby se setkali a užili si skvělý zážitek s ostatními lidmi, kteří sdílejí jejich zájem. 
+        </p>
+
+        <p>
+    
+        Doufám, že jsem vás zaujal a budu se těšit na setkání s vámi na některé z mých akcí! 
+        Pokud máte jakékoliv dotazy nebo byste se chtěli stát součástí naší komunity, neváhejte mě kontaktovat.
+
+        Kontaktní údaje:
+
+        rufir@palcat.cz
+        facebook.com/rufirovy.eventy
+        </p>
+    </div>
+    {# <div class="aa"> #}
+        <button onclick="window.location.href='{{ path('homepage_default') }}'" class="btn btn-outline-success">Hlávní stránka</button>
+    {# </div> #}
 {% endblock %}

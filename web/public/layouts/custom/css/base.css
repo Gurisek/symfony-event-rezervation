@@ -107,6 +107,14 @@ form {
   min-height: 8vh;
  }
 
+.material-symbols-outlined {
+   font-variation-settings:
+   'FILL' 0,
+   'wght' 700,
+   'GRAD' 0,
+   'opsz' 48
+ }
+
 .logo {
   color: #04def2;
   text-transform: uppercase;
@@ -493,3 +501,49 @@ form {
   width: 224px;
  }
 
+ .footerin {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: purple;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+ 
+/* o nas stranka */
+.onas{
+  background-color: #0000009f;
+  border-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.onas h5{
+  margin: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.onas p{
+  text-align: center;
+  text-shadow: 0.7px 0.7px 1.5px #3a3a3a;
+  inline-size: 1;
+  margin-top: 8px;
+}
+
+.onas button {
+  display: block;
+  margin: auto 5px;
+  text-align: center;
+}

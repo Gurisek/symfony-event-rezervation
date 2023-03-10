@@ -239,6 +239,10 @@ h6 {
     padding: 2px;
 }
 
+.center h1{
+    margin: 16px;
+}
+
 .h1,
 h1 {
     font-size: calc(1.375rem + 1.5vw)
@@ -779,6 +783,7 @@ progress {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     width: 400px;
+    margin-bottom: auto;
     padding-bottom: calc(var(--bs-gutter-x) * .5);;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
