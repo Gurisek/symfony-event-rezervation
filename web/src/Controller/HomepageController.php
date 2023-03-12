@@ -66,11 +66,11 @@ class HomepageController extends BaseController
     // ostatní funkce
 
     /**
-     * @Route("/contacts", name="contact")
+     * @Route("/about", name="about")
      */
-    public function FunctionName(): Response
+    public function About(): Response
     {
-        return $this->render('Homepage/contact.html.twig', []);
+        return $this->render('Homepage/about.html.twig', []);
     }
 
 
