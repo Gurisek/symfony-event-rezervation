@@ -368,6 +368,13 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\BaseController"/>
       </call>
     </service>
+    <service id="App\Controller\ContactController" class="App\Controller\ContactController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\ContactController"/>
+      </call>
+    </service>
     <service id="App\Controller\EventUserController" class="App\Controller\EventUserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -402,6 +409,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.CshazM0.App\Controller\UserController"/>
       </call>
+    </service>
+    <service id="App\Form\ContactFormType" class="App\Form\ContactFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Form\EventType" class="App\Form\EventType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -1275,6 +1285,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ContactFormType</argument>
         <argument>App\Form\EventType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\UserType</argument>
@@ -3486,7 +3497,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.GGogkMu"/>
+      <argument type="service" id=".service_locator.VBzZSVq"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6508,6 +6519,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BaseController" class="App\Controller\BaseController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EventUserController" class="App\Controller\EventUserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6523,6 +6537,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactFormType" class="App\Form\ContactFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactFormType" class="App\Form\ContactFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventType" class="App\Form\EventType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EventType" class="App\Form\EventType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
@@ -6898,6 +6914,13 @@
         <argument key="objectManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.DKA_Bz7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+        <argument key="security" type="service_closure" id="security.helper"/>
+      </argument>
+    </service>
     <service id=".service_locator.e_4zbH4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6936,9 +6959,10 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.WbAuk1f" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.MwSFa_l" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\ContactController::contact" type="service_closure" id=".service_locator.DKA_Bz7"/>
         <argument key="App\Controller\EventController::delete" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController::edit" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController::index" type="service_closure" id=".service_locator.qE8Flyf"/>
@@ -6965,6 +6989,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\ContactController:contact" type="service_closure" id=".service_locator.DKA_Bz7"/>
         <argument key="App\Controller\EventController:delete" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController:edit" type="service_closure" id=".service_locator.ABOx9AF"/>
         <argument key="App\Controller\EventController:index" type="service_closure" id=".service_locator.qE8Flyf"/>
@@ -7066,9 +7091,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.GGogkMu" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.VBzZSVq" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ContactFormType" type="service_closure" id="App\Form\ContactFormType"/>
         <argument key="App\Form\EventType" type="service_closure" id="App\Form\EventType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
@@ -7447,6 +7473,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\Controller\ContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ContactController"/>
+      <argument>App\Controller\ContactController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.CshazM0.App\Controller\EventUserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\EventUserController"/>
       <argument>App\Controller\EventUserController</argument>
@@ -7683,12 +7715,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.WbAuk1f"/>
+      <argument type="service" id=".service_locator.MwSFa_l"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.WbAuk1f"/>
+      <argument type="service" id=".service_locator.MwSFa_l"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8670,7 +8702,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.WbAuk1f"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.MwSFa_l"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8693,9 +8725,9 @@
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~vGDQfbm"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.ZNongoc" alias=".service_locator.WbAuk1f"/>
+    <service id=".service_locator.efGlicj" alias=".service_locator.MwSFa_l"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
-    <service id=".service_locator.u9sCicT" alias=".service_locator.GGogkMu"/>
+    <service id=".service_locator.rk9Uwv1" alias=".service_locator.VBzZSVq"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.VZoQk0z" alias=".service_locator.CshazM0"/>
@@ -8728,6 +8760,7 @@
     <service id=".service_locator.1u2GJBu" alias=".service_locator.Y2F5Zqo"/>
     <service id=".service_locator.JjrkUpp" alias=".service_locator.ABOx9AF"/>
     <service id=".service_locator.tz1586p" alias=".service_locator.uLE7dpZ"/>
+    <service id=".service_locator.CdOd88t" alias=".service_locator.DKA_Bz7"/>
     <service id=".service_locator.qnm_CJ1" alias=".service_locator.e_4zbH4"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.025Wi8b" alias=".service_locator.kPUOGb8"/>

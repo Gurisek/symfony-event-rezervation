@@ -65,10 +65,30 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "<div class=\"center\">
+        echo "
+<div class=\"center\">
     <h1>Vítám Vás na mých stránkách! </h1>
 </div>
 
+\t";
+        // line 9
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 9, $this->source); })()), "flashes", [0 => "succes"], "method", false, false, false, 9));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 10
+            echo "\t\t<div class=\"center alert alert-success\">
+\t\t\t";
+            // line 11
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+\t\t</div>
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 14
+        echo "
 <div class=\"onas\">
     <div class=\"kontakt-text\">
         <h5>Jmenuji se Rufir Naur a jsem jedním z organizátorů setkání členů furry komunity.</h5>
@@ -96,13 +116,34 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
         facebook.com/rufirovy.eventy
         </p>
     </div>
+
     <button onclick=\"window.location.href='";
-        // line 35
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "'\" class=\"btn btn-outline-success\">Hlávní stránka</button>
+    <br> <br>
+
+
+    
 </div>
 
-
+    ";
+        // line 50
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 50, $this->source); })()), 'form_start');
+        echo "
+    ";
+        // line 51
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 51, $this->source); })()), "email", [], "any", false, false, false, 51), 'row');
+        echo "
+    ";
+        // line 52
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 52, $this->source); })()), "message", [], "any", false, false, false, 52), 'row');
+        echo "
+   <button type=\"submit\">Odeslat!</button>
+";
+        // line 54
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 54, $this->source); })()), 'form_end');
+        echo "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -124,7 +165,7 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
 
     public function getDebugInfo()
     {
-        return array (  101 => 35,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  145 => 54,  140 => 52,  136 => 51,  132 => 50,  122 => 43,  91 => 14,  82 => 11,  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -132,9 +173,16 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
         return new Source("{% extends \"base.html.twig\" %}
 
 {% block body %}
+
 <div class=\"center\">
     <h1>Vítám Vás na mých stránkách! </h1>
 </div>
+
+\t{% for message in app.flashes('succes') %}
+\t\t<div class=\"center alert alert-success\">
+\t\t\t{{ message }}
+\t\t</div>
+\t{% endfor %}
 
 <div class=\"onas\">
     <div class=\"kontakt-text\">
@@ -163,10 +211,19 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
         facebook.com/rufirovy.eventy
         </p>
     </div>
+
     <button onclick=\"window.location.href='{{ path('homepage_default') }}'\" class=\"btn btn-outline-success\">Hlávní stránka</button>
+    <br> <br>
+
+
+    
 </div>
 
-
+    {{ form_start(contact) }}
+    {{ form_row(contact.email) }}
+    {{ form_row(contact.message) }}
+   <button type=\"submit\">Odeslat!</button>
+{{ form_end(contact) }}
 {% endblock %}", "Homepage/about.html.twig", "/var/www/html/templates/Homepage/about.html.twig");
     }
 }

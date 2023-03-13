@@ -55,64 +55,64 @@ class __TwigTemplate_88673b039f0c6dbb8d9f0bbf009aa11a extends Template
 \t\t\t<a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
-        echo "\">Domu</a>
+        echo "\"><span class=\"material-symbols-outlined\">
+home
+</span></a>
 \t\t</li>
 \t\t<li>
 \t\t\t<a href=\"";
-        // line 13
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact");
-        echo "\">Contact</a>
+        // line 15
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
+        echo "\">About</a>
 \t\t</li>
 \t\t";
-        // line 15
+        // line 17
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 16
+            // line 18
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 17
+            // line 19
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
             echo "\">Eventy</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 20
+            // line 22
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
             echo "\">Uživatelé</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 23
-        echo "\t\t\t<li>
-\t\t\t\t<a href=\"#\">About</a>
-\t\t\t</li>
-\t\t";
-        // line 26
+        // line 25
+        echo "\t\t";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 27
+            // line 26
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 28
+            // line 27
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            echo "\">Odhlásit</a>
+            echo "\"><span class=\"material-symbols-outlined\">
+logout
+</span></a>
 \t\t\t</li>
 \t\t";
         } else {
-            // line 31
+            // line 32
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 32
+            // line 33
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Přihlásit</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 35
+            // line 36
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Registrovat</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 38
+        // line 39
         echo "\t</ul>
 \t<div class=\"burger\">
 \t\t<div class=\"line1\"></div>
@@ -121,7 +121,7 @@ class __TwigTemplate_88673b039f0c6dbb8d9f0bbf009aa11a extends Template
 \t</div>
 </nav>
 <script src=\"";
-        // line 45
+        // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/nav.js\"></script>
 
@@ -146,7 +146,7 @@ class __TwigTemplate_88673b039f0c6dbb8d9f0bbf009aa11a extends Template
 
     public function getDebugInfo()
     {
-        return array (  125 => 45,  116 => 38,  110 => 35,  104 => 32,  101 => 31,  95 => 28,  92 => 27,  90 => 26,  85 => 23,  79 => 20,  73 => 17,  70 => 16,  68 => 15,  63 => 13,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
+        return array (  125 => 46,  116 => 39,  110 => 36,  104 => 33,  101 => 32,  93 => 27,  90 => 26,  87 => 25,  81 => 22,  75 => 19,  72 => 18,  70 => 17,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -160,10 +160,12 @@ class __TwigTemplate_88673b039f0c6dbb8d9f0bbf009aa11a extends Template
 \t</div>
 \t<ul class=\"nav-links\">
 \t\t<li>
-\t\t\t<a href=\"{{ path('homepage_default') }}\">Domu</a>
+\t\t\t<a href=\"{{ path('homepage_default') }}\"><span class=\"material-symbols-outlined\">
+home
+</span></a>
 \t\t</li>
 \t\t<li>
-\t\t\t<a href=\"{{ path('contact') }}\">Contact</a>
+\t\t\t<a href=\"{{ path('about') }}\">About</a>
 \t\t</li>
 \t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t<li>
@@ -173,12 +175,11 @@ class __TwigTemplate_88673b039f0c6dbb8d9f0bbf009aa11a extends Template
 \t\t\t\t<a href=\"{{ path('app_user_index') }}\">Uživatelé</a>
 \t\t\t</li>
 \t\t{% endif %}
-\t\t\t<li>
-\t\t\t\t<a href=\"#\">About</a>
-\t\t\t</li>
 \t\t{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 \t\t\t<li>
-\t\t\t\t<a href=\"{{ path('app_logout') }}\">Odhlásit</a>
+\t\t\t\t<a href=\"{{ path('app_logout') }}\"><span class=\"material-symbols-outlined\">
+logout
+</span></a>
 \t\t\t</li>
 \t\t{% else %}
 \t\t\t<li>

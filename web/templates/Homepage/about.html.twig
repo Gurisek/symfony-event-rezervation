@@ -1,9 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+
 <div class="center">
     <h1>Vítám Vás na mých stránkách! </h1>
 </div>
+
+	{% for message in app.flashes('succes') %}
+		<div class="center alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 
 <div class="onas">
     <div class="kontakt-text">
@@ -34,8 +41,15 @@
     </div>
 
     <button onclick="window.location.href='{{ path('homepage_default') }}'" class="btn btn-outline-success">Hlávní stránka</button>
+    <br> <br>
+
+
     
 </div>
 
-
+    {{ form_start(contact) }}
+    {{ form_row(contact.email) }}
+    {{ form_row(contact.message) }}
+   <button type="submit">Odeslat!</button>
+{{ form_end(contact) }}
 {% endblock %}
