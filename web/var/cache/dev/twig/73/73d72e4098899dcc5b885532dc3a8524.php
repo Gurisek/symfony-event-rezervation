@@ -62,8 +62,8 @@ home
 \t\t<li>
 \t\t\t<a href=\"";
         // line 15
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact");
-        echo "\">Contact</a>
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
+        echo "\">About</a>
 \t\t</li>
 \t\t";
         // line 17
@@ -84,16 +84,12 @@ home
 \t\t";
         }
         // line 25
-        echo "\t\t\t<li>
-\t\t\t\t<a href=\"#\">About</a>
-\t\t\t</li>
-\t\t";
-        // line 28
+        echo "\t\t";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 29
+            // line 26
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 30
+            // line 27
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\"><span class=\"material-symbols-outlined\">
 logout
@@ -101,22 +97,22 @@ logout
 \t\t\t</li>
 \t\t";
         } else {
-            // line 35
+            // line 32
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 36
+            // line 33
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Přihlásit</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 39
+            // line 36
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Registrovat</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 42
+        // line 39
         echo "\t</ul>
 \t<div class=\"burger\">
 \t\t<div class=\"line1\"></div>
@@ -125,7 +121,7 @@ logout
 \t</div>
 </nav>
 <script src=\"";
-        // line 49
+        // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/nav.js\"></script>
 
@@ -150,7 +146,7 @@ logout
 
     public function getDebugInfo()
     {
-        return array (  129 => 49,  120 => 42,  114 => 39,  108 => 36,  105 => 35,  97 => 30,  94 => 29,  92 => 28,  87 => 25,  81 => 22,  75 => 19,  72 => 18,  70 => 17,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
+        return array (  125 => 46,  116 => 39,  110 => 36,  104 => 33,  101 => 32,  93 => 27,  90 => 26,  87 => 25,  81 => 22,  75 => 19,  72 => 18,  70 => 17,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -169,7 +165,7 @@ home
 </span></a>
 \t\t</li>
 \t\t<li>
-\t\t\t<a href=\"{{ path('contact') }}\">Contact</a>
+\t\t\t<a href=\"{{ path('about') }}\">About</a>
 \t\t</li>
 \t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t<li>
@@ -179,9 +175,6 @@ home
 \t\t\t\t<a href=\"{{ path('app_user_index') }}\">Uživatelé</a>
 \t\t\t</li>
 \t\t{% endif %}
-\t\t\t<li>
-\t\t\t\t<a href=\"#\">About</a>
-\t\t\t</li>
 \t\t{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('app_logout') }}\"><span class=\"material-symbols-outlined\">

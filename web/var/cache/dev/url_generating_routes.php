@@ -29,7 +29,7 @@ return [
     'user_event_show' => [['id'], ['_controller' => 'App\\Controller\\HomepageController::userShowEvent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/event/user']], [], [], []],
     'no_user_index' => [[], ['_controller' => 'App\\Controller\\HomepageController::noUserindex'], [], [['text', '/index']], [], [], []],
     'no_user_show' => [['id'], ['_controller' => 'App\\Controller\\HomepageController::noUserShowEvent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/show']], [], [], []],
-    'contact' => [[], ['_controller' => 'App\\Controller\\HomepageController::FunctionName'], [], [['text', '/contacts']], [], [], []],
+    'about' => [[], ['_controller' => 'App\\Controller\\HomepageController::About'], [], [['text', '/about']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
