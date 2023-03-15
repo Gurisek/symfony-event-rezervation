@@ -1,3 +1,17 @@
 bf7787,172.18.0.1,GET,http://localhost:83/about,1678745723,,200
 5833d9,172.18.0.1,POST,http://localhost:83/about,1678745742,,302
 8deda4,172.18.0.1,GET,http://localhost:83/,1678745742,,200
+ce8b4a,172.18.0.1,GET,http://localhost:83/,1678892483,,200
+688fe9,172.18.0.1,GET,http://localhost:83/favicon.ico,1678892484,d98c52,404
+d98c52,172.18.0.1,GET,http://localhost:83/favicon.ico,1678892484,,404
+bed2c5,172.18.0.1,GET,http://localhost:83/about,1678892525,,200
+ef8806,172.18.0.1,POST,http://localhost:83/about,1678892537,,200
+4afb80,172.18.0.1,POST,http://localhost:83/about,1678892869,,200
+022712,172.18.0.1,POST,http://localhost:83/about,1678893019,,200
+584efe,172.18.0.1,POST,http://localhost:83/about,1678893034,,200
+4b0b48,172.18.0.1,POST,http://localhost:83/about,1678893099,,200
+020e16,172.18.0.1,POST,http://localhost:83/about,1678893119,,200
+239ff2,172.18.0.1,POST,http://localhost:83/about,1678893122,,200
+15c79d,172.18.0.1,POST,http://localhost:83/about,1678893128,,200
+db03c7,172.18.0.1,POST,http://localhost:83/about,1678893183,,302
+4e90f0,172.18.0.1,GET,http://localhost:83/,1678893183,,200

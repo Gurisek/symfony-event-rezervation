@@ -85,3 +85,4 @@ gitignore - /var/
 access token : 89vVjrPiRWuAR53K4QN7
 php bin/console doctrine:schema:update --force :update datbase po udelani zmen
 mailtrap.io : stranka pro test poslanych emailu
+php bin/console messenger:consume async -vv : prikaz pro zahájení posílání emailu z queue!
