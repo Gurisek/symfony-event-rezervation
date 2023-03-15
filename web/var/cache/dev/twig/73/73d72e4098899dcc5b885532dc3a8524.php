@@ -55,41 +55,39 @@ class __TwigTemplate_64831e5875fd0cda1d0b9d09d18fc96c extends Template
 \t\t\t<a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
-        echo "\"><span class=\"material-symbols-outlined\">
-home
-</span></a>
+        echo "\">Home</a>
 \t\t</li>
 \t\t<li>
 \t\t\t<a href=\"";
-        // line 15
+        // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
         echo "\">About</a>
 \t\t</li>
 \t\t";
-        // line 17
+        // line 15
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 18
+            // line 16
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 19
+            // line 17
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
             echo "\">Eventy</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 22
+            // line 20
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
             echo "\">Uživatelé</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 25
+        // line 23
         echo "\t\t";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 26
+            // line 24
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 27
+            // line 25
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\"><span class=\"material-symbols-outlined\">
 logout
@@ -97,22 +95,22 @@ logout
 \t\t\t</li>
 \t\t";
         } else {
-            // line 32
+            // line 30
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 33
+            // line 31
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Přihlásit</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 36
+            // line 34
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Registrovat</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 39
+        // line 37
         echo "\t</ul>
 \t<div class=\"burger\">
 \t\t<div class=\"line1\"></div>
@@ -121,7 +119,7 @@ logout
 \t</div>
 </nav>
 <script src=\"";
-        // line 46
+        // line 44
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
         echo "layouts/custom/js/nav.js\"></script>
 
@@ -146,7 +144,7 @@ logout
 
     public function getDebugInfo()
     {
-        return array (  125 => 46,  116 => 39,  110 => 36,  104 => 33,  101 => 32,  93 => 27,  90 => 26,  87 => 25,  81 => 22,  75 => 19,  72 => 18,  70 => 17,  65 => 15,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
+        return array (  123 => 44,  114 => 37,  108 => 34,  102 => 31,  99 => 30,  91 => 25,  88 => 24,  85 => 23,  79 => 20,  73 => 17,  70 => 16,  68 => 15,  63 => 13,  57 => 10,  48 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -160,9 +158,7 @@ logout
 \t</div>
 \t<ul class=\"nav-links\">
 \t\t<li>
-\t\t\t<a href=\"{{ path('homepage_default') }}\"><span class=\"material-symbols-outlined\">
-home
-</span></a>
+\t\t\t<a href=\"{{ path('homepage_default') }}\">Home</a>
 \t\t</li>
 \t\t<li>
 \t\t\t<a href=\"{{ path('about') }}\">About</a>

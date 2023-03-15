@@ -47,9 +47,11 @@
     
 </div>
 
+<div class="container">
     {{ form_start(contact) }}
     {{ form_row(contact.email) }}
     {{ form_row(contact.message) }}
    <button type="submit">Odeslat!</button>
 {{ form_end(contact) }}
+</div>
 {% endblock %}

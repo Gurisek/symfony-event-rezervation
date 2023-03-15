@@ -14,6 +14,7 @@ use Symfony\Component\Mime\Email;
 
 class ContactController extends AbstractController
 {        
+     
     /**
      * contact
      *
@@ -25,16 +26,23 @@ class ContactController extends AbstractController
      */
     public function contact(Request $request, MailerInterface $mailer, Security $security)
     {
-    
-        $form = $this->createForm(ContactFormType::class);
+        if ($this->getUser()) {
+            $user = $security->getUser();
+            $email = $user->getEmail();
+        
+            $form = $this->createForm(ContactFormType::class, ['email' => $email]);
+        } else {
+            $form = $this->createForm(ContactFormType::class);
+        }
+        
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
     
             $email = (new Email())
                 ->from($data['email'])
-                ->to('romik.dusek@seznam.cz')
+                ->to('rufir@palcat.cz')
                 ->subject('Kontaktní formulář')
                 ->text($data['message']);
     
@@ -49,6 +57,7 @@ class ContactController extends AbstractController
             'contact' => $form->createView(),
         ]);
     }
+    
 }
 
 

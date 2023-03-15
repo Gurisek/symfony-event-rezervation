@@ -127,23 +127,25 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
     
 </div>
 
-    ";
-        // line 50
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 50, $this->source); })()), 'form_start');
-        echo "
+<div class=\"container\">
     ";
         // line 51
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 51, $this->source); })()), "email", [], "any", false, false, false, 51), 'row');
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 51, $this->source); })()), 'form_start');
         echo "
     ";
         // line 52
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 52, $this->source); })()), "message", [], "any", false, false, false, 52), 'row');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 52, $this->source); })()), "email", [], "any", false, false, false, 52), 'row');
+        echo "
+    ";
+        // line 53
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 53, $this->source); })()), "message", [], "any", false, false, false, 53), 'row');
         echo "
    <button type=\"submit\">Odeslat!</button>
 ";
-        // line 54
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 54, $this->source); })()), 'form_end');
+        // line 55
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 55, $this->source); })()), 'form_end');
         echo "
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -165,7 +167,7 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
 
     public function getDebugInfo()
     {
-        return array (  145 => 54,  140 => 52,  136 => 51,  132 => 50,  122 => 43,  91 => 14,  82 => 11,  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  146 => 55,  141 => 53,  137 => 52,  133 => 51,  122 => 43,  91 => 14,  82 => 11,  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -219,11 +221,13 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
     
 </div>
 
+<div class=\"container\">
     {{ form_start(contact) }}
     {{ form_row(contact.email) }}
     {{ form_row(contact.message) }}
    <button type=\"submit\">Odeslat!</button>
 {{ form_end(contact) }}
+</div>
 {% endblock %}", "Homepage/about.html.twig", "/var/www/html/templates/Homepage/about.html.twig");
     }
 }
