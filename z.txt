@@ -92,3 +92,12 @@ php bin/console messenger:consume async -vv : prikaz pro zahájení posílání 
 <span class="material-symbols-outlined">
 home
 </span>
+
+ssemi.dusek@seznam.cz
+Rufir123
+
+# MAILER_DSN=smtp://9f6ad71a052458:5ec75128811e54@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login
+# MAILER_DSN=smtp://xdusek%40ssemi.cz:Píčus123@smtp.office365.com:587?encryption=STARTTLS&auth_mode=login&username=xdusek@ssemi.cz&password=Píčus123
+# MAILER_DSN=smtp://smtp.office365.com:587@encryption=starttls&auth_mode=login&username=xdusek%40ssemi.cz&password=Píčus123
+
+G-mail: ssemi.event@gmail.com pass: Rufir123 - app pass: xtossfvpjcvokbjn

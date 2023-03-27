@@ -6,6 +6,9 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
 use App\Form\ContactFormType;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +17,7 @@ use Symfony\Component\Mime\Email;
 
 class ContactController extends AbstractController
 {        
+    protected $transport;
      
     /**
      * contact
@@ -26,31 +30,38 @@ class ContactController extends AbstractController
      */
     public function contact(Request $request, MailerInterface $mailer, Security $security)
     {
+        // Create a Transport object
+        $transport = Transport::fromDsn('smtp://ssemi.event@gmail.com:xtossfvpjcvokbjn@smtp.gmail.com:587');
+        // Create a Mailer object
+        $mailer = new Mailer ($transport);
+    
+        $userEmail = null;
         if ($this->getUser()) {
             $user = $security->getUser();
-            $email = $user->getEmail();
-        
-            $form = $this->createForm(ContactFormType::class, ['email' => $email]);
-        } else {
-            $form = $this->createForm(ContactFormType::class);
+            $userEmail = $user->getEmail();
         }
-        
+    
+        $form = $this->createForm(ContactFormType::class, ['email' => $userEmail]);
+            
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
     
             $email = (new Email())
-                ->from($data['email'])
-                ->to('rufir@palcat.cz')
+                ->from($data['email'] ?? $userEmail)
+                ->to('ssemi.event@gmail.com')
+                ->replyTo($data['email'])
                 ->subject('Kontaktní formulář')
                 ->text($data['message']);
     
             $mailer->send($email);
     
-            $this->addFlash('success', 'Zpráva byla úspěšně odeslána.');
+            $this->addFlash('success', 
+                'Zpráva byla úspěšně odeslána.'
+            );
     
-            return $this->redirectToRoute('homepage_default');
+            return $this->redirectToRoute('about');
         }
     
         return $this->render('Homepage/about.html.twig', [

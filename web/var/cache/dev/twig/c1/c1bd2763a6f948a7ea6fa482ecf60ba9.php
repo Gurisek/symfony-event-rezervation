@@ -67,7 +67,10 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "<div class=\"center\">
+        echo "
+
+
+<div class=\"center\">
 \t<div class=\"col-lg-12\">
 \t\t<h1>Jsme rádi že tě tu máme!</h1>
 \t</div>
@@ -79,17 +82,17 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 \t<p>
 \t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
 \t\t<a href=\"";
-        // line 18
+        // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_index");
         echo "\">ZDE</a><br>
 \t\tPro registraci stačí kliknout
 \t\t<a href=\"";
-        // line 20
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">ZDE</a><br>
 \t\tA pro přihlášení
 \t\t<a href=\"";
-        // line 22
+        // line 25
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">ZDE</a>
 \t</p>
@@ -106,7 +109,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     }
 
-    // line 30
+    // line 33
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -124,7 +127,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     }
 
-    // line 31
+    // line 34
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -154,7 +157,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  128 => 31,  110 => 30,  93 => 22,  88 => 20,  83 => 18,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  131 => 34,  113 => 33,  96 => 25,  91 => 23,  86 => 21,  70 => 7,  60 => 6,  37 => 2,);
     }
 
     public function getSourceContext()
@@ -165,6 +168,9 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
 
 {% block body %}
+
+
+
 <div class=\"center\">
 \t<div class=\"col-lg-12\">
 \t\t<h1>Jsme rádi že tě tu máme!</h1>
