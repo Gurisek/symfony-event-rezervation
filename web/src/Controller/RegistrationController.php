@@ -47,7 +47,7 @@ class RegistrationController extends AbstractController
 
             $this->addFlash(
                 'succes',
-                'Úspěšně jste se zaregistroval! Teď se níže přišlaste.'
+                'Úspěšně jste se zaregistroval/a! Teď se níže přihlašte.'
             );
 
 

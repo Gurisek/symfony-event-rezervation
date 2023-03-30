@@ -51,6 +51,7 @@
     {{ form_start(contact) }}
     {{ form_row(contact.email) }}
     {{ form_row(contact.message) }}
+    {{ form_row(contact._token) }}
    <button type="submit">Odeslat!</button>
 {{ form_end(contact) }}
 </div>

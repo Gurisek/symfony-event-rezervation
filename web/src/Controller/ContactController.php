@@ -31,7 +31,7 @@ class ContactController extends AbstractController
     public function contact(Request $request, MailerInterface $mailer, Security $security)
     {
         // Create a Transport object
-        $transport = Transport::fromDsn('smtp://ssemi.event@gmail.com:xtossfvpjcvokbjn@smtp.gmail.com:587');
+        $transport = Transport::fromDsn($_ENV['MAILER_DSN']);
         // Create a Mailer object
         $mailer = new Mailer ($transport);
     
@@ -57,7 +57,7 @@ class ContactController extends AbstractController
     
             $mailer->send($email);
     
-            $this->addFlash('success', 
+            $this->addFlash('succes', 
                 'Zpráva byla úspěšně odeslána.'
             );
     

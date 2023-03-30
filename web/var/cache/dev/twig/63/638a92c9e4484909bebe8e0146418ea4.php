@@ -172,11 +172,13 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 
 </div>
 
-<div class=\"a_index\">
-\t<a href=\"";
-        // line 61
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+        <a href=\"";
+        // line 62
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na hlavní stránku</a>
+\t</div>
 </div>
 
 
@@ -201,7 +203,7 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 
     public function getDebugInfo()
     {
-        return array (  178 => 61,  169 => 55,  162 => 51,  151 => 42,  142 => 38,  133 => 34,  127 => 31,  121 => 28,  112 => 22,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  179 => 62,  169 => 55,  162 => 51,  151 => 42,  142 => 38,  133 => 34,  127 => 31,  121 => 28,  112 => 22,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -265,8 +267,10 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 
 </div>
 
-<div class=\"a_index\">
-\t<a href=\"{{ path('homepage_default') }}\">Zpět na hlavní stránku</a>
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+        <a href=\"{{ path('homepage_default') }}\">Zpět na hlavní stránku</a>
+\t</div>
 </div>
 
 

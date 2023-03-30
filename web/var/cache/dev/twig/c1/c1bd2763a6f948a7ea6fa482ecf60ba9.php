@@ -88,7 +88,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 \t\tPro registraci stačí kliknout
 \t\t<a href=\"";
         // line 23
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\">ZDE</a><br>
 \t\tA pro přihlášení
 \t\t<a href=\"";
@@ -184,7 +184,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 \t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
 \t\t<a href=\"{{path('no_user_index')}}\">ZDE</a><br>
 \t\tPro registraci stačí kliknout
-\t\t<a href=\"{{path('app_login')}}\">ZDE</a><br>
+\t\t<a href=\"{{path('app_register')}}\">ZDE</a><br>
 \t\tA pro přihlášení
 \t\t<a href=\"{{path('app_login')}}\">ZDE</a>
 \t</p>

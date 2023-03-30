@@ -11,10 +11,6 @@
 		<table class="content-table">
 			<tbody>
 				<tr>
-					<th>Id</th>
-					<td>{{ user.id }}</td>
-				</tr>
-				<tr>
 					<th>Přezdívka</th>
 					<td class="active-row">{{ user.nickName }}</td>
 				</tr>
@@ -69,9 +65,10 @@
 		</table>
 	</div>
 
-
-<div class="a_index">
-	<a href="{{ path('app_user_index') }}">Zpět na přehled</a>
+<div class="a_index_admin_position">
+	<div class="a_index_admin">
+        <a href="{{ path('app_user_index') }}">Zpět na přehled</a>
+	</div>
 </div>
 {% endblock %}
 

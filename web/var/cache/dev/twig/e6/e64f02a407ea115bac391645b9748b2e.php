@@ -94,12 +94,12 @@ class __TwigTemplate_aecaf64c9307e5a7206e6496df8d175f extends Template
         echo twig_include($this->env, $context, "event/_form.html.twig", ["button_label" => "Nahrát změny"]);
         echo "
 
-<div class=\"a_edit_admin\">
-\t<a href=\"";
+    <div class=\"a_edit_admin\">
+        <a href=\"";
         // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
-</div>
+    </div>
 
     ";
         // line 16
@@ -143,9 +143,9 @@ class __TwigTemplate_aecaf64c9307e5a7206e6496df8d175f extends Template
 <div class=\"container\">
     {{ include('event/_form.html.twig', {'button_label': 'Nahrát změny'}) }}
 
-<div class=\"a_edit_admin\">
-\t<a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
-</div>
+    <div class=\"a_edit_admin\">
+        <a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
+    </div>
 
     {{ include('event/_delete_form.html.twig') }}
 </div>

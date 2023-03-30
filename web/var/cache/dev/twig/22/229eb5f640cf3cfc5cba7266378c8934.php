@@ -218,10 +218,10 @@ class __TwigTemplate_32b1f7ba12b5772361c6cff3ffc83e58 extends Template
 
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
-\t\t<a href=\"";
+        <a href=\"";
         // line 69
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
-        echo "\">Vytvořit nového uživatele</a>
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
+        echo "\">Přejít na eventy</a>
 \t</div>
 </div>
 ";
@@ -318,7 +318,7 @@ class __TwigTemplate_32b1f7ba12b5772361c6cff3ffc83e58 extends Template
 
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
-\t\t<a href=\"{{ path('app_user_new') }}\">Vytvořit nového uživatele</a>
+        <a href=\"{{ path('app_event_index') }}\">Přejít na eventy</a>
 \t</div>
 </div>
 {% endblock %}

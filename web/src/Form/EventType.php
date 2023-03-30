@@ -28,10 +28,6 @@ class EventType extends AbstractType
                     'placeholder' => 'Místo konání akce',
                 ]
             ])
-            // ->add('pUserNub', IntegerType::class, [
-            //     'label' => 'Max. počet účastníků',
-            //     'required' => true,
-            // ])
             ->add('date', DateTimeType::class, [
                 'label' => 'Datum / čas',
             ])

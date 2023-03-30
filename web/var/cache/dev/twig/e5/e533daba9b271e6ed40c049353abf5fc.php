@@ -92,7 +92,7 @@ class __TwigTemplate_6346bef4cdee9b2c124824ed5b47b02d extends Template
 \t<div class=\"container\">
 \t\t";
         // line 11
-        echo twig_include($this->env, $context, "event/_form.html.twig");
+        echo twig_include($this->env, $context, "event/_form.html.twig", ["button_label" => "Vytvořit!"]);
         echo "
 \t\t<div class=\"a_edit_admin\">
 \t\t\t<a href=\"";
@@ -138,7 +138,7 @@ class __TwigTemplate_6346bef4cdee9b2c124824ed5b47b02d extends Template
 \t\t<h1 class=\"center\">Vytvořit nový Event</h1>
 \t</div>
 \t<div class=\"container\">
-\t\t{{ include('event/_form.html.twig') }}
+\t\t{{ include('event/_form.html.twig', {'button_label': 'Vytvořit!'}) }}
 \t\t<div class=\"a_edit_admin\">
 \t\t\t<a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
 \t\t</div>

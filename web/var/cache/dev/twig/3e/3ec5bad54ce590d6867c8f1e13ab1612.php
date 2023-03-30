@@ -153,14 +153,14 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 \t\t</table>
 \t</div>
 
-\t<div class=\"a_index\">
-\t\t<a href=\"";
-        // line 51
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+        <a href=\"";
+        // line 52
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
 \t</div>
-
-
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -182,7 +182,7 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 
     public function getDebugInfo()
     {
-        return array (  159 => 51,  146 => 41,  142 => 40,  135 => 36,  127 => 31,  120 => 27,  113 => 23,  106 => 19,  99 => 15,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  160 => 52,  146 => 41,  142 => 40,  135 => 36,  127 => 31,  120 => 27,  113 => 23,  106 => 19,  99 => 15,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -236,11 +236,11 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 \t\t</table>
 \t</div>
 
-\t<div class=\"a_index\">
-\t\t<a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
+<div class=\"a_index_admin_position\">
+\t<div class=\"a_index_admin\">
+        <a href=\"{{ path('app_event_index') }}\">Zpět na přehled</a>
 \t</div>
-
-
+</div>
 {% endblock %}
 
 ", "event/show.html.twig", "/var/www/html/templates/event/show.html.twig");

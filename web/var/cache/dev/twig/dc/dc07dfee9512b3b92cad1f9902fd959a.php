@@ -140,10 +140,14 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
         // line 53
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 53, $this->source); })()), "message", [], "any", false, false, false, 53), 'row');
         echo "
+    ";
+        // line 54
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 54, $this->source); })()), "_token", [], "any", false, false, false, 54), 'row');
+        echo "
    <button type=\"submit\">Odeslat!</button>
 ";
-        // line 55
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 55, $this->source); })()), 'form_end');
+        // line 56
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contact"]) || array_key_exists("contact", $context) ? $context["contact"] : (function () { throw new RuntimeError('Variable "contact" does not exist.', 56, $this->source); })()), 'form_end');
         echo "
 </div>
 ";
@@ -167,7 +171,7 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
 
     public function getDebugInfo()
     {
-        return array (  146 => 55,  141 => 53,  137 => 52,  133 => 51,  122 => 43,  91 => 14,  82 => 11,  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  150 => 56,  145 => 54,  141 => 53,  137 => 52,  133 => 51,  122 => 43,  91 => 14,  82 => 11,  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -225,6 +229,7 @@ class __TwigTemplate_f469f9d2830ef7f9cc47610ea2b7d217 extends Template
     {{ form_start(contact) }}
     {{ form_row(contact.email) }}
     {{ form_row(contact.message) }}
+    {{ form_row(contact._token) }}
    <button type=\"submit\">Odeslat!</button>
 {{ form_end(contact) }}
 </div>

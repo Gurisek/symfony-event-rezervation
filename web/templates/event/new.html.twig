@@ -8,7 +8,7 @@
 		<h1 class="center">Vytvořit nový Event</h1>
 	</div>
 	<div class="container">
-		{{ include('event/_form.html.twig') }}
+		{{ include('event/_form.html.twig', {'button_label': 'Vytvořit!'}) }}
 		<div class="a_edit_admin">
 			<a href="{{ path('app_event_index') }}">Zpět na přehled</a>
 		</div>

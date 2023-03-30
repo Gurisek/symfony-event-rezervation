@@ -87,7 +87,7 @@ class Security extends LegacySecurity
         $tokenStorage = $this->container->get('security.token_storage');
 
         if (!($token = $tokenStorage->getToken()) || !$token->getUser()) {
-            throw new LogicException('Unable to logout as there is no logged-in user.');
+            throw new LogicException('Nelze odhlásit, pokud žádný uživatel nebyl přihlášen.');
         }
 
         $request = $this->container->get('request_stack')->getMainRequest();
