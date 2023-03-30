@@ -102,8 +102,6 @@ return [[
 '[C]App%5CController%5CUserController' => 1,
 'App%5CController%5CUserController%23index' => 0,
 '[C]App%5CController%5CUserController%23index' => 1,
-'App%5CController%5CUserController%23new' => 0,
-'[C]App%5CController%5CUserController%23new' => 1,
 'App%5CController%5CUserController%23show' => 0,
 '[C]App%5CController%5CUserController%23show' => 1,
 'App%5CController%5CUserController%23edit' => 0,
@@ -822,6 +820,6 @@ return [[
 ], [
 
 0 => [],
-1 => 1678745663,
+1 => 1680216620,
 
 ]];
