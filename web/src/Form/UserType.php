@@ -20,8 +20,12 @@ class UserType extends AbstractType
             ->add('name', TextType::class)
             ->add('secondName', TextType::class)
             ->add('nickName', TextType::class)
-            ->add('telNumber', IntegerType::class)
-            ->add('social', TextareaType::class)
+            ->add('telNumber', IntegerType::class, [
+                'required' => false,
+            ])
+            ->add('social', TextareaType::class, [
+                'required' => false,
+            ])
         ;
     }
 

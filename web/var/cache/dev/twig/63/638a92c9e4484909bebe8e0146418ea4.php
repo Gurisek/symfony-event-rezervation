@@ -91,7 +91,6 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th>Název</th>
-\t\t\t\t<th>Místo</th>
 \t\t\t\t<th>Datum</th>
 \t\t\t\t<th>Popisek</th>
 \t\t\t\t<th>Možnosti</th>
@@ -99,38 +98,35 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 \t\t</thead>
 \t\t<tbody>
 \t\t\t";
-        // line 19
+        // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-            // line 20
+            // line 19
             echo "\t\t\t\t<tr>
 \t\t\t\t\t<td class=\"active-row\">
 \t\t\t\t\t\t";
-            // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 22), "html", null, true);
-            echo "
-\t\t\t\t\t</td>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t-
-\t\t\t\t\t</td>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t";
-            // line 28
-            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 28)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 28), "d.m. Y"), "html", null, true))) : (print ("")));
+            // line 21
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 21), "html", null, true);
             echo "
 \t\t\t\t\t</td>
 \t\t\t\t\t<td>
 \t\t\t\t\t\t";
-            // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 31), "html", null, true);
+            // line 24
+            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 24)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 24), "d.m. Y"), "html", null, true))) : (print ("")));
+            echo "
+\t\t\t\t\t</td>
+\t\t\t\t\t<td>
+\t\t\t\t\t\t";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 27), "html", null, true);
             echo "
 \t\t\t\t\t</td>
 \t\t\t\t\t<td>
 \t\t\t\t\t\t<a href=\"";
-            // line 34
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 34)]), "html", null, true);
+            // line 30
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 30)]), "html", null, true);
             echo "\">ukaž</a>
 \t\t\t\t\t</td>
 \t\t\t\t</tr>
@@ -138,7 +134,7 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 38
+            // line 34
             echo "\t\t\t\t<tr>
 \t\t\t\t\t<td colspan=\"6\">Není nic vytvořeno</td>
 \t\t\t\t</tr>
@@ -147,7 +143,7 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 42
+        // line 38
         echo "\t\t</tbody>
 \t</table>
 </div>
@@ -158,14 +154,14 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 \t\t<br>
 \t\tJestli už máš učet stačí se
 \t\t<a href=\"";
-        // line 51
+        // line 47
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">přihlásit!</a>
 \t\t<br>
 \t\t<br>
 \t\tPokud ještě nemáš učet jednoduše se
 \t\t<a href=\"";
-        // line 55
+        // line 51
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\">registruj!</a>
 \t</p>
@@ -175,7 +171,7 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
         <a href=\"";
-        // line 62
+        // line 58
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage_default");
         echo "\">Zpět na hlavní stránku</a>
 \t</div>
@@ -203,7 +199,7 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 
     public function getDebugInfo()
     {
-        return array (  179 => 62,  169 => 55,  162 => 51,  151 => 42,  142 => 38,  133 => 34,  127 => 31,  121 => 28,  112 => 22,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  175 => 58,  165 => 51,  158 => 47,  147 => 38,  138 => 34,  129 => 30,  123 => 27,  117 => 24,  111 => 21,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -219,7 +215,6 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th>Název</th>
-\t\t\t\t<th>Místo</th>
 \t\t\t\t<th>Datum</th>
 \t\t\t\t<th>Popisek</th>
 \t\t\t\t<th>Možnosti</th>
@@ -230,9 +225,6 @@ class __TwigTemplate_161669eeb05bb502a6d53800a9319dbe extends Template
 \t\t\t\t<tr>
 \t\t\t\t\t<td class=\"active-row\">
 \t\t\t\t\t\t{{ event.name }}
-\t\t\t\t\t</td>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t-
 \t\t\t\t\t</td>
 \t\t\t\t\t<td>
 \t\t\t\t\t\t{{ event.date ? event.date|date('d.m. Y') : '' }}

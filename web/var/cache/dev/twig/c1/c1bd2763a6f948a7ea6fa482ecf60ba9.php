@@ -56,7 +56,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     }
 
-    // line 6
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -66,38 +66,36 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 6
         echo "
 
-
-<div class=\"center\">
-\t<div class=\"col-lg-12\">
-\t\t<h1>Jsme rádi že tě tu máme!</h1>
+\t<div class=\"center\">
+\t\t<div class=\"col-lg-12\">
+\t\t\t<h1>Jsme rádi že tě tu máme!</h1>
+\t\t</div>
 \t</div>
-</div>
 
-<div class=\"p_home\">
-\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
+\t<div class=\"p_home\">
+\t\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
 
-\t<p>
-\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
-\t\t<a href=\"";
-        // line 21
+\t\t<p>
+\t\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
+\t\t\t<a href=\"";
+        // line 19
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("no_user_index");
         echo "\">ZDE</a><br>
-\t\tPro registraci stačí kliknout
-\t\t<a href=\"";
-        // line 23
+\t\t\tPro registraci stačí kliknout
+\t\t\t<a href=\"";
+        // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\">ZDE</a><br>
-\t\tA pro přihlášení
-\t\t<a href=\"";
-        // line 25
+\t\t\tA pro přihlášení
+\t\t\t<a href=\"";
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">ZDE</a>
-\t</p>
-</div>
-
+\t\t</p>
+\t</div>
 
 
 ";
@@ -109,7 +107,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     }
 
-    // line 33
+    // line 30
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -127,7 +125,7 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     }
 
-    // line 34
+    // line 31
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -157,45 +155,43 @@ class __TwigTemplate_7b7c59570aa50743b4ed504a472c28a2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  131 => 34,  113 => 33,  96 => 25,  91 => 23,  86 => 21,  70 => 7,  60 => 6,  37 => 2,);
+        return array (  129 => 31,  111 => 30,  95 => 23,  90 => 21,  85 => 19,  70 => 6,  60 => 5,  37 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("
- {% extends \"base.html.twig\" %}
-
+{% extends \"base.html.twig\" %}
 
 
 {% block body %}
 
 
-
-<div class=\"center\">
-\t<div class=\"col-lg-12\">
-\t\t<h1>Jsme rádi že tě tu máme!</h1>
+\t<div class=\"center\">
+\t\t<div class=\"col-lg-12\">
+\t\t\t<h1>Jsme rádi že tě tu máme!</h1>
+\t\t</div>
 \t</div>
-</div>
 
-<div class=\"p_home\">
-\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
+\t<div class=\"p_home\">
+\t\t<h3>Pro přihlášení k akci je potřeba se nejprve přihlasit / registrovat</h3>
 
-\t<p>
-\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
-\t\t<a href=\"{{path('no_user_index')}}\">ZDE</a><br>
-\t\tPro registraci stačí kliknout
-\t\t<a href=\"{{path('app_register')}}\">ZDE</a><br>
-\t\tA pro přihlášení
-\t\t<a href=\"{{path('app_login')}}\">ZDE</a>
-\t</p>
-</div>
-
+\t\t<p>
+\t\t\tSeznam všech dostupných akcí na které se lze přihlasit najdete
+\t\t\t<a href=\"{{path('no_user_index')}}\">ZDE</a><br>
+\t\t\tPro registraci stačí kliknout
+\t\t\t<a href=\"{{path('app_register')}}\">ZDE</a><br>
+\t\t\tA pro přihlášení
+\t\t\t<a href=\"{{path('app_login')}}\">ZDE</a>
+\t\t</p>
+\t</div>
 
 
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}
 {% block javascripts %}{% endblock %}
+
 
 ", "Homepage/default.html.twig", "/var/www/html/templates/Homepage/default.html.twig");
     }

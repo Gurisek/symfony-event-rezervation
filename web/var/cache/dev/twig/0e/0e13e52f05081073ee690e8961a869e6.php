@@ -88,7 +88,7 @@ class __TwigTemplate_71c39f2f9131b7a6983d5da1eb10bf8a extends Template
         echo "<div class=\"container\">
   
     <h1>Registrace</h1>
-
+<h6 class=\"reg_pov\">Kolonky s * jsou povinné.</h6>
 
 ";
         // line 11
@@ -172,7 +172,7 @@ class __TwigTemplate_71c39f2f9131b7a6983d5da1eb10bf8a extends Template
 <div class=\"container\">
   
     <h1>Registrace</h1>
-
+<h6 class=\"reg_pov\">Kolonky s * jsou povinné.</h6>
 
 {{ form_start(registrationForm) }}
 

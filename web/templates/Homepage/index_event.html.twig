@@ -9,7 +9,6 @@
 		<thead>
 			<tr>
 				<th>Název</th>
-				<th>Místo</th>
 				<th>Datum</th>
 				<th>Popisek</th>
 				<th>Možnosti</th>
@@ -20,9 +19,6 @@
 				<tr>
 					<td class="active-row">
 						{{ event.name }}
-					</td>
-					<td>
-						-
 					</td>
 					<td>
 						{{ event.date ? event.date|date('d.m. Y') : '' }}

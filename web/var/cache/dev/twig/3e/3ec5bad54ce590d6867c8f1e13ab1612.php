@@ -87,63 +87,59 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 
         // line 7
         echo "\t<div class=\"nadpis\">
-\t\t<h1 class=\"center\">Event</h1>
+\t\t<h1 class=\"center\">Událost ";
+        // line 8
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 8, $this->source); })()), "name", [], "any", false, false, false, 8), "html", null, true);
+        echo "</h1>
 \t</div>
 \t<div class=\"tabulka\">
 \t\t<table class=\"content-table\">
 \t\t\t<tbody>
 \t\t\t\t<tr>
-\t\t\t\t\t<th>Id</th>
-\t\t\t\t\t<td>";
-        // line 15
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 15, $this->source); })()), "id", [], "any", false, false, false, 15), "html", null, true);
-        echo "</td>
-\t\t\t\t</tr>
-\t\t\t\t<tr>
 \t\t\t\t\t<th>Název</th>
 \t\t\t\t\t<td>";
-        // line 19
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 19, $this->source); })()), "name", [], "any", false, false, false, 19), "html", null, true);
+        // line 15
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 15, $this->source); })()), "name", [], "any", false, false, false, 15), "html", null, true);
         echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Místo</th>
 \t\t\t\t\t<td class=\"active-row\">";
-        // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 23, $this->source); })()), "place", [], "any", false, false, false, 23), "html", null, true);
+        // line 19
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 19, $this->source); })()), "place", [], "any", false, false, false, 19), "html", null, true);
         echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Datum</th>
 \t\t\t\t\t<td class=\"active-row\">";
-        // line 27
-        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 27, $this->source); })()), "date", [], "any", false, false, false, 27)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 27, $this->source); })()), "date", [], "any", false, false, false, 27), "H:i d.m. Y"), "html", null, true))) : (print ("")));
+        // line 23
+        ((twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 23, $this->source); })()), "date", [], "any", false, false, false, 23)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 23, $this->source); })()), "date", [], "any", false, false, false, 23), "H:i d.m. Y"), "html", null, true))) : (print ("")));
         echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Popisek</th>
 \t\t\t\t\t<td>";
-        // line 31
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 31, $this->source); })()), "description", [], "any", false, false, false, 31), "html", null, true);
+        // line 27
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 27, $this->source); })()), "description", [], "any", false, false, false, 27), "html", null, true);
         echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Možnosti</th>
 \t\t\t\t\t<td>
 \t\t\t\t\t\t<form action=\"";
-        // line 36
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 36, $this->source); })()), "id", [], "any", false, false, false, 36)]), "html", null, true);
+        // line 32
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 32, $this->source); })()), "id", [], "any", false, false, false, 32)]), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"_method\" value=\"EDIT\">
 \t\t\t\t\t\t\t<button type=\"submit\">Upravit</button>
 \t\t\t\t\t\t</form>
 \t\t\t\t\t\t<form action=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 40, $this->source); })()), "id", [], "any", false, false, false, 40)]), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 36, $this->source); })()), "id", [], "any", false, false, false, 36)]), "html", null, true);
         echo "\" method=\"post\" onsubmit=\"return confirm('Jste si jistý s odstraněním této události?');\">
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"_method\" value=\"";
-        // line 41
-        echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 41, $this->source); })()), "id", [], "any", false, false, false, 41))), "html", null, true);
+        // line 37
+        echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 37, $this->source); })()), "id", [], "any", false, false, false, 37))), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t<button type=\"submit\">Odstranit</button>
 \t\t\t\t\t\t</form>
@@ -156,7 +152,7 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
         <a href=\"";
-        // line 52
+        // line 48
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_index");
         echo "\">Zpět na přehled</a>
 \t</div>
@@ -182,7 +178,7 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 
     public function getDebugInfo()
     {
-        return array (  160 => 52,  146 => 41,  142 => 40,  135 => 36,  127 => 31,  120 => 27,  113 => 23,  106 => 19,  99 => 15,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  156 => 48,  142 => 37,  138 => 36,  131 => 32,  123 => 27,  116 => 23,  109 => 19,  102 => 15,  92 => 8,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -194,15 +190,11 @@ class __TwigTemplate_defe7b9859745ed15b4af617a870879e extends Template
 
 {% block body %}
 \t<div class=\"nadpis\">
-\t\t<h1 class=\"center\">Event</h1>
+\t\t<h1 class=\"center\">Událost {{ event.name }}</h1>
 \t</div>
 \t<div class=\"tabulka\">
 \t\t<table class=\"content-table\">
 \t\t\t<tbody>
-\t\t\t\t<tr>
-\t\t\t\t\t<th>Id</th>
-\t\t\t\t\t<td>{{ event.id }}</td>
-\t\t\t\t</tr>
 \t\t\t\t<tr>
 \t\t\t\t\t<th>Název</th>
 \t\t\t\t\t<td>{{ event.name }}</td>

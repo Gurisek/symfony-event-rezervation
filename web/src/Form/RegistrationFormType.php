@@ -45,7 +45,8 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min'        => 6,
                         'minMessage' => 'Vaše heslo by mělo mít alespoň {{ limit }} charakterů.',
-                        'max'        => 4096,
+                        'max'        => 40,
+                        'maxMessage' => 'Vaše heslo je příliš dlouhé.'
                     ]),
                 ],
             ])

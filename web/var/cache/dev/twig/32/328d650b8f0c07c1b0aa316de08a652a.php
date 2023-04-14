@@ -107,6 +107,15 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 14
         echo "
+\t<div class=\"search_center\">
+\t\t<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+\t</div>
+
+<script src=\"";
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("homepage_default");
+        echo "layouts/custom/js/search.js\"></script>
+
 <div class=\"tabulka\"> 
     <table class=\"content-table\">
         <thead>
@@ -120,45 +129,45 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
         </thead>
         <tbody>
         ";
-        // line 27
+        // line 33
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 27, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 33, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-            // line 28
+            // line 34
             echo "            <tr>
                 <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 29), "html", null, true);
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 35), "html", null, true);
             echo "</td>
                 <td>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "place", [], "any", false, false, false, 30), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "place", [], "any", false, false, false, 36), "html", null, true);
             echo "</td>
                 <td>";
-            // line 31
-            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 31)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 31), "H:i d.m. Y"), "html", null, true))) : (print ("")));
+            // line 37
+            ((twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 37)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 37), "H:i d.m. Y"), "html", null, true))) : (print ("")));
             echo "</td>
                 <td>";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 32), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 38), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 34
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 34)]), "html", null, true);
+            // line 40
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 40)]), "html", null, true);
             echo "\">Ukázat</a> |
                     <a href=\"";
-            // line 35
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 35)]), "html", null, true);
+            // line 41
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 41)]), "html", null, true);
             echo "\">Upravit</a> |
                     <a href=\"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 36)]), "html", null, true);
+            // line 42
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 42)]), "html", null, true);
             echo "\">Odstranit</a> |
                      <a href=\"";
-            // line 37
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("joined_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("joined_show", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 43)]), "html", null, true);
             echo "\">Účastníci</a>
                 </td>
             </tr>
@@ -166,7 +175,7 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 41
+            // line 47
             echo "            <tr>
                 <td colspan=\"6\">Není nic vytvořeno</td>
             </tr>
@@ -175,7 +184,7 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
+        // line 51
         echo "        </tbody>
     </table>
 </div>
@@ -183,7 +192,7 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
 <div class=\"a_index_admin_position\">
 \t<div class=\"a_index_admin\">
 \t\t<a href=\"";
-        // line 51
+        // line 57
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event_new");
         echo "\">Vytvořit nový</a>
 \t</div>
@@ -210,7 +219,7 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
 
     public function getDebugInfo()
     {
-        return array (  187 => 51,  179 => 45,  170 => 41,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  144 => 32,  140 => 31,  136 => 30,  132 => 29,  129 => 28,  124 => 27,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  196 => 57,  188 => 51,  179 => 47,  170 => 43,  166 => 42,  162 => 41,  158 => 40,  153 => 38,  149 => 37,  145 => 36,  141 => 35,  138 => 34,  133 => 33,  116 => 19,  109 => 14,  100 => 11,  97 => 10,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -228,6 +237,12 @@ class __TwigTemplate_ac3509162162b2bff80548cfb2929daa extends Template
             {{ message }}
         </div>
     {% endfor %}
+
+\t<div class=\"search_center\">
+\t\t<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Vyhledat uživatele..\">
+\t</div>
+
+<script src=\"{{ url(\"homepage_default\") }}layouts/custom/js/search.js\"></script>
 
 <div class=\"tabulka\"> 
     <table class=\"content-table\">
